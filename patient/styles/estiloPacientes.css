@@ -10,8 +10,6 @@ h2 {
 h3 {
   margin: 0px;
 }
-</style>
-<style type="text/css">
 html, body {
   width: 100%;
   height: 100%;
@@ -115,4 +113,19 @@ nav#menu-superior ul li a {
   height: 100px;
   position: absolute;
 }
+/* 
+#formCOVID{
+  visibility:hidden;
+} */
 
+#tablaCOVID{
+  display: table;
+}
+
+#tablaPeriódica{
+  display: none;
+}
+
+#tablaOtra{
+  display: none;
+}
