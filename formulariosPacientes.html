@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <!-- <script>
+        function myFunction() {
+          var x = document.getElementById("tipoForm").value;
+        //   document.getElementById("demo").innerHTML = "Has elegido el formulario: " + x;
+            document.getElementById(x).style.visibility='visible';
+        }
+    </script> -->
+    <script>
+        function myFunction() {
+            selecc = document.getElementById("tipoForm").value;
+            tablaCOVID = document.getElementById('tablaCOVID');
+            tablaPeriodica = document.getElementById('tablaPeriódica');
+            tablaOtra = document.getElementById('tablaOtra');
+
+            if(selecc=='COVID'){
+                document.getElementById('tablaCOVID').style.display='table';
+                tablaPeriodica.style.display='none';
+                tablaOtra.style.display='none';
+            } else if(selecc=='Periódica'){
+                tablaCOVID.style.display='none';
+                tablaPeriodica.style.display='table';
+                tablaOtra.style.display='none';
+            } else if(selecc=='Otra'){
+                tablaCOVID.style.display='none';
+                tablaPeriodica.style.display='none';
+                tablaOtra.style.display='table';
+            }
+            // alert(console.log(document.getElementById('tablaCOVID').style.display));
+            // document.getElementById('tablaCOVID').style.display='table';   
+        }
+    </script>
+    <!-- <script>
+        function myFunction() {
+            elem = document.getElementById('tablaCOVID');
+            tipoDisplay = getComputedStyle(elem, null).display
+            if(tipoDisplay=='none'){
+                document.getElementById('tablaCOVID').style.display='table';   
+            } else if(tipoDisplay=='table'){
+                document.getElementById('tablaCOVID').style.display='none';   
+            }
+            // alert(console.log(document.getElementById('tablaCOVID').style.display));
+            // document.getElementById('tablaCOVID').style.display='table';   
+        }
+    </script> -->
+    <!-- <button id="some_id">Hide div</button>
+
+    <form id="some_form">
+    <script type="text/javascript">
+        var theButton = document.getElementById('some_id');
+        
+        theButton.onclick = function() { 
+            document.getElementById('some_form').style.visibility='hidden';   
+        }
+        
+    </script> -->
+    <head>
+        <meta charset="utf-8">
+        <title>Formulario Consulta</title>
+        <meta name="generator" content="Google Web Designer 10.0.2.0105">
+        <link href="styles/estiloPacientes.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css"> 
+    </head>
+    <body>
+        <div class="gwd-div-lm07"></div>
+        <img src="assets/logo.png" class="gwd-img-fa6j">
+        <nav id="menu-superior">
+            <ul>
+                <li><a href="listConsultas.html"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas</h3></a></li>
+                <li><a href="haceronsultas.html"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="haceronsultas">Hacer consulta</h3></a></li>
+                <li class="gwd-li-2971"><a href="fichaPaciente.html"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
+                <li class="gwd-li-1xiy"><a href="desconectar.html"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
+            </ul>
+        </nav>
+
+        <div class="form">
+            <!-- <button id="botonCOVID" onclick=myFunction()>COVID</button> -->
+            
+            <select id="tipoForm" onchange="myFunction()">
+                <option value="COVID">COVID</option>
+                <option value="Periódica">Periódica</option>
+                <option value="Otra">Otra</option>
+            </select>
+
+            <p id="demo"></p>
+
+            <form method="POST" id = "formCOVID">
+                <table id="tablaCOVID">
+                    <tr>
+                        <td colspan="2">
+                            <pre><b>Formulario para consultas sobre COVID-19   </b></pre>
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>Asunto   </b></pre></td>
+                        <td><input type="text" name="asuntoConsulta"></td>
+                    </tr>
+                    <tr><td><pre><b>Consulta   </b></pre></td>
+                        <td><textarea id="textoRespuesta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escriba su consulta"></textarea></td>
+                    </tr>
+                    <tr><td><pre><b>¿Siente malestar general?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="malestar_general" value="si">Sí
+                            <input type="radio" name="malestar_general" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>Introduzca su temperatura, si la sabe   </b></pre></td>
+                        <td><input type="text" name="fiebre"></td>
+                    </tr>
+                    <tr><td><pre><b>¿Tiene mucosidad?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="mucosidad" value="si">Sí
+                            <input type="radio" name="mucosidad" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Siente dolor al tragar?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="dolor_tragar" value="si">Sí
+                            <input type="radio" name="dolor_tragar" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Ha notado algún cambio en su voz?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="cambio_voz" value="si">Sí
+                            <input type="radio" name="cambio_voz" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Tiene tos?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="tos" value="si">Sí
+                            <input type="radio" name="tos" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Siente falta de aire?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="falta_aire" value="si">Sí
+                            <input type="radio" name="falta_aire" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Ha perdido el sentido del gusto o del olfato?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="perdida_olf_gust" value="si">Sí
+                            <input type="radio" name="perdida_olf_gust" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Siente dolor muscular?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="dolor_muscular" value="si">Sí
+                            <input type="radio" name="dolor_muscular" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Ha tenido diarrea?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="diarrea" value="si">Sí
+                            <input type="radio" name="diarrea" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Tiene usted alguna enfermedad crónica?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="enfermedad_cron" value="si">Sí
+                            <input type="radio" name="enfermedad_cron" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Ha estado en contacto con algún positivo?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="contacto_positivo" value="si">Sí
+                            <input type="radio" name="contacto_positivo" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Existe posibilidad de embarazo?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="embarazo" value="si">Sí
+                            <input type="radio" name="embarazo" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Es usted personal sanitario, de fuerzas armadas, o participa en actividades esenciales?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="sanitario_FFAA_SSEE" value="si">Sí
+                            <input type="radio" name="sanitario_FFAA_SSEE" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Vive en alguna residencia o similar?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="hab_residencia" value="si">Sí
+                            <input type="radio" name="hab_residencia" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Fuma?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="fumador" value="si">Sí
+                            <input type="radio" name="fumador" value="no">No
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>¿Ha estado en alguna zona de riesgo?   </b></pre></td>
+                        <td>
+                            <input type="radio" name="zona_riesgo" value="si">Sí
+                            <input type="radio" name="zona_riesgo" value="no">No
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="checkbox" name="datos">Acepto que estos datos sean usados por el personal médico.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" name="enviar">
+                            <input type="reset" name="borrar">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <form method="POST" id = "formPeriódica">
+                <table id="tablaPeriódica">
+                    <tr>
+                        <td colspan="2">
+                            <pre><b>Formulario para consultas periódicas   </b></pre>
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>Asunto   </b></pre></td>
+                        <td><input type="text" name="asuntoConsulta"></td>
+                    </tr>
+                    <tr><td><pre><b>Consulta   </b></pre></td>
+                        <td><textarea id="textoRespuesta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escriba su consulta"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="checkbox" name="datos">Acepto que estos datos sean usados por el personal médico.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" name="enviar">
+                            <input type="reset" name="borrar">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <form method="POST" id = "formOtra">
+                <table id="tablaOtra">
+                    <tr>
+                        <td colspan="2">
+                            <pre><b>Formulario para otras consultas   </b></pre>
+                        </td>
+                    </tr>
+                    <tr><td><pre><b>Asunto   </b></pre></td>
+                        <td><input type="text" name="asuntoConsulta"></td>
+                    </tr>
+                    <tr><td><pre><b>Tema   </b></pre></td>
+                        <td><input type="text" name="temaConsulta"></td>
+                    </tr>
+                    <tr><td><pre><b>Consulta   </b></pre></td>
+                        <td><textarea id="textoRespuesta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escriba su consulta"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="checkbox" name="datos">Acepto que estos datos sean usados por el personal médico.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" name="enviar">
+                            <input type="reset" name="borrar">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            
+        </div>
+    </body>
+</html>
