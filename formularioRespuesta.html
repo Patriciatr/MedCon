@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formulario de Respuesta</title>
+    </head>
+    <body>
+        <form method="POST">
+            <table>
+                <tr><td><pre><b>Texto   </b></pre></td>
+                    <td><textarea id="textoRespuesta" name="textoRespuesta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escribe tu respuesta"></textarea></td>
+                </tr>
+                <tr><td><pre><b>Imagen   </b></pre></td>
+                    <td><input type="file" name="foto"></td>
+                </tr>
+                <tr><td><pre><b>Otros Archivos   </b></pre></td>
+                    <td><input type="file" name="foto"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" name="datos">Acepto que esta información se le muestre al paciente.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="enviar">
+                        <input type="reset" name="borrar">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
