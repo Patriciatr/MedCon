@@ -26,10 +26,131 @@
                 tablaCOVID.style.display='none';
                 tablaPeriodica.style.display='none';
                 tablaOtra.style.display='table';
-            }
-            // alert(console.log(document.getElementById('tablaCOVID').style.display));
-            // document.getElementById('tablaCOVID').style.display='table';   
+            }  
         }
+
+        function validaCOVID(){
+            asuntoConsulta = document.formCOVID.asuntoConsulta.value;
+                if (asuntoConsulta == ""){
+                    alert("Debes completar el asunto");
+                    return false;
+                }
+
+            textoConsulta = document.formCOVID.textoConsulta.value;
+            if (textoConsulta == ""){
+                    alert("Debes completar el texto de la consulta");
+                    return false;
+                }
+
+            malestar_general = document.formCOVID.malestar_general.value;
+            if (malestar_general == ""){
+                    alert("Debe indicar si tiene malestar general");
+                    return false;
+                }
+
+            mucosidad = document.formCOVID.mucosidad.value;
+            if (mucosidad == ""){
+                    alert("Debe indicar si tiene mucosidad");
+                    return false;
+                }
+                
+            dolor_tragar = document.formCOVID.dolor_tragar.value;
+            if (dolor_tragar == ""){
+                    alert("Debe indicar si tiene dolor al tragar");
+                    return false;
+                }
+                    
+            cambio_voz = document.formCOVID.cambio_voz.value;
+            if (cambio_voz == ""){
+                    alert("Debe indicar si ha notado un cambio en la voz");
+                    return false;
+                }
+                    
+            tos = document.formCOVID.tos.value;
+            if (tos == ""){
+                    alert("Debe indicar si tiene tos");
+                    return false;
+                }
+                    
+            falta_aire = document.formCOVID.falta_aire.value;
+            if (falta_aire == ""){
+                    alert("Debe indicar si tiene falta de aire");
+                    return false;
+                }
+                    
+            perdida_olf_gust = document.formCOVID.perdida_olf_gust.value;
+            if (perdida_olf_gust == ""){
+                    alert("Debe indicar si ha perdido el olfato o el gusto");
+                    return false;
+                }
+                        
+            dolor_muscular = document.formCOVID.dolor_muscular.value;
+            if (dolor_muscular == ""){
+                    alert("Debe indicar si tiene dolor muscular");
+                    return false;
+                }
+                        
+            diarrea = document.formCOVID.diarrea.value;
+            if (diarrea == ""){
+                    alert("Debe indicar si tiene diarrea");
+                    return false;
+                }
+                        
+            enfermedad_cron = document.formCOVID.enfermedad_cron.value;
+            if (enfermedad_cron == ""){
+                    alert("Debe indicar si tiene alguna enfermedad crónica");
+                    return false;
+                }
+                        
+            contacto_positivo = document.formCOVID.contacto_positivo.value;
+            if (contacto_positivo == ""){
+                    alert("Debe indicar si ha estado en contacto con algún positivo");
+                    return false;
+                }
+                
+            embarazo = document.formCOVID.embarazo.value;
+            if (embarazo == ""){
+                    alert("Debe indicar si existe posibilidad de embarazo");
+                    return false;
+                }
+
+            sanitario_FFAA_SSEE = document.formCOVID.sanitario_FFAA_SSEE.value;
+            if (sanitario_FFAA_SSEE == ""){
+                    alert("Debe indicar si es usted personal sanitario, de fuerzas armadas, o participa en actividades esenciales");
+                    return false;
+                }
+                            
+            hab_residencia = document.formCOVID.hab_residencia.value;
+            if (hab_residencia == ""){
+                    alert("Debe indicar si vive en alguna residencia o similar");
+                    return false;
+                }
+                            
+            fumador = document.formCOVID.fumador.value;
+            if (fumador == ""){
+                    alert("Debe indicar si fuma");
+                    return false;
+                }
+                            
+            zona_riesgo = document.formCOVID.zona_riesgo.value;
+            if (zona_riesgo == ""){
+                    alert("Debe indicar si ha estado en alguna zona de riesgo");
+                    return false;
+                }
+            
+            if(!document.formCOVID.datos.checked){
+                alert("Debe aceptar el tratamiento de datos");
+                return false;
+            }
+            return true;
+
+            
+            
+        }
+
+        function validaPeriodica(){}
+
+        function validaOtra(){}
     </script>
     <!-- <script>
         function myFunction() {
@@ -85,7 +206,7 @@
 
             <p id="demo"></p>
 
-            <form method="POST" id = "formCOVID">
+            <form method="POST" name = "formCOVID">
                 <table id="tablaCOVID">
                     <tr>
                         <td colspan="2">
@@ -204,13 +325,13 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="enviar">
+                            <input type="submit" name="enviar" onclick = "return validaCOVID();">
                             <input type="reset" name="borrar">
                         </td>
                     </tr>
                 </table>
             </form>
-            <form method="POST" id = "formPeriódica">
+            <form method="POST" name = "formPeriodica">
                 <table id="tablaPeriódica">
                     <tr>
                         <td colspan="2">
@@ -230,13 +351,13 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="enviar">
+                            <input type="submit" name="enviar" onclick = "return validaPeriodica();">
                             <input type="reset" name="borrar">
                         </td>
                     </tr>
                 </table>
             </form>
-            <form method="POST" id = "formOtra">
+            <form method="POST" name = "formOtra">
                 <table id="tablaOtra">
                     <tr>
                         <td colspan="2">
@@ -259,7 +380,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="enviar">
+                            <input type="submit" name="enviar" onclick = "return validaOtra();">
                             <input type="reset" name="borrar">
                         </td>
                     </tr>
