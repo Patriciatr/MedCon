@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2021 a las 02:59:21
+-- Tiempo de generación: 06-02-2021 a las 10:46:41
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `medcon`
+-- Base de datos: `bdmedcon`
 --
 
 -- --------------------------------------------------------
@@ -227,68 +227,53 @@ CREATE TABLE `paciente` (
   `Nombre` varchar(255) DEFAULT NULL,
   `Apellidos` varchar(255) DEFAULT NULL,
   `NumSS` varchar(13) DEFAULT NULL,
-  `Sexo` varchar(255) DEFAULT NULL
+  `Sexo` varchar(255) DEFAULT NULL,
+  `Medico` int(11) NOT NULL,
+  `Direccion` varchar(100) NOT NULL,
+  `Telefono` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`id`, `DNI`, `Password`, `Nombre`, `Apellidos`, `NumSS`, `Sexo`) VALUES
-(1, '16541029Q', 'DQE22GUC2TA', 'Brittany', 'Barnes', '169609179214', 'Mujer'),
-(2, '16280120W', 'SLN81MJH8LP', 'Roma', 'Perez', '165801229187', 'Hombre'),
-(3, '16690206E', 'VHP92GEC7HG', 'Maria', 'nzales', '161909083857', 'Mujer'),
-(4, '16730807R', 'OXV90QGB6MS', 'Lorena', 'Jense', '163405128053', 'Mujer'),
-(5, '16250403T', 'IQU02MFG8UI', 'Manuel', 'Delacruz', '166707245020', 'Hombre'),
-(6, '16241211Y', 'XZI93FAJ2QX', 'Clara', 'Vargas', '169610139215', 'Mujer'),
-(7, '16321002U', 'FJM60PHZ4JL', 'Ana', 'Pittma', '162104188459', 'Mujer'),
-(8, '16210308I', 'JSL96BKJ9PY', 'Matilda', 'Walto', '165703122696', 'Mujer'),
-(9, '16320930O', 'JJN26HZN6D', 'Kiara', 'Marti', '162804306625', 'Mujer'),
-(10, '16360120P', 'ZFC60MTE3CF', 'Darrel', 'Larso', '168705024233', 'Mujer'),
-(11, '16000916A', 'AAZ51GTN8YV', 'Antonio', 'Hopkins', '162010104772', 'Hombre'),
-(12, '16131206S', 'OBM99EBS6W', 'Pedro', 'Kent', '163810223085', 'Hombre'),
-(13, '16570422D', 'OWJ52WXL6MH', 'Tad', 'Ochoa', '160208292946', 'Hombre'),
-(14, '16260403F', 'OQL04TQN0EE', 'Daniel', 'Garcia', '164402205530', 'Hombre'),
-(15, '16471212G', 'BPK87FPC6QS', 'Summer', 'Ma', '169911052554', 'Mujer'),
-(16, '16880630H', 'KMV36HIO1QK', 'Lucia', 'Frazier', '163107050498', 'Mujer'),
-(17, '16480712J', 'INH45BTW6QW', 'Daniel', 'Glass', '169409171999', 'Hombre'),
-(18, '16100301K', 'QNG07TYR2U', 'Carolina', 'Lee', '162909156180', 'Mujer'),
-(19, '16950101L', 'VRW31CVS6RG', 'Jackso', 'Small', '164410140117', 'Hombre'),
-(20, '16700830Z', 'FLC41LIL1BS', 'Victoria', 'Reilly', '164708245198', 'Mujer'),
-(21, '16580529X', 'PXX88AHX6YF', 'Aira', 'Valverde', '167909037256', 'Hombre'),
-(22, '16020721C', 'FLZ48WFX1AV', 'Neville', 'Oneal', '165606033180', 'Hombre'),
-(23, '16780709V', 'JJY85DUX7SQ', 'Kenia', 'Nielse', '165405196568', 'Mujer'),
-(24, '16721201B', 'JLQ72ZWZ5GA', 'Andrea', 'Mendez', '164603192172', 'Mujer'),
-(25, '16690928H', 'COT76ZXR1IO', 'Taylor', 'Swift', '160909110983', 'Mujer'),
-(26, '16430830M', 'MUG05BKI6X', 'Ronaldo', 'Todd', '169407097626', 'Hombre'),
-(27, '16120727Q', 'RVO45NIS9JT', 'Mao', 'Lang', '165703298124', 'Hombre'),
-(28, '16521226E', 'NAF46AHV5FC', 'Ines', 'Whitehead', '165707266689', 'Mujer'),
-(29, '16601022R', 'LHW41ZNV2LK', 'Calvi', 'Colema', '168503242995', 'Hombre'),
-(30, '16520527T', 'BXM55GFW2RI', 'Eva', 'Gibbs', '168707280916', 'Mujer'),
-(31, '16640714Y', 'SND40PSW6LG', 'Elena', 'Campos', '160906068986', 'Mujer'),
-(32, '16871121U', 'LWC72WMJ0NZ', 'Mara', 'Coffey', '167309193790', 'Mujer');
+INSERT INTO `paciente` (`id`, `DNI`, `Password`, `Nombre`, `Apellidos`, `NumSS`, `Sexo`, `Medico`, `Direccion`, `Telefono`) VALUES
+(1, '16541029Q', 'DQE22GUC2TA', 'Brittany', 'Barnes', '169609179214', 'Mujer', 2, 'Camiño Lugo, 22', '613985765'),
+(2, '16280120W', 'SLN81MJH8LP', 'Roma', 'Perez', '165801229187', 'Hombre', 4, 'Avenida Ávalos, 0, Bajo 5º', '975028105'),
+(3, '16690206E', 'VHP92GEC7HG', 'Maria', 'nzales', '161909083857', 'Mujer', 1, 'Paseo Fernando, 1, 03º C', '626205478'),
+(4, '16730807R', 'OXV90QGB6MS', 'Lorena', 'Jense', '163405128053', 'Mujer', 3, 'Carrer Dávila, 1, 51º D', '927137041'),
+(5, '16250403T', 'IQU02MFG8UI', 'Manuel', 'Delacruz', '166707245020', 'Hombre', 3, 'Plaza Javier, 0, 32º E', '651423314'),
+(6, '16241211Y', 'XZI93FAJ2QX', 'Clara', 'Vargas', '169610139215', 'Mujer', 4, 'Carrer Garrido, 366, 9º B', '966053523'),
+(7, '16321002U', 'FJM60PHZ4JL', 'Ana', 'Pittma', '162104188459', 'Mujer', 2, 'Camiño Villanueva, 552, 67º 1º', '690300940'),
+(8, '16210308I', 'JSL96BKJ9PY', 'Matilda', 'Walto', '165703122696', 'Mujer', 1, 'Passeig Puente, 43, 3º D', '697828656'),
+(9, '16320930O', 'JJN26HZN6D', 'Kiara', 'Marti', '162804306625', 'Mujer', 2, 'Ruela Arteaga, 20, 02º D', '665866177'),
+(10, '16360120P', 'ZFC60MTE3CF', 'Darrel', 'Larso', '168705024233', 'Mujer', 4, 'Paseo Sergio, 9, Bajos', '658538312'),
+(11, '16000916A', 'AAZ51GTN8YV', 'Antonio', 'Hopkins', '162010104772', 'Hombre', 1, 'Camino Maestas, 5, 34º C', '930310611'),
+(12, '16131206S', 'OBM99EBS6W', 'Pedro', 'Kent', '163810223085', 'Hombre', 3, 'Paseo Alexandra, 30, 6º C', '601343027'),
+(13, '16570422D', 'OWJ52WXL6MH', 'Tad', 'Ochoa', '160208292946', 'Hombre', 4, 'Plaza Núñez, 83, 0º 3º', '950559902'),
+(14, '16260403F', 'OQL04TQN0EE', 'Daniel', 'Garcia', '164402205530', 'Hombre', 1, 'Ruela Lola, 35, Ático 9º', '658576416'),
+(15, '16471212G', 'BPK87FPC6QS', 'Summer', 'Ma', '169911052554', 'Mujer', 3, 'Camiño Rodrigo, 042, 6º 3º', '688631079'),
+(16, '16880630H', 'KMV36HIO1QK', 'Lucia', 'Frazier', '163107050498', 'Mujer', 2, 'Paseo Valdez, 131, 9º', '687702588'),
+(17, '16480712J', 'INH45BTW6QW', 'Daniel', 'Glass', '169409171999', 'Hombre', 2, 'Calle Víctor, 14, 43º A', '939198380'),
+(18, '16100301K', 'QNG07TYR2U', 'Carolina', 'Lee', '162909156180', 'Mujer', 1, 'Rúa Botello, 362, 5º A', '916906181'),
+(19, '16950101L', 'VRW31CVS6RG', 'Jackso', 'Small', '164410140117', 'Hombre', 3, 'Calle Biel, 638, 30º E', '679818425'),
+(20, '16700830Z', 'FLC41LIL1BS', 'Victoria', 'Reilly', '164708245198', 'Mujer', 4, 'Avenida Galván, 605, Bajo 7º', '990533207'),
+(21, '16580529X', 'PXX88AHX6YF', 'Aira', 'Valverde', '167909037256', 'Hombre', 1, 'Plaza Aitor, 480, 1º', '664103383'),
+(22, '16020721C', 'FLZ48WFX1AV', 'Neville', 'Oneal', '165606033180', 'Hombre', 2, 'Avenida Guillem, 456, Ático 9º', '615394813'),
+(23, '16780709V', 'JJY85DUX7SQ', 'Kenia', 'Nielse', '165405196568', 'Mujer', 3, 'Calle Hernando, 89, 9º C', '603369959'),
+(24, '16721201B', 'JLQ72ZWZ5GA', 'Andrea', 'Mendez', '164603192172', 'Mujer', 4, 'Rúa Borrego, 750, 32º F', '931027806'),
+(25, '16690928T', 'COT76ZXR1IO', 'Taylor', 'Swift', '160909110983', 'Mujer', 4, 'Ruela Nicolás, 68, Entre suelo 5º', '617616855'),
+(26, '16430830M', 'MUG05BKI6X', 'Ronaldo', 'Todd', '169407097626', 'Hombre', 3, 'Plaça Cuevas, 6, Entre suelo 8º', '638036000'),
+(27, '16120727Q', 'RVO45NIS9JT', 'Mao', 'Lang', '165703298124', 'Hombre', 2, 'Ronda Arroyo, 375, Ático 1º', '617702850'),
+(28, '16521226E', 'NAF46AHV5FC', 'Ines', 'Whitehead', '165707266689', 'Mujer', 1, 'Travesía Nicolás, 5, 6º E', '643479530'),
+(29, '16601022R', 'LHW41ZNV2LK', 'Calvi', 'Colema', '168503242995', 'Hombre', 4, 'Carrer Ocasio, 191, 0º C', '668588067'),
+(30, '16520527T', 'BXM55GFW2RI', 'Eva', 'Gibbs', '168707280916', 'Mujer', 3, 'Plaza Mata, 359, 4º', '699753000'),
+(31, '16640714Y', 'SND40PSW6LG', 'Elena', 'Campos', '160906068986', 'Mujer', 2, 'Plaza Dario, 42, 0º F', '641046231'),
+(32, '16871121U', 'LWC72WMJ0NZ', 'Mara', 'Coffey', '167309193790', 'Mujer', 1, 'Praza Hugo, 7, 1º E', '976054437');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `consultacovid`
---
-ALTER TABLE `consultacovid`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indices de la tabla `consultaotra`
---
-ALTER TABLE `consultaotra`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indices de la tabla `consultaperiodica`
---
-ALTER TABLE `consultaperiodica`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `medico`
@@ -305,24 +290,6 @@ ALTER TABLE `paciente`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `consultacovid`
---
-ALTER TABLE `consultacovid`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de la tabla `consultaotra`
---
-ALTER TABLE `consultaotra`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
-
---
--- AUTO_INCREMENT de la tabla `consultaperiodica`
---
-ALTER TABLE `consultaperiodica`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `medico`
