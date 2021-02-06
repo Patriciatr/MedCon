@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Paciente</title>
+  <link href="styles/estiloPacientes.css" rel="stylesheet">
+  <meta name="generator" content="Google Web Designer 10.0.2.0105">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    .gwd-div-1rji {
+      left: 0px;
+      top: 16px;
+    }
+    .gwd-form-xbgc {
+      left: 0px;
+      top: 283px;
+    }
+  </style>
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-lm07"></div>
+  <img src="assets/logo.png" class="gwd-img-fa6j">
+  <nav id="menu-superior">
+    <ul>
+      <li><a href="listConsultas.html"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas</h3></a></li>
+      <li><a href="haceronsultas.html"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="haceronsultas">Hacer consulta</h3></a></li>
+      <li class="gwd-li-2971"><a href="fichaPaciente.html"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
+      <li class="gwd-li-1xiy"><a href="desconectar.html"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
+    </ul>
+  </nav>
+  <div class="contenedor gwd-div-1rji">
+    <head>Consultas COVID</head>
+    <h2>Fecha:<!--?php echo $consultacovid[0]['fecha']; ?--></h2>
+    <table border="1">
+    <tr>
+          <td>Descripción Consulta</td>
+          <td>
+              <!--?php echo $consultacovid[0]['textoConsulta']; ?-->
+          </td>
+        </tr>
+    </table>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>Malestar general </td>
+          <td>
+            <!--?php echo $malestar_general[0]['respondida']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Temperatura</td>
+          <td>
+            <!--?php echo $consultacovid[0]['temperatura']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Mucosidad</td>
+          <td>
+              <!--?php echo $consultacovid[0]['mucosidad']; ?-->
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>Dolor tragar</td>
+          <td>
+            <!--?php echo $consultacovid[0]['dolor_tragar']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Cambio voz</td>
+          <td>
+            <!--?php echo $consultacovid[0]['cambio_voz']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Tos</td>
+          <td>
+            <!--?php echo $consultacovid[0]['tos']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Falta de aire</td>
+          <td>
+            <!--?php echo $consultacovid[0]['falta_aire']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Perdida olfato/gusto</td>
+          <td>
+            <!--?php echo $consultacovid[0]['perdida_olf_gust']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Dolor muscular</td>
+          <td>
+            <!--?php echo $consultacovid[0]['dolor_muscular']; ?-->
+          </td>
+        </tr>
+          <td >Diarrea</td>
+          <td>
+            <!--?php echo $consultacovid[0]['diarrea']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Enfermedad Cronica</td>
+          <td>
+            <!--?php echo $consultacovid[0]['enfermedad_cron']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Contacto positivo</td>
+          <td>
+            <!--?php echo $consultacovid[0]['contacto_positivo']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Embarazo</td>
+          <td>
+            <!--?php echo $consultacovid[0]['embarazo']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Sanitario FFAA SSEE</td>
+          <td>
+            <!--?php echo $consultacovid[0]['sanitario_FFAA_SSEE']; ?-->
+          </td>
+        </tr>
+           <td >Número de habitaciones que tiene la residencia</td>
+          <td>
+            <!--?php echo $consultacovid[0]['hab_residencia']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td >Fumador</td>
+          <td>
+            <!--?php echo $consultacovid[0]['fumador']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Ha viajado a un país o zona de riesgo</td>
+          <td>
+            <!--?php echo $consultacovid[0]['zona_riesgo']; ?-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <form class="gwd-form-xbgc">
+      <input type="button" id="Anterior" value="Anterior" onclick="location.href='index.php'">
+      <input type="button" id="Imagenes" value="Imagenes" onclick="location.href='index.php'">
+      <input type="button" id="Archivos" value="Archivos" onclick="location.href='index.php'">
+      <input type="button" id="Siguiente" value="Siguiente" onclick="location.href='index.php'">
+    </form>
+  </div>
+</body>
+
+</html>

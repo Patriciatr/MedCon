@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Paciente</title>
+  <link href="styles/estiloPacientes.css" rel="stylesheet">
+  <meta name="generator" content="Google Web Designer 10.0.2.0105">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
+  <style type="text/css"></style>
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-lm07"></div>
+  <img src="assets/logo.png" class="gwd-img-fa6j">
+  <nav id="menu-superior">
+    <ul>
+      <li><a href="listConsultas.html"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
+      <li class="gwd-li-yj6f"><a href="ListPacientes.html"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
+      <li><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
+    </ul>
+  </nav>
+  <div class="contenedor">
+    Datos personales de los pacientes
+    <table border="1">
+      <tbody>
+        <tr>
+        </tr>
+        <tr>
+          <td>DNI</td>
+          <td>
+            <!--?php echo $pacientes[0]['dni']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Nombre </td>
+          <td>
+            <!--?php echo $pacientes[0]['nombre']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Apellidos</td>
+          <td>
+            <!--?php echo $pacientes[0]['apellidos']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Telefono</td>
+          <td>
+            <a href="tel:+34651628058">
+              <!--?php echo $pacientes[0]['telefono']; ?-->
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>Direccion</td>
+          <td>
+            <!--?php echo $pacientes[0]['direccion']; ?-->
+          </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td>NumSS</td>
+          <td>
+            <!--?php echo $pacientes[0]['numss']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Sexo</td>
+          <td>
+            <!--?php echo $pacientes[0]['sexo']; ?-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
