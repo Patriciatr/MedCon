@@ -22,41 +22,39 @@
     </ul>
   </nav>
   <div class="contenedor">
-    <head>Datos personales de los pacientes</head>
+    <h1>Datos personales de los pacientes</h1>
     <table border="1">
       <tbody>
         <tr>
-        </tr>
-        <tr>
           <td>DNI </td>
           <td>
-            <!--?php echo $pacientes[0]['dni']; ?-->
+            <!--?php echo $paciente[0]['dni']; ?-->
           </td>
         </tr>
         <tr>
           <td>Nombre </td>
           <td>
-            <!--?php echo $pacientes[0]['nombre']; ?-->
+            <!--?php echo $paciente[0]['nombre']; ?-->
           </td>
         </tr>
         <tr>
           <td>Apellidos</td>
           <td>
-            <!--?php echo $pacientes[0]['apellidos']; ?-->
+            <!--?php echo $paciente[0]['apellidos']; ?-->
           </td>
         </tr>
         <tr>
           <td>Telefono</td>
           <td>
             <a href="tel:+34651628058">
-              <!--?php echo $pacientes[0]['telefono']; ?-->
+              <!--?php echo $paciente[0]['telefono']; ?-->
             </a>
           </td>
         </tr>
         <tr>
           <td>Direccion</td>
           <td>
-            <!--?php echo $pacientes[0]['direccion']; ?-->
+            <!--?php echo $paciente[0]['direccion']; ?-->
           </td>
         </tr>
         <tr>
@@ -64,22 +62,22 @@
         <tr>
           <td>NumSS</td>
           <td>
-            <!--?php echo $pacientes[0]['numss']; ?-->
+            <!--?php echo $paciente[0]['numss']; ?-->
           </td>
         </tr>
         <tr>
           <td>Sexo</td>
           <td>
-            <!--?php echo $pacientes[0]['sexo']; ?-->
+            <!--?php echo $paciente[0]['sexo']; ?-->
           </td>
         </tr>
         <tr>
           <td rowspan="1">Médico asignado</td>
           <td>
-            <!--?php echo $medico[0]['nombre']; ?-->
+            <!--?php echo $medico[$paciente[0]['medico']]['nombre']; ?-->
           </td>
           <td>
-            <!--?php echo $pacientes[0]['apellidos']; ?-->
+            <!--?php echo $pacientes[$paciente[0]['medico']]['apellidos']; ?-->
           </td>
         </tr>
       </tbody>
