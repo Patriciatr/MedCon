@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Paciente</title>
+  <link href="styles/estiloPacientes.css" rel="stylesheet">
+  <meta name="generator" content="Google Web Designer 10.0.2.0105">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
+  <style type="text/css"></style>
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-lm07"></div>
+  <img src="assets/logo.png" class="gwd-img-fa6j">
+  <nav id="menu-superior">
+    <ul>
+      <li><a href="listConsultas.html"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas</h3></a></li>
+      <li><a href="haceronsultas.html"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="haceronsultas">Hacer consulta</h3></a></li>
+      <li class="gwd-li-2971"><a href="fichaPaciente.html"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
+      <li class="gwd-li-1xiy"><a href="desconectar.html"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
+    </ul>
+  </nav>
+  <div class="contenedor">
+    <h1>Datos personales de los pacientes</h1>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>DNI </td>
+          <td>
+            <!--?php echo $paciente[0]['dni']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Nombre </td>
+          <td>
+            <!--?php echo $paciente[0]['nombre']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Apellidos</td>
+          <td>
+            <!--?php echo $paciente[0]['apellidos']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Telefono</td>
+          <td>
+            <a href="tel:+34651628058">
+              <!--?php echo $paciente[0]['telefono']; ?-->
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>Direccion</td>
+          <td>
+            <!--?php echo $paciente[0]['direccion']; ?-->
+          </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td>NumSS</td>
+          <td>
+            <!--?php echo $paciente[0]['numss']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td>Sexo</td>
+          <td>
+            <!--?php echo $paciente[0]['sexo']; ?-->
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1">Médico asignado</td>
+          <td>
+            <!--?php echo $medico[$paciente[0]['medico']]['nombre']; ?-->
+          </td>
+          <td>
+            <!--?php echo $pacientes[$paciente[0]['medico']]['apellidos']; ?-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

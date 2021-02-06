@@ -112,3 +112,22 @@ p {
     left: 72px;
     top: 16px;
   }
+
+  #contenedor { 
+    margin: 0 auto; 
+    width: 80%; 
+    padding: 0 1em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.contenedor {
+    padding: 5em;
+}
+.contenedor::after {
+    clear: both;
+    content: "";
+    display: table;
+}
