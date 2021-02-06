@@ -2,10 +2,10 @@
 -- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2021 a las 10:46:41
+-- Servidor: 127.0.0.1:3305
+-- Tiempo de generación: 06-02-2021 a las 23:56:35
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `consultacovid` (
-  `ID` int(11) NOT NULL,
+  `ID` varchar(11) NOT NULL,
   `fecha` date NOT NULL,
   `respondida` tinyint(1) NOT NULL,
   `asuntoConsulta` varchar(40) NOT NULL,
@@ -59,24 +59,24 @@ CREATE TABLE `consultacovid` (
 --
 
 INSERT INTO `consultacovid` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `textoConsulta`, `DNIpaciente`, `consultaPadre`, `malestar_general`, `temperatura`, `mucosidad`, `dolor_tragar`, `cambio_voz`, `tos`, `falta_aire`, `perdida_olf_gust`, `dolor_muscular`, `diarrea`, `enfermedad_cron`, `contacto_positivo`, `embarazo`, `sanitario_FFAA_SSEE`, `hab_residencia`, `fumador`, `zona_riesgo`) VALUES
-(1, '2011-01-11', 1, 'Posible COVID', '', '16541029Q', NULL, 0, 39.98, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0),
-(2, '2013-09-24', 0, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '16250403T', NULL, 0, 41.34, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(3, '2011-03-24', 0, 'Posible COVID', '', '16241211Y', NULL, 0, 41.65, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0),
-(4, '2016-01-28', 1, 'Posible COVID', '', '16320930O', NULL, 1, 36.35, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1),
-(5, '2014-05-01', 0, 'Posible COVID', 'Creo que tengo COVID', '16360120P', NULL, 1, 37.2, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0),
-(6, '2014-12-03', 0, 'Posible COVID', 'En mi trabajo ha habido un brote de COVID y tengo algun sintoma', '16000916A', NULL, 1, 38.22, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0),
-(7, '2017-03-18', 1, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '16131206S', NULL, 0, 37.62, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1),
-(8, '2014-05-01', 1, 'Posible COVID', 'En mi trabajo ha habido un brote de COVID y tengo algun sintoma', '16570422D', NULL, 1, 36.74, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1),
-(9, '2013-10-16', 1, 'Posible COVID', 'Creo que tengo COVID', '16260403F', NULL, 0, 40.97, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1),
-(10, '2018-03-25', 1, 'Posible COVID', '', '16471212G', NULL, 1, 39.12, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1),
-(11, '2016-08-16', 1, 'Posible COVID', 'Mi padre paso el COVID recientemente y creo que me lo contagio', '16880630H', NULL, 0, 40.5, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0),
-(12, '2016-05-11', 1, 'Posible COVID', 'Creo que tengo COVID porque llevo muchos dias enfermo', '16100301K', NULL, 0, 37.83, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1),
-(13, '2018-04-12', 0, 'Posible COVID', 'Creo que tengo COVID porque llevo muchos dias enfermo', '16580529X', NULL, 1, 35.18, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0),
-(14, '2016-07-28', 0, 'Posible COVID', 'Creo que tengo COVID', '16020721C', NULL, 0, 37.35, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0),
-(15, '2011-09-20', 0, 'Posible COVID', '', '16430830M', NULL, 1, 41.2, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0),
-(16, '2015-04-18', 1, 'Posible COVID', 'Creo que tengo COVID porque llevo muchos dias enfermo', '16601022R', NULL, 0, 40.14, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1),
-(17, '2018-07-29', 0, 'Posible COVID', '', '16640714Y', NULL, 0, 41.51, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0),
-(18, '2017-10-11', 0, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '16871121U', NULL, 1, 38.69, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0);
+('c1', '2011-01-11', 1, 'Posible COVID', '', '16541029Q', NULL, 0, 39.98, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0),
+('c2', '2013-09-24', 0, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '16250403T', NULL, 0, 41.34, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+('c3', '2011-03-24', 0, 'Posible COVID', '', '16241211Y', NULL, 0, 41.65, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0),
+('c4', '2016-01-28', 1, 'Posible COVID', '', '16320930O', NULL, 1, 36.35, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1),
+('c5', '2014-05-01', 0, 'Posible COVID', 'Creo que tengo COVID', '16360120P', NULL, 1, 37.2, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0),
+('c6', '2014-12-03', 0, 'Posible COVID', 'En mi trabajo ha habido un brote de COVID y tengo algun sintoma', '16000916A', NULL, 1, 38.22, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0),
+('c7', '2017-03-18', 1, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '16131206S', NULL, 0, 37.62, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1),
+('c8', '2014-05-01', 1, 'Posible COVID', 'En mi trabajo ha habido un brote de COVID y tengo algun sintoma', '16570422D', NULL, 1, 36.74, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1),
+('c9', '2013-10-16', 1, 'Posible COVID', 'Creo que tengo COVID', '16260403F', NULL, 0, 40.97, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1),
+('c10', '2018-03-25', 1, 'Posible COVID', '', '16471212G', NULL, 1, 39.12, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1),
+('c11', '2016-08-16', 1, 'Posible COVID', 'Mi padre paso el COVID recientemente y creo que me lo contagio', '16880630H', NULL, 0, 40.5, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0),
+('c12', '2016-05-11', 1, 'Posible COVID', 'Creo que tengo COVID porque llevo muchos dias enfermo', '16100301K', NULL, 0, 37.83, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1),
+('c13', '2018-04-12', 0, 'Posible COVID', 'Creo que tengo COVID porque llevo muchos dias enfermo', '16580529X', NULL, 1, 35.18, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0),
+('c14', '2016-07-28', 0, 'Posible COVID', 'Creo que tengo COVID', '16020721C', NULL, 0, 37.35, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0),
+('c15', '2011-09-20', 0, 'Posible COVID', '', '16430830M', NULL, 1, 41.2, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0),
+('c16', '2015-04-18', 1, 'Posible COVID', 'Creo que tengo COVID porque llevo muchos dias enfermo', '16601022R', NULL, 0, 40.14, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1),
+('c17', '2018-07-29', 0, 'Posible COVID', '', '16640714Y', NULL, 0, 41.51, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0),
+('c18', '2017-10-11', 0, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '16871121U', NULL, 1, 38.69, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ INSERT INTO `consultacovid` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `tex
 --
 
 CREATE TABLE `consultaotra` (
-  `ID` int(11) NOT NULL,
+  `ID` varchar(11) NOT NULL,
   `fecha` date NOT NULL,
   `respondida` tinyint(1) NOT NULL,
   `asuntoConsulta` varchar(40) NOT NULL,
@@ -99,35 +99,35 @@ CREATE TABLE `consultaotra` (
 --
 
 INSERT INTO `consultaotra` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `textoConsulta`, `DNIpaciente`, `consultaPadre`) VALUES
-(84, '2018-05-19', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16541029Q', NULL),
-(85, '2019-03-18', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16730807R', NULL),
-(86, '2013-03-10', 0, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16730807R', NULL),
-(87, '2010-09-13', 1, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16241211Y', NULL),
-(88, '2018-06-26', 0, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16241211Y', NULL),
-(89, '2012-10-19', 0, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '16321002U', NULL),
-(90, '2016-02-17', 0, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero he visto que tengo alergia a uno de los ingredientes. ¿Me cambia la receta?', '16320930O', NULL),
-(92, '2015-07-06', 1, 'Esguince', 'Hola, me hice un esguince leve y me dijeron que me quitara el vendaje en 10 dias, lo he hecho pero me sigue doliendo. ¿Voy a que me lo revisen o es normal?', '16360120P', NULL),
-(93, '2011-09-11', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16131206S', NULL),
-(94, '2014-04-09', 1, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16260403F', NULL),
-(95, '2014-10-25', 0, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16260403F', NULL),
-(96, '2011-03-20', 0, 'Analisis sanguineo', 'Buenas, hace 10 dias me hice una analitica y querria conocer los resultados.', '16471212G', NULL),
-(97, '2016-12-05', 1, 'Duda medicamentos', 'Hola, me recetaste un antibiotico y tras acabar el tratamiento sigo con sintomas. ¿Vuelvo a pedir cita?', '16880630H', NULL),
-(98, '2015-06-21', 0, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '16100301K', NULL),
-(99, '2012-02-29', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16100301K', NULL),
-(100, '2015-09-19', 0, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16950101L', NULL),
-(101, '2017-05-08', 1, 'Duda medicamentos', 'Hola, me recetaste un antibiotico y tras acabar el tratamiento sigo con sintomas. ¿Vuelvo a pedir cita?', '16950101L', NULL),
-(102, '2019-04-23', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16580529X', NULL),
-(103, '2018-04-03', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16020721C', NULL),
-(104, '2017-05-18', 1, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16780709V', NULL),
-(105, '2011-01-03', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16721201B', NULL),
-(106, '2017-10-22', 0, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16690928H', NULL),
-(107, '2013-06-25', 1, 'Esguince', 'Hola, me pusieron un vendaje de esguince hace cuatro dias y se me esta despegando. ¿Que hago?', '16120727Q', NULL),
-(108, '2011-01-29', 0, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16601022R', NULL),
-(109, '2017-11-08', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16520527T', NULL),
-(110, '2013-07-07', 1, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '16520527T', NULL),
-(111, '2010-11-30', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16640714Y', NULL),
-(112, '2012-03-03', 1, 'Analisis sanguineo', 'Hola, ya no me hace falta la analítica', '16100301K', 99),
-(113, '2014-10-25', 0, 'Dosis pastillas', 'me he acordado. ¿Eran dos veces, verdad?', '16260403F', 95);
+('o84', '2018-05-19', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16541029Q', NULL),
+('o85', '2019-03-18', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16730807R', NULL),
+('o86', '2013-03-10', 0, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16730807R', NULL),
+('o87', '2010-09-13', 1, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16241211Y', NULL),
+('o88', '2018-06-26', 0, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16241211Y', NULL),
+('o89', '2012-10-19', 0, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '16321002U', NULL),
+('o90', '2016-02-17', 0, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero he visto que tengo alergia a uno de los ingredientes. ¿Me cambia la receta?', '16320930O', NULL),
+('o92', '2015-07-06', 1, 'Esguince', 'Hola, me hice un esguince leve y me dijeron que me quitara el vendaje en 10 dias, lo he hecho pero me sigue doliendo. ¿Voy a que me lo revisen o es normal?', '16360120P', NULL),
+('o93', '2011-09-11', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16131206S', NULL),
+('o94', '2014-04-09', 1, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16260403F', NULL),
+('o95', '2014-10-25', 0, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16260403F', NULL),
+('o96', '2011-03-20', 0, 'Analisis sanguineo', 'Buenas, hace 10 dias me hice una analitica y querria conocer los resultados.', '16471212G', NULL),
+('o97', '2016-12-05', 1, 'Duda medicamentos', 'Hola, me recetaste un antibiotico y tras acabar el tratamiento sigo con sintomas. ¿Vuelvo a pedir cita?', '16880630H', NULL),
+('o98', '2015-06-21', 0, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '16100301K', NULL),
+('o99', '2012-02-29', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16100301K', NULL),
+('o100', '2015-09-19', 0, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16950101L', NULL),
+('o101', '2017-05-08', 1, 'Duda medicamentos', 'Hola, me recetaste un antibiotico y tras acabar el tratamiento sigo con sintomas. ¿Vuelvo a pedir cita?', '16950101L', NULL),
+('o102', '2019-04-23', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16580529X', NULL),
+('o103', '2018-04-03', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16020721C', NULL),
+('o104', '2017-05-18', 1, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '16780709V', NULL),
+('o105', '2011-01-03', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16721201B', NULL),
+('o106', '2017-10-22', 0, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16690928H', NULL),
+('o107', '2013-06-25', 1, 'Esguince', 'Hola, me pusieron un vendaje de esguince hace cuatro dias y se me esta despegando. ¿Que hago?', '16120727Q', NULL),
+('o108', '2011-01-29', 0, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16601022R', NULL),
+('o109', '2017-11-08', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '16520527T', NULL),
+('o110', '2013-07-07', 1, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '16520527T', NULL),
+('o111', '2010-11-30', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '16640714Y', NULL),
+('o112', '2012-03-03', 1, 'Analisis sanguineo', 'Hola, ya no me hace falta la analítica', '16100301K', 99),
+('o113', '2014-10-25', 0, 'Dosis pastillas', 'me he acordado. ¿Eran dos veces, verdad?', '16260403F', 95);
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,7 @@ INSERT INTO `consultaotra` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `text
 --
 
 CREATE TABLE `consultaperiodica` (
-  `ID` int(11) NOT NULL,
+  `ID` varchar(11) NOT NULL,
   `fecha` date NOT NULL,
   `respondida` tinyint(1) NOT NULL,
   `tema` varchar(30) NOT NULL,
@@ -151,43 +151,43 @@ CREATE TABLE `consultaperiodica` (
 --
 
 INSERT INTO `consultaperiodica` (`ID`, `fecha`, `respondida`, `tema`, `asuntoConsulta`, `textoConsulta`, `DNIpaciente`, `consultaPadre`) VALUES
-(2, '2014-10-13', 0, 'Renovacion Simvastatina', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Simvastatina', '16541029Q', NULL),
-(3, '2012-06-16', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ibuprofeno 600', '16280120W', NULL),
-(4, '2012-01-31', 0, 'Renovacion Enantyum', 'Renovacion prescripcion', '¿Podria renovar mi receta de Enantyum?', '16280120W', NULL),
-(5, '2018-03-10', 0, 'Renovacion Simvastatina', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Simvastatina', '16730807R', NULL),
-(6, '2013-08-22', 0, 'Renovacion Simvastatina', 'Renovacion prescripcion', '¿Podria renovar mi receta de Simvastatina?', '16730807R', NULL),
-(7, '2011-10-22', 0, 'Renovacion Eutirox', 'Renovacion prescripcion', '¿Podria renovar mi receta de Eutirox?', '16250403T', NULL),
-(8, '2017-12-19', 1, 'Renovacion Simvastatina', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Simvastatina', '16241211Y', NULL),
-(9, '2012-02-16', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Propanolol', '16241211Y', NULL),
-(10, '2016-06-03', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Propanolol', '16210308I', NULL),
-(11, '2011-05-11', 0, 'Renovacion Metamizol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Metamizol', '16210308I', NULL),
-(12, '2013-01-16', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16320930O', NULL),
-(13, '2012-01-10', 1, 'Renovacion Adiro', 'Renovacion prescripcion', '¿Podria renovar mi receta de Adiro?', '16360120P', NULL),
-(14, '2013-02-04', 0, 'Renovacion Metamizol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Metamizol', '16000916A', NULL),
-(15, '2017-01-13', 0, 'Renovacion Eutirox', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Eutirox', '16000916A', NULL),
-(16, '2012-06-25', 1, 'Renovacion Metamizol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Metamizol?', '16570422D', NULL),
-(17, '2010-11-01', 1, 'Renovacion Enantyum', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Enantyum', '16260403F', NULL),
-(18, '2018-05-13', 1, 'Renovacion Metamizol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Metamizol?', '16880630H', NULL),
-(19, '2019-01-13', 0, 'Renovacion Eutirox', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Eutirox', '16480712J', NULL),
-(20, '2014-08-25', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', '¿Podria renovar mi receta de Ibuprofeno?', '16480712J', NULL),
-(21, '2011-03-06', 1, 'Renovacion Sintrom', 'Renovacion prescripcion', '¿Podria renovar mi receta de Sintrom?', '16100301K', NULL),
-(22, '2010-08-29', 1, 'Renovacion Enantyum', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Enantyum', '16950101L', NULL),
-(23, '2012-11-04', 1, 'Renovacion Adiro', 'Renovacion prescripcion', '¿Podria renovar mi receta de Adiro?', '16700830Z', NULL),
-(24, '2013-08-05', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16700830Z', NULL),
-(25, '2018-04-27', 1, 'Renovacion Omeprazol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Omeprazol', '16580529X', NULL),
-(26, '2017-06-29', 1, 'Renovacion Eutirox', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Eutirox', '16580529X', NULL),
-(27, '2014-09-14', 1, 'Renovacion Metformina', 'Renovacion prescripcion', '¿Podria renovar mi receta de Metformina?', '16020721C', NULL),
-(28, '2019-04-01', 1, 'Renovacion Enantyum', 'Renovacion prescripcion', '¿Podria renovar mi receta de Enantyum?', '16780709V', NULL),
-(29, '2011-01-22', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Propanolol?', '16780709V', NULL),
-(30, '2015-08-18', 0, 'Renovacion Adiro', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Adiro', '16721201B', NULL),
-(31, '2016-06-09', 0, 'Renovacion Omeprazol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Omeprazol?', '16721201B', NULL),
-(32, '2018-09-01', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16690928H', NULL),
-(33, '2016-12-21', 0, 'Renovacion Sintrom', 'Renovacion prescripcion', '¿Podria renovar mi receta de Sintrom?', '16430830M', NULL),
-(34, '2018-03-24', 0, 'Renovacion Omeprazol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Omeprazol?', '16120727Q', NULL),
-(35, '2012-11-02', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', '¿Podria renovar mi receta de Ibuprofeno?', '16601022R', NULL),
-(36, '2011-09-26', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Propanolol', '16601022R', NULL),
-(37, '2010-12-12', 1, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', '¿Podria renovar mi receta de Ibuprofeno?', '16640714Y', NULL),
-(38, '2011-12-12', 0, 'Renovacion Sintrom', 'Renovacion prescripcion', '¿Podria renovar mi receta de Sintrom?', '16640714Y', NULL);
+('p2', '2014-10-13', 0, 'Renovacion Simvastatina', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Simvastatina', '16541029Q', NULL),
+('p3', '2012-06-16', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ibuprofeno 600', '16280120W', NULL),
+('p4', '2012-01-31', 0, 'Renovacion Enantyum', 'Renovacion prescripcion', '¿Podria renovar mi receta de Enantyum?', '16280120W', NULL),
+('p5', '2018-03-10', 0, 'Renovacion Simvastatina', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Simvastatina', '16730807R', NULL),
+('p6', '2013-08-22', 0, 'Renovacion Simvastatina', 'Renovacion prescripcion', '¿Podria renovar mi receta de Simvastatina?', '16730807R', NULL),
+('p7', '2011-10-22', 0, 'Renovacion Eutirox', 'Renovacion prescripcion', '¿Podria renovar mi receta de Eutirox?', '16250403T', NULL),
+('p8', '2017-12-19', 1, 'Renovacion Simvastatina', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Simvastatina', '16241211Y', NULL),
+('p9', '2012-02-16', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Propanolol', '16241211Y', NULL),
+('p10', '2016-06-03', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Propanolol', '16210308I', NULL),
+('p11', '2011-05-11', 0, 'Renovacion Metamizol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Metamizol', '16210308I', NULL),
+('p12', '2013-01-16', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16320930O', NULL),
+('p13', '2012-01-10', 1, 'Renovacion Adiro', 'Renovacion prescripcion', '¿Podria renovar mi receta de Adiro?', '16360120P', NULL),
+('p14', '2013-02-04', 0, 'Renovacion Metamizol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Metamizol', '16000916A', NULL),
+('p15', '2017-01-13', 0, 'Renovacion Eutirox', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Eutirox', '16000916A', NULL),
+('p16', '2012-06-25', 1, 'Renovacion Metamizol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Metamizol?', '16570422D', NULL),
+('p17', '2010-11-01', 1, 'Renovacion Enantyum', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Enantyum', '16260403F', NULL),
+('p18', '2018-05-13', 1, 'Renovacion Metamizol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Metamizol?', '16880630H', NULL),
+('p19', '2019-01-13', 0, 'Renovacion Eutirox', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Eutirox', '16480712J', NULL),
+('p20', '2014-08-25', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', '¿Podria renovar mi receta de Ibuprofeno?', '16480712J', NULL),
+('p21', '2011-03-06', 1, 'Renovacion Sintrom', 'Renovacion prescripcion', '¿Podria renovar mi receta de Sintrom?', '16100301K', NULL),
+('p22', '2010-08-29', 1, 'Renovacion Enantyum', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Enantyum', '16950101L', NULL),
+('p23', '2012-11-04', 1, 'Renovacion Adiro', 'Renovacion prescripcion', '¿Podria renovar mi receta de Adiro?', '16700830Z', NULL),
+('p24', '2013-08-05', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16700830Z', NULL),
+('p25', '2018-04-27', 1, 'Renovacion Omeprazol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Omeprazol', '16580529X', NULL),
+('p26', '2017-06-29', 1, 'Renovacion Eutirox', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Eutirox', '16580529X', NULL),
+('p27', '2014-09-14', 1, 'Renovacion Metformina', 'Renovacion prescripcion', '¿Podria renovar mi receta de Metformina?', '16020721C', NULL),
+('p28', '2019-04-01', 1, 'Renovacion Enantyum', 'Renovacion prescripcion', '¿Podria renovar mi receta de Enantyum?', '16780709V', NULL),
+('p29', '2011-01-22', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Propanolol?', '16780709V', NULL),
+('p30', '2015-08-18', 0, 'Renovacion Adiro', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Adiro', '16721201B', NULL),
+('p31', '2016-06-09', 0, 'Renovacion Omeprazol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Omeprazol?', '16721201B', NULL),
+('p32', '2018-09-01', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16690928H', NULL),
+('p33', '2016-12-21', 0, 'Renovacion Sintrom', 'Renovacion prescripcion', '¿Podria renovar mi receta de Sintrom?', '16430830M', NULL),
+('p34', '2018-03-24', 0, 'Renovacion Omeprazol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Omeprazol?', '16120727Q', NULL),
+('p35', '2012-11-02', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', '¿Podria renovar mi receta de Ibuprofeno?', '16601022R', NULL),
+('p36', '2011-09-26', 1, 'Renovacion Propanolol', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Propanolol', '16601022R', NULL),
+('p37', '2010-12-12', 1, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', '¿Podria renovar mi receta de Ibuprofeno?', '16640714Y', NULL),
+('p38', '2011-12-12', 0, 'Renovacion Sintrom', 'Renovacion prescripcion', '¿Podria renovar mi receta de Sintrom?', '16640714Y', NULL);
 
 -- --------------------------------------------------------
 
@@ -271,6 +271,85 @@ INSERT INTO `paciente` (`id`, `DNI`, `Password`, `Nombre`, `Apellidos`, `NumSS`,
 (31, '16640714Y', 'SND40PSW6LG', 'Elena', 'Campos', '160906068986', 'Mujer', 2, 'Plaza Dario, 42, 0º F', '641046231'),
 (32, '16871121U', 'LWC72WMJ0NZ', 'Mara', 'Coffey', '167309193790', 'Mujer', 1, 'Praza Hugo, 7, 1º E', '976054437');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `respuesta`
+--
+
+CREATE TABLE `respuesta` (
+  `ID` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `texto` varchar(200) NOT NULL,
+  `imagenes` varchar(50) DEFAULT NULL,
+  `archivos` varchar(50) DEFAULT NULL,
+  `DNImedico` int(11) NOT NULL,
+  `IDconsulta` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `respuesta`
+--
+
+INSERT INTO `respuesta` (`ID`, `fecha`, `texto`, `imagenes`, `archivos`, `DNImedico`, `IDconsulta`) VALUES
+(1, '2011-01-12', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, NULL, 2, 'c1'),
+(4, '2016-01-29', 'Sus síntomas parecen indicar que no tiene covid. Aún así, haga cuarentena la próxima semana y si tiene fiebre, vuelva a escribir una consulta.', NULL, NULL, 2, 'c4'),
+(7, '2017-03-19', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, NULL, 3, 'c7'),
+(8, '2014-05-01', 'Sus síntomas parecen indicar que no tiene covid. Aún así, haga cuarentena la próxima semana y si tiene fiebre, vuelva a escribir una consulta.', NULL, NULL, 4, 'c8'),
+(9, '2013-10-17', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, NULL, 1, 'c9'),
+(10, '2018-03-25', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, NULL, 3, 'c10'),
+(11, '2016-08-17', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, NULL, 2, 'c11'),
+(12, '2016-05-12', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, NULL, 1, 'c12'),
+(16, '2015-04-19', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, NULL, 4, 'c16'),
+(19, '2018-05-20', 'Hola, le doy cita para hacer la analítica de sangre para el 2018-05-25 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 2, 'o84'),
+(20, '2018-05-27', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, NULL, 2, 'o84'),
+(21, '2019-03-22', 'Buenas, he visto su historia clínica y le receté 3 veces al día durante seis días.', NULL, NULL, 3, 'o85'),
+(22, '2010-09-13', 'Hola, le doy cita para hacer la prueba de alergía para el 2010-09-15 a las 11:00 en su ambulatorio asignado', NULL, NULL, 4, 'o87'),
+(23, '2018-06-27', 'Hola, le doy cita para hacer la analítica de sangre para el 2018-06-30 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 4, 'o88'),
+(24, '2012-10-20', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, NULL, 2, 'o89'),
+(25, '2015-07-07', 'Buenas, podría ser un esguince mal curado. Le doy cita para el día 2015-07-07 a las 10:15 en su ambulatorio asignado', NULL, NULL, 4, 'o92'),
+(26, '2011-09-12', 'Hola, le doy cita para hacer la analítica de sangre para el 2011-09-16 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 3, 'o93'),
+(27, '2014-04-09', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, NULL, 1, 'o94'),
+(28, '2014-04-10', 'Hola, es cierto que el medicamento no está disponible en farmacias. Le he recetado una pomada similar llamada Levitán. Ya está introducida en su tarjeta. Tiene que aplicarse poca cantidad dos veces al', NULL, NULL, 1, 'o94'),
+(29, '2011-03-22', 'Hola, le doy cita para hacer la analítica de sangre para el 2011-03-25 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 3, 'o96'),
+(30, '2016-12-06', 'Sí, te doy cita para el día 2016-12-07 a las 12:30', NULL, NULL, 2, 'o97'),
+(31, '2012-02-29', 'Hola, le doy cita para hacer la analítica de sangre para el 2012-03-03 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 1, 'o99'),
+(32, '2018-05-27', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, NULL, 1, 'o99'),
+(33, '2015-09-19', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, NULL, 3, 'o100'),
+(34, '2017-05-09', 'Sí, te doy cita para el día 2017-05-10 a las 12:30', NULL, NULL, 3, 'o101'),
+(35, '2019-04-25', 'Hola, le doy cita para hacer la analítica de sangre para el 2019-04-29 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 1, 'o102'),
+(36, '2019-04-30', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, NULL, 1, 'o102'),
+(37, '2018-04-03', 'Buenas, he visto su historia clínica y le receté 3 veces al día durante seis días.', NULL, NULL, 2, 'o103'),
+(38, '2017-05-18', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, NULL, 3, 'o104'),
+(39, '2017-05-19', 'Hola, es cierto que el medicamento no está disponible en farmacias. Le he recetado una pomada similar llamada Levitán. Ya está introducida en su tarjeta. Tiene que aplicarse poca cantidad dos veces al', NULL, NULL, 3, 'o104'),
+(40, '2011-01-04', 'Hola, le doy cita para hacer la analítica de sangre para el 2011-01-10 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 4, 'o105'),
+(41, '2011-01-11', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, NULL, 4, 'o105'),
+(42, '2013-06-26', 'Buenas, ya debería poder andar con relativa normalidad sin vendaje. Si le duele, compre una tobillera.', NULL, NULL, 2, 'o107'),
+(43, '2017-11-08', 'Hola, le doy cita para hacer la analítica de sangre para el 2017-11-14 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 3, 'o109'),
+(44, '2017-11-16', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, NULL, 3, 'o109'),
+(45, '2013-07-08', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, NULL, 3, 'o110'),
+(46, '2013-07-09', 'Hola, es cierto que el medicamento no está disponible en farmacias. Le he recetado unas pastillas similares llamadas Levitán. Ya está introducida en su tarjeta. Tiene que tomar una dos veces al día.', NULL, NULL, 3, 'o110'),
+(47, '2010-11-30', 'Buenas, he visto su historia clínica y le receté 3 veces al día durante seis días.', NULL, NULL, 2, 'o111'),
+(48, '2012-03-04', 'Hola, le doy cita para hacer la analítica de sangre para el 2012-03-08 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, NULL, 1, 'o112'),
+(49, '2017-11-16', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, NULL, 1, 'o112'),
+(50, '2017-12-19', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 4, 'p8'),
+(51, '2012-02-16', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 4, 'p9'),
+(52, '2016-06-03', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2016-06-06 a las 12:15.', NULL, NULL, 1, 'p10'),
+(53, '2012-01-10', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 4, 'p13'),
+(54, '2012-06-25', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 4, 'p16'),
+(55, '2010-11-01', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 1, 'p17'),
+(56, '2018-05-13', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 2, 'p18'),
+(57, '2011-03-06', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 1, 'p21'),
+(58, '2010-08-29', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 3, 'p22'),
+(59, '2012-11-04', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 4, 'p23'),
+(60, '2018-04-27', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 1, 'p25'),
+(61, '2017-06-29', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 1, 'p26'),
+(62, '2014-09-14', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 2, 'p27'),
+(63, '2019-04-01', 'Buenas, he renovado la receta de su tratamiento.', NULL, NULL, 3, 'p28'),
+(64, '2011-01-22', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2011-01-24 a las 12:15.', NULL, NULL, 3, 'p29'),
+(65, '2011-09-26', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2011-09-28 a las 12:15.', NULL, NULL, 4, 'p36'),
+(66, '2010-12-12', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2010-12-15 a las 12:15.', NULL, NULL, 2, 'p37');
+
 --
 -- Índices para tablas volcadas
 --
@@ -288,6 +367,12 @@ ALTER TABLE `paciente`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `respuesta`
+--
+ALTER TABLE `respuesta`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -302,6 +387,12 @@ ALTER TABLE `medico`
 --
 ALTER TABLE `paciente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT de la tabla `respuesta`
+--
+ALTER TABLE `respuesta`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
