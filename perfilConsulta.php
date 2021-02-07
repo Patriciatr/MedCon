@@ -1,11 +1,3 @@
-<?php
-// utiliza el mismo formulario pero añade un campo hidden para el id y los campos se completan con los datos leídos de la base de datos
-require("dbmedcon.php");
-$miPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$covid = $miPDO->prepare("SELECT * FROM paciente WHERE paciente.id = :id");
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -19,6 +11,12 @@ $covid = $miPDO->prepare("SELECT * FROM paciente WHERE paciente.id = :id");
 </head>
 
 <body class="htmlNoPages">
+  <?php
+  require("dbmedcon.php");
+  $miPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $covid = $miPDO->prepare("SELECT * FROM consultacovid WHERE consultacovid.ID = :ID");
+
+  ?>
   <div class="gwd-div-lm07"></div>
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
@@ -30,7 +28,8 @@ $covid = $miPDO->prepare("SELECT * FROM paciente WHERE paciente.id = :id");
   </nav>
   <div class="contenedor">
     <h1>Datos personales de los pacientes</h1>
-    <form method="POST" action="formularioRespuesta.php">
+    <table border="1">
+    <tbody>
     <?php
             $pacient = $miPDO->prepare("SELECT * FROM consultacovid, paciente WHERE paciente.dni = consultacovid.DNIpaciente");
             $pacient->execute(array('ID' => $_GET['ID']));
@@ -43,37 +42,44 @@ $covid = $miPDO->prepare("SELECT * FROM paciente WHERE paciente.id = :id");
             ?>	
         </tbody>
       </table>
+    <h1>Consulta</h1>
+    <h2>Fecha:</h2>
+    <?php
+        $covid->execute(array('ID' => $_GET['ID']));
+        $v = $covid->fetch();
+        echo "<p>" . $v['fecha'] ."</p>";
+    ?>
+    <h2>Descripción:</h2>
+    <?php
+        echo "<p>" . $v['textoConsulta'] ."</p>";
+    ?>
     <table border="1">
     <tbody>
         <?php
-
-                $covid->execute(array('ID' => $_GET['ID']));
-                $c = $covid->fetchAll();
-                echo "<tr><th>Fecha</th><td>" . $c['fecha'] .'</td></tr>';
-                echo "<tr><th>Malestar general</th><td>" . ($c['malestar_general'] ? 'Sí' : 'No').'</td></tr>';
-                echo "<tr><th>Temperatura</th><td>" . $c['temperatura'] ."</td></tr>";
-                echo "<tr><th>Mucosidad</th><td>" . ($c['mucosidad'] ? 'Sí' : 'No')."</td></tr>";
-                echo "<tr><th>Dolor tragar</th><td>" . ($c['dolor_tragar']? 'Sí' : 'No') . "</td></tr>";
-                echo "<tr><th>Cambio voz</th><td>" . ($c['cambio_voz'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Tos</th><td>" . ($c['tos'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Falta de aire</th><td>" .( $c['falta_aire'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Perdida olfato/gusto</th><td>" .( $c['perdida_olf_gust'] ? 'Sí' : 'No')."</td></tr>";
-                echo "<tr><th>Dolor muscular</th><td>" . ($c['dolor_muscular']? 'Sí' : 'No') ."</td></tr>";
-                echo "<tr><th>Cambio voz</th><td>" . ($c['cambio_voz'] ? 'Sí' : 'No')."</td></tr>";
-                echo "<tr><th>Dolor tragar</th><td>" . ($c['dolor_tragar'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Diarrea</th><td>" . ($c['diarrea']? 'Sí' : 'No') . "</td></tr>";
-                echo "<tr><th>Enfermedad Cronica</th><td>" . ($c['enfermedad_cron'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Contacto positivo</th><td>" . ($c['contacto_positivo'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Embarazo</th><td>" . ($c['embarazo'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Sanitario FFAA SSEE</th><td>" . ($c['sanitario_FFAA_SSEE'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($c['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Fumador</th><td>" . ($c['fumador'] ? 'Sí' : 'No'). "</td></tr>";
-                echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($c['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Malestar general</th><td>" . ($v['malestar_general'] ? 'Sí' : 'No').'</td></tr>';
+                echo "<tr><th>Temperatura</th><td>" . $v['temperatura'] ."</td></tr>";
+                echo "<tr><th>Mucosidad</th><td>" . ($v['mucosidad'] ? 'Sí' : 'No')."</td></tr>";
+                echo "<tr><th>Dolor tragar</th><td>" . ($v['dolor_tragar']? 'Sí' : 'No') . "</td></tr>";
+                echo "<tr><th>Cambio voz</th><td>" . ($v['cambio_voz'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Tos</th><td>" . ($v['tos'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Falta de aire</th><td>" .( $v['falta_aire'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Perdida olfato/gusto</th><td>" .( $v['perdida_olf_gust'] ? 'Sí' : 'No')."</td></tr>";
+                echo "<tr><th>Dolor muscular</th><td>" . ($v['dolor_muscular']? 'Sí' : 'No') ."</td></tr>";
+                echo "<tr><th>Cambio voz</th><td>" . ($v['cambio_voz'] ? 'Sí' : 'No')."</td></tr>";
+                echo "<tr><th>Dolor tragar</th><td>" . ($v['dolor_tragar'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Diarrea</th><td>" . ($v['diarrea']? 'Sí' : 'No') . "</td></tr>";
+                echo "<tr><th>Enfermedad Cronica</th><td>" . ($v['enfermedad_cron'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Contacto positivo</th><td>" . ($v['contacto_positivo'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Embarazo</th><td>" . ($v['embarazo'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Sanitario FFAA SSEE</th><td>" . ($v['sanitario_FFAA_SSEE'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($v['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Fumador</th><td>" . ($v['fumador'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
             ?>
         </body>
     </table>
-      <br><br>
-      <td><input type="submit" name="Responder"></td>
+    <form method="POST" action="formularioRespuesta.php">
+      <input type="submit" name="Responder" value="Responder">
     </form>
   </div>
 </body>
