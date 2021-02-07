@@ -26,7 +26,7 @@ body {
   padding: 0.5em 3em;
   align-items: center;
   display: flex;
-  height: 80px;
+  height: 110px;
   position: absolute;
   background-image: none;
   background-color: rgb(5, 102, 141);
@@ -92,6 +92,14 @@ nav#menu-superior ul li a {
   color: rgb(255, 255, 255);
   text-decoration: none;
 }
+nav#menu-superior ul li a:hover {
+  padding: 1em;
+  color:#02C39A;
+  text-decoration: underline;
+
+}
+
+
 .gwd-li-2971 {
   left: 104px;
   top: 16px;
@@ -147,4 +155,62 @@ nav#menu-superior ul li a {
   clear: both;
   content: "";
   display: table;
+}
+
+
+
+
+
+
+.Listado_consultas_paciente {
+  margin: 20px;
+  left: 35px;
+  top: 20%;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+
+}
+.Listado_consultas_paciente div {
+  top: 5em;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  text-decoration: none;
+
+}
+table {
+  width: 90%;
+  text-align: left;
+  caption-side: top;
+  background-color: white;
+  border-collapse: collapse;
+}
+caption, td, th {
+  padding: 0.3em;
+
+}
+th, td {
+  padding: 10px;
+  border-bottom: 10px solid rgb(240, 243, 189);
+  width: 25%;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color:black;
+}
+
+th{
+  background-color: #028090;
+  color: white;
+}
+tr:hover{
+  background-color: #02C39A;
+  color: white;
+  
+}
+a:hover{
+  color: white;
+  text-decoration: underline;
 }

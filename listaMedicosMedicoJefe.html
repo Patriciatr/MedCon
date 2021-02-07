@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Medico</title>
+  <link href="styles/estiloMedicoJefe.css" rel="stylesheet">
+  <meta name="generator" content="Google Web Designer 10.0.2.0105">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    .gwd-li-13d3 {
+      left: 72px;
+      top: 16px;
+    }
+  </style>
+  <script>
+      function ocultarMostrar(){
+        var x = document.getElementById("desplegableBorrar");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+         }   
+        else {
+            x.style.display = "none";
+        }   
+      }
+  </script>
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-lm07"></div>
+  <img src="assets/logo.png" class="gwd-img-fa6j">
+  <nav id="menu-superior">
+    <ul>
+      <li><a href="seleccionarRol.html"><h3 class="gwd-p-gv4z" id="seleccionarRol">Seleccionar Rol</h3></a></li>
+      <li class="gwd-li-13d3"><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-1qhn " id="salir">Salir</h3></a></li>
+    </ul>
+  </nav>
+</body>
+<div class = "Listado_medicos_medicoJefe">
+
+    <h1>Listado de médicos </h1>
+      
+    <div>
+          <table id = "Tabla">
+              <tr>
+                <th> ID</th>
+                  <th>Nombre</th>
+                  <th>Apellidos</th>
+                  <th> Editar relación médico-paciente</th>
+              </tr>
+              <tr>
+                  <td> ID 1</td>
+                  <td> Nombre </td>
+                  <td> Apellidos </td>
+                  <td> 
+                      <button id = "botonDesplegableBorrar"  type="button" onclick="ocultarMostrar()"> Borrar asignación </button>
+                      <button id = "botonDesplegableAsignar"  type="button" onclick="ocultarMostrar2()"> Crear asignaciñon </button>
+                </td>
+              </tr>
+              <div id = "desplegableBorrar">
+                <tr> 
+                    <td colspan = 2>
+                    <select name="paciente" >
+                        <option value="Paciente 1">Paciente 1</option>
+                        <option value="Paciente 2">Paciente 2</option>
+                        <option value="Paciente 3">Paciente 3</option>
+                    </select>
+                    <input type="submit" name="enviar" value="Borrar asignación">
+                    </td>
+                </tr>
+            </div>
+          </table>
+    </div>
+    
+  </div>
+
+</html>
