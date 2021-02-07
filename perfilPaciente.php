@@ -42,7 +42,6 @@
                 echo "<tr><th>Dirección</th><td>" . $v['Direccion'] . "</td></tr>";
                 echo "<tr><th>Numero de la seguridad social</th><td>" . $v['NumSS'] . "</td></tr>";
                 echo "<tr><th>Sexo</th><td>" . $v['Sexo'] . "</td></tr>";
-                echo "<tr><th>Medico</th><td>" . $v['Medico'] . "</td></tr>";
             ?>
         </body>
     <table border="1">

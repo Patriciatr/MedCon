@@ -1,32 +1,8 @@
 <?php
 // utiliza el mismo formulario pero añade un campo hidden para el id y los campos se completan con los datos leídos de la base de datos
-require("db.php");
-
-$pacientes = [];
-if(isset($_GET)){
-
-    $str = .$_GET['ID'].;
-
-    $type = (str_word_count($str, 1));
-
-    if($type[1]="c"){
-        $perfil = $miPDO->prepare('SELECT * FROM consultacovid WHERE ID = '.$_GET['ID'].';');
-        $perfil->execute();
-        $paciente = $perfil->fetchAll();
-    }
-	
-    if($type[1]="p"){
-        $perfil = $miPDO->prepare('SELECT * FROM consultaperiodica WHERE ID = '.$_GET['ID'].';');
-        $perfil->execute();
-        $paciente = $perfil->fetchAll();
-    }
-    if($type[1]="o"){
-        $perfil = $miPDO->prepare('SELECT * FROM consultaotra WHERE ID = '.$_GET['ID'].';');
-        $perfil->execute();
-        $paciente = $perfil->fetchAll();
-    }
-
-}
+require("dbmedcon.php");
+$miPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$covid = $miPDO->prepare("SELECT * FROM paciente WHERE paciente.id = :id");
 
 ?>
 
@@ -54,60 +30,48 @@ if(isset($_GET)){
   </nav>
   <div class="contenedor">
     <h1>Datos personales de los pacientes</h1>
-    <form method="POST" action="formularioRespuesta.php">	
-      <input type="hidden" name="id" value=<?php echo $paciente[0]['id']; ?>>
-      <table border="1">
-        <tbody>
-          <tr>
-          </tr>
-          <tr>
-            <td>DNI</td>
-            <td>
-              <!--?php echo $pacientes[0]['dni']; ?-->
-            </td>
-          </tr>
-          <tr>
-            <td>Nombre </td>
-            <td>
-              <!--?php echo $pacientes[0]['nombre']; ?-->
-            </td>
-          </tr>
-          <tr>
-            <td>Apellidos</td>
-            <td>
-              <!--?php echo $pacientes[0]['apellidos']; ?-->
-            </td>
-          </tr>
-          <tr>
-            <td>Telefono</td>
-            <td>
-              <a href="tel:+34651628058">
-                <!--?php echo $pacientes[0]['telefono']; ?-->
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>Direccion</td>
-            <td>
-              <!--?php echo $pacientes[0]['direccion']; ?-->
-            </td>
-          </tr>
-          <tr>
-          </tr>
-          <tr>
-            <td>NumSS</td>
-            <td>
-              <!--?php echo $pacientes[0]['numss']; ?-->
-            </td>
-          </tr>
-          <tr>
-            <td>Sexo</td>
-            <td>
-              <!--?php echo $pacientes[0]['sexo']; ?-->
-            </td>
-          </tr>
+    <form method="POST" action="formularioRespuesta.php">
+    <?php
+            $pacient = $miPDO->prepare("SELECT * FROM consultacovid, paciente WHERE paciente.dni = consultacovid.DNIpaciente");
+            $pacient->execute(array('ID' => $_GET['ID']));
+            $v = $pacient->fetch();
+            echo "<tr><th>DNI</th><td>" . $v['DNI'] ."</td></tr>";
+            echo "<tr><th>Nombre</th><td>" . $v['Nombre'] ."</td></tr>";
+            echo "<tr><th>Apellidos</th><td>" . $v['Apellidos'] ."</td></tr>";
+            echo "<tr><th>Numero de la seguridad social</th><td>" . $v['NumSS'] . "</td></tr>";
+            echo "<tr><th>Sexo</th><td>" . $v['Sexo'] . "</td></tr>";
+            ?>	
         </tbody>
       </table>
+    <table border="1">
+    <tbody>
+        <?php
+
+                $covid->execute(array('ID' => $_GET['ID']));
+                $c = $covid->fetchAll();
+                echo "<tr><th>Fecha</th><td>" . $c['fecha'] .'</td></tr>';
+                echo "<tr><th>Malestar general</th><td>" . ($c['malestar_general'] ? 'Sí' : 'No').'</td></tr>';
+                echo "<tr><th>Temperatura</th><td>" . $c['temperatura'] ."</td></tr>";
+                echo "<tr><th>Mucosidad</th><td>" . ($c['mucosidad'] ? 'Sí' : 'No')."</td></tr>";
+                echo "<tr><th>Dolor tragar</th><td>" . ($c['dolor_tragar']? 'Sí' : 'No') . "</td></tr>";
+                echo "<tr><th>Cambio voz</th><td>" . ($c['cambio_voz'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Tos</th><td>" . ($c['tos'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Falta de aire</th><td>" .( $c['falta_aire'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Perdida olfato/gusto</th><td>" .( $c['perdida_olf_gust'] ? 'Sí' : 'No')."</td></tr>";
+                echo "<tr><th>Dolor muscular</th><td>" . ($c['dolor_muscular']? 'Sí' : 'No') ."</td></tr>";
+                echo "<tr><th>Cambio voz</th><td>" . ($c['cambio_voz'] ? 'Sí' : 'No')."</td></tr>";
+                echo "<tr><th>Dolor tragar</th><td>" . ($c['dolor_tragar'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Diarrea</th><td>" . ($c['diarrea']? 'Sí' : 'No') . "</td></tr>";
+                echo "<tr><th>Enfermedad Cronica</th><td>" . ($c['enfermedad_cron'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Contacto positivo</th><td>" . ($c['contacto_positivo'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Embarazo</th><td>" . ($c['embarazo'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Sanitario FFAA SSEE</th><td>" . ($c['sanitario_FFAA_SSEE'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($c['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Fumador</th><td>" . ($c['fumador'] ? 'Sí' : 'No'). "</td></tr>";
+                echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($c['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
+            ?>
+        </body>
+    </table>
       <br><br>
       <td><input type="submit" name="Responder"></td>
     </form>
