@@ -133,7 +133,7 @@ p {
 }
 
 .contenedor {
-    padding: 5em;
+    padding: 7em;
 }
 .contenedor::after {
     clear: both;

@@ -8,14 +8,6 @@
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
   <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
   <style type="text/css">
-    .gwd-div-1rji {
-      left: 0px;
-      top: 16px;
-    }
-    .gwd-form-xbgc {
-      left: 0px;
-      top: 283px;
-    }
   </style>
 </head>
 
@@ -30,32 +22,31 @@
       <li class="gwd-li-1xiy"><a href="desconectar.html"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
     </ul>
   </nav>
-  <div class="contenedor gwd-div-1rji">
+  <div class="contenedor ">
     <h1>Consulta Periodica</h1>
     <h2>Fecha:<!--?php echo $consultaperiodica[0]['fecha']; ?--></h2>
     <table border="1">
       <tbody>
-      <tr>
+        <tr>
           <td>Tema</td>
           <td>
-              <!--?php echo $consultaperiodica[0]['tema']; ?-->
+            <!--?php echo $consultaperiodica[0]['tema']; ?-->
           </td>
-        </tr>  
-       <tr>
+        </tr>
+        <tr>
           <td>Asunto Consulta</td>
           <td>
-              <!--?php echo $consultaperiodica[0]['temasuntoConsulta']; ?-->
+            <!--?php echo $consultaperiodica[0]['temasuntoConsulta']; ?-->
           </td>
-        </tr> 
-      <tr>
+        </tr>
+        <tr>
           <td>Descripción Consulta</td>
           <td>
-              <!--?php echo $consultaperiodica[0]['textoConsulta']; ?-->
+            <!--?php echo $consultaperiodica[0]['textoConsulta']; ?-->
           </td>
         </tr>
       </tbody>
     </table>
-
     <form class="gwd-form-xbgc">
       <input type="button" id="Anterior" value="Anterior" onclick="location.href='index.php'">
       <input type="button" id="Imagenes" value="Imagenes" onclick="location.href='index.php'">

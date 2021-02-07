@@ -33,14 +33,12 @@
   <div class="contenedor gwd-div-1rji">
     <h1>Consultas COVID</h1>
     <h2>Fecha:<!--?php echo $consultacovid[0]['fecha']; ?--></h2>
-    <table border="1">
-    <tr>
-          <p>Descripción Consulta</p>
-          <p>
-              <!--?php echo $consultacovid[0]['textoConsulta']; ?-->
-          </p>
-        </tr>
-    </table>
+    <tr rowspan=1>
+    <td>Descripción Consulta</td>
+    <textarea id="textoConsulta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences"></textarea>
+    <td>
+      <!--?php echo $consultacovid[0]['textoConsulta']; ?-->
+    </td>
     <table border="1">
       <tbody>
         <tr>
@@ -58,8 +56,7 @@
         <tr>
           <td>Mucosidad</td>
           <td>
-              <!--?php echo $consultacovid[0]['mucosidad']; ?-->
-            </a>
+            <!--?php echo $consultacovid[0]['mucosidad']; ?-->
           </td>
         </tr>
         <tr>
@@ -69,71 +66,73 @@
           </td>
         </tr>
         <tr>
-          <td >Cambio voz</td>
+          <td>Cambio voz</td>
           <td>
             <!--?php echo $consultacovid[0]['cambio_voz']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Tos</td>
+          <td>Tos</td>
           <td>
             <!--?php echo $consultacovid[0]['tos']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Falta de aire</td>
+          <td>Falta de aire</td>
           <td>
             <!--?php echo $consultacovid[0]['falta_aire']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Perdida olfato/gusto</td>
+          <td>Perdida olfato/gusto</td>
           <td>
             <!--?php echo $consultacovid[0]['perdida_olf_gust']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Dolor muscular</td>
+          <td>Dolor muscular</td>
           <td>
             <!--?php echo $consultacovid[0]['dolor_muscular']; ?-->
           </td>
         </tr>
-          <td >Diarrea</td>
+        <tr>
+          <td>Diarrea</td>
           <td>
             <!--?php echo $consultacovid[0]['diarrea']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Enfermedad Cronica</td>
+          <td>Enfermedad Cronica</td>
           <td>
             <!--?php echo $consultacovid[0]['enfermedad_cron']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Contacto positivo</td>
+          <td>Contacto positivo</td>
           <td>
             <!--?php echo $consultacovid[0]['contacto_positivo']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Embarazo</td>
+          <td>Embarazo</td>
           <td>
             <!--?php echo $consultacovid[0]['embarazo']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Sanitario FFAA SSEE</td>
+          <td>Sanitario FFAA SSEE</td>
           <td>
             <!--?php echo $consultacovid[0]['sanitario_FFAA_SSEE']; ?-->
           </td>
         </tr>
-           <td >Número de habitaciones que tiene la residencia</td>
+        <tr>
+          <td>Número de habitaciones que tiene la residencia</td>
           <td>
             <!--?php echo $consultacovid[0]['hab_residencia']; ?-->
           </td>
         </tr>
         <tr>
-          <td >Fumador</td>
+          <td>Fumador</td>
           <td>
             <!--?php echo $consultacovid[0]['fumador']; ?-->
           </td>

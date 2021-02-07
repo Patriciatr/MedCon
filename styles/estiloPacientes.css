@@ -149,7 +149,7 @@ nav#menu-superior ul li a:hover {
 }
 
 .contenedor {
-  padding: 5em;
+  padding: 7em;
 }
 .contenedor::after {
   clear: both;
