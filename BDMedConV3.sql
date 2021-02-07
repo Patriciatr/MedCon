@@ -2,10 +2,10 @@
 -- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3305
--- Tiempo de generación: 06-02-2021 a las 23:56:35
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-02-2021 a las 20:18:52
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.2.34
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -197,10 +197,10 @@ INSERT INTO `consultaperiodica` (`ID`, `fecha`, `respondida`, `tema`, `asuntoCon
 
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
-  `DNI` varchar(13) DEFAULT NULL,
+  `DNImed` varchar(13) DEFAULT NULL,
   `Password` varchar(255) DEFAULT NULL,
-  `Nombre` varchar(255) DEFAULT NULL,
-  `Apellidos` varchar(255) DEFAULT NULL,
+  `Nombremed` varchar(255) DEFAULT NULL,
+  `Apellidosmed` varchar(255) DEFAULT NULL,
   `medicoJefe` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -208,7 +208,7 @@ CREATE TABLE `medico` (
 -- Volcado de datos para la tabla `medico`
 --
 
-INSERT INTO `medico` (`id`, `DNI`, `Password`, `Nombre`, `Apellidos`, `medicoJefe`) VALUES
+INSERT INTO `medico` (`id`, `DNImed`, `Password`, `Nombremed`, `Apellidosmed`, `medicoJefe`) VALUES
 (1, '16040618D', 'QBB00OYR6WU', 'Pedro', 'Cortez', '0'),
 (2, '16820120G', 'CWV65NQL4MN', 'Lucia', 'Garrison', '0'),
 (3, '16440603H', 'IDJ87OKV1CK', 'Isadora', 'Robinson', '1'),
