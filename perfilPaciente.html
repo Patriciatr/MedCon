@@ -1,3 +1,11 @@
+<?php
+    //muestra la ficha del paciente
+    require("db.php");
+    $consulta = $miPDO->prepare('SELECT * FROM paciente WHERE id = '. $_GET['id']); 
+    $consulta->execute();
+    $pacientes = $consulta->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -7,8 +15,7 @@
   <link href="styles/estiloPacientes.css" rel="stylesheet">
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
   <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
-  <style type="text/css">
-  </style>
+  <style type="text/css"></style>
 </head>
 
 <body class="htmlNoPages">
@@ -30,33 +37,33 @@
           <tr>
             <td>DNI </td>
             <td>
-              <!--?php echo $paciente[0]['dni']; ?-->
+              <?php echo $pacientes[0]['DNI']; ?>
             </td>
           </tr>
           <tr>
             <td>Nombre </td>
             <td>
-              <!--?php echo $paciente[0]['nombre']; ?-->
+              <?php echo $pacientes[0]['Nombre']; ?>
             </td>
           </tr>
           <tr>
             <td>Apellidos</td>
             <td>
-              <!--?php echo $paciente[0]['apellidos']; ?-->
+              <?php echo $pacientes[0]['Apellidos']; ?>
             </td>
           </tr>
           <tr>
             <td>Telefono</td>
             <td>
               <a href="tel:+34651628058">
-                <!--?php echo $paciente[0]['telefono']; ?-->
+                <?php echo $pacientes[0]['Telefono']; ?>
               </a>
             </td>
           </tr>
           <tr>
             <td>Direccion</td>
             <td>
-              <!--?php echo $paciente[0]['direccion']; ?-->
+              <?php echo $pacientes[0]['Direccion']; ?>
             </td>
           </tr>
           <tr>
@@ -64,23 +71,17 @@
           <tr>
             <td>NumSS</td>
             <td>
-              <!--?php echo $paciente[0]['numss']; ?-->
+              <?php echo $pacientes[0]['NumSS']; ?>
             </td>
           </tr>
           <tr>
             <td>Sexo</td>
             <td>
-              <!--?php echo $paciente[0]['sexo']; ?-->
+              <?php echo $pacientes[0]['Sexo']; ?>
             </td>
           </tr>
           <tr>
             <td columnspan="1">Médico asignado</td>
-            <td>
-              <!--?php echo $medico[$paciente[0]['medico']]['nombre']; ?-->
-            </td>
-            <td>
-              <!--?php echo $pacientes[$paciente[0]['medico']]['apellidos']; ?-->
-            </td>
           </tr>
         </tbody>
       </table>

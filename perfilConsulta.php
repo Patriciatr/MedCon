@@ -4,22 +4,28 @@ require("db.php");
 
 $pacientes = [];
 if(isset($_GET)){
-	$editar = $miPDO->prepare('SELECT * FROM paciente WHERE Telefono = '.$_GET['Telefono'].';');
-	$editar->execute();
-	$paciente = $editar->fetchAll();
-}
-	
-if(isset($_POST['enviar'])) {
-	$editar = $miPDO->prepare('UPDATE paciente SET Nombre = "'.$_POST['Nombre'].'", Apellidos = "'.$_POST['Apellidos'].'", Telefono = "'.$_POST['Telefono']. '", Email = "'.$_POST['Email'].'", Fecha = "'.$_POST['Fecha'].'", Sexo = "'.$_POST['Sexo'].'", Direccion = "'.$_POST['Direccion'].'", Localidad = "'.$_POST['Localidad'].'", CD="'.$_POST['CD'].'", Provincia = "'.$_POST['Provincia'].'", Alergias = "'.$_POST['Alergias'].'" WHERE id = "'.$_POST['id'].'";'); 
-	$ok_update = $editar->execute();
-	if($ok_update) {
-		echo "<script>
-			alert('Paciente editado correctamente'); 
-			window.location.replace('http://localhost/index.php');
-		</script>";
-	} else {
-		print_r($editar->errorInfo());
+
+    $str = .$_GET['ID'].;
+
+    $type = (str_word_count($str, 1));
+
+    if($type[1]="c"){
+        $perfil = $miPDO->prepare('SELECT * FROM consultacovid WHERE ID = '.$_GET['ID'].';');
+        $perfil->execute();
+        $paciente = $perfil->fetchAll();
     }
+	
+    if($type[1]="p"){
+        $perfil = $miPDO->prepare('SELECT * FROM consultaperiodica WHERE ID = '.$_GET['ID'].';');
+        $perfil->execute();
+        $paciente = $perfil->fetchAll();
+    }
+    if($type[1]="o"){
+        $perfil = $miPDO->prepare('SELECT * FROM consultaotra WHERE ID = '.$_GET['ID'].';');
+        $perfil->execute();
+        $paciente = $perfil->fetchAll();
+    }
+
 }
 
 ?>
