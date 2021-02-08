@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php 
+require('dbmedcon.php');
+?>
+
 <html>
 
 <head>
@@ -7,7 +11,8 @@
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
   <link href="styles/estiloMedicos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
-
+</head>
+</head>
 <body class="htmlNoPages">
   <div class="gwd-div-lm07"></div>
   <img src="assets/logo.png" class="gwd-img-fa6j">
@@ -24,32 +29,33 @@
       
     <div>
           <table class = "tablaListadoConsultasMedico">
-              <tr>
-                <th> DNI</th>
-                  <th>Nombre</th>
-                  <th>Apellidos</th>
-                  <th> Ver perfil del paciente</th>
-              </tr>
-              <tr>
-                  <td> DNI 1</td>
-                  <td> Nombre </td>
-                  <td> Apellidos </td>
-                  <td><a href = "perfilConsulta.html"> Detalles </a></td>
-              </tr>
-              <tr>
-                <td> DNI 2</td>
-                <td> Nombre 2 </td>
-                <td> Apellidos 2</td>
-                <td><a href = "perfilConsulta.html"> Detalles </a></td>
+          <tr>
+              <th> DNI</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th> Ver perfil del paciente</th>
+          </tr>
+              
+              <?php
+              
 
-            </tr>
-            <tr>
-                <td> DNI 3</td>
-                <td> Nombre 3 </td>
-                <td> Apellidos 3</td>
-                <td><a href = "perfilConsulta.html"> Detalles </a></td>
+              $dniMed = isset($_GET['dniMed']) ?$_GET['dniMed']: null; 
+              $consulta = $miPDO -> prepare('SELECT * FROM paciente WHERE Medico like :dniMed');
+              $consulta -> execute(array('dniMed' => $dniMed));
+              $pacientes = $consulta -> fetchAll();
 
-            </tr>
+              foreach($pacientes as $paciente){
+                echo '
+                    <tr>
+                        <td>'.$paciente['DNI'].'</td>
+                        <td>'.$paciente['Nombre'].'</td>
+                        <td>'.$paciente['Apellidos'].'</td>
+                        <td><a href = "perfilPaciente.php?dni='.$paciente['DNI'].'"> Detalles </a></td>
+                    </tr>';
+              }
+
+              
+              ?>
           </table>
     </div>
   </div>

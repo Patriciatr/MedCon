@@ -180,18 +180,18 @@ p {
 
 }
 
-table {
+.tablaListadoConsultasMedico {
   width: 90%;
   text-align: left;
   caption-side: top;
   background-color: white;
   border-collapse: collapse;
 }
-caption, td, th {
+.tablaListadoConsultasMedico caption, td, th {
   padding: 0.3em;
 
 }
-th, td {
+.tablaListadoConsultasMedico th, td {
   padding: 10px;
   border-bottom: 10px solid rgb(240, 243, 189);
   width: 25%;
@@ -202,16 +202,16 @@ a{
   color:black;
 }
 
-th{
+.tablaListadoConsultasMedico th{
   background-color: #028090;
   color: white;
 }
-tr:hover{
+.tablaListadoConsultasMedico tr:hover{
   background-color: #02C39A;
   color: white;
   
 }
-a:hover{
+.tablaListadoConsultasMedico a:hover{
   color: white;
   text-decoration: underline;
 }

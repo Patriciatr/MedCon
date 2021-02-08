@@ -179,38 +179,38 @@ nav#menu-superior ul li a:hover {
   text-decoration: none;
 
 }
-table {
+.tablaListadoConsultasPaciente {
   width: 90%;
   text-align: left;
   caption-side: top;
   background-color: white;
   border-collapse: collapse;
 }
-caption, td, th {
+.tablaListadoConsultasPaciente caption, td, th {
   padding: 0.3em;
 
 }
-th, td {
+.tablaListadoConsultasPaciente th, td {
   padding: 10px;
   border-bottom: 10px solid rgb(240, 243, 189);
   width: 25%;
   text-decoration: none;
 }
-a{
+.tablaListadoConsultasPaciente a{
   text-decoration: none;
   color:black;
 }
 
-th{
+.tablaListadoConsultasPaciente th{
   background-color: #028090;
   color: white;
 }
-tr:hover{
+.tablaListadoConsultasPaciente tr:hover{
   background-color: #02C39A;
   color: white;
   
 }
-a:hover{
+.tablaListadoConsultasPaciente a:hover{
   color: white;
   text-decoration: underline;
 }
