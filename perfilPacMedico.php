@@ -1,29 +1,3 @@
-<?php
-// utiliza el mismo formulario pero añade un campo hidden para el id y los campos se completan con los datos leídos de la base de datos
-require("dbmedcon.php");
-
-$pacientes = [];
-if(isset($_GET)){
-	$editar = $miPDO->prepare('SELECT * FROM paciente WHERE Telefono = '.$_GET['Telefono'].';');
-	$editar->execute();
-	$paciente = $editar->fetchAll();
-}
-	
-if(isset($_POST['enviar'])) {
-	$editar = $miPDO->prepare('UPDATE paciente SET Nombre = "'.$_POST['Nombre'].'", Apellidos = "'.$_POST['Apellidos'].'", Telefono = "'.$_POST['Telefono']. '", Email = "'.$_POST['Email'].'", Fecha = "'.$_POST['Fecha'].'", Sexo = "'.$_POST['Sexo'].'", Direccion = "'.$_POST['Direccion'].'", Localidad = "'.$_POST['Localidad'].'", CD="'.$_POST['CD'].'", Provincia = "'.$_POST['Provincia'].'", Alergias = "'.$_POST['Alergias'].'" WHERE id = "'.$_POST['id'].'";'); 
-	$ok_update = $editar->execute();
-	if($ok_update) {
-		echo "<script>
-			alert('Paciente editado correctamente'); 
-			window.location.replace('http://localhost/index.php');
-		</script>";
-	} else {
-		print_r($editar->errorInfo());
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -54,8 +28,6 @@ if(isset($_POST['enviar'])) {
   </nav>
   <div class="contenedor gwd-div-yyjb">
     <h1>Datos personales de los pacientes</h1>
-    <form method="POST" action="formularioRespuesta.php">	
-      <input type="hidden" name="id" value=<?php echo $paciente[0]['id']; ?>>
     <div>
     <table border="1">
         <tbody>
@@ -72,9 +44,6 @@ if(isset($_POST['enviar'])) {
             ?>
         </body>
         </table>
-      <br><br>
-      <td><input type="submit" name="Responder"></td>
-    </form>
     </div>
   </div>
 </body>
