@@ -42,7 +42,7 @@
         $v = $otra->fetch();
         $pacient = $miPDO->prepare("SELECT * FROM consultaotra, paciente WHERE paciente.dni = consultaotra.DNIpaciente");
         $pacient->execute(array('ID' => $_GET['ID']));
-        $v = $pacient->fetch();
+        $p = $pacient->fetch();
       }
 
 }
@@ -57,40 +57,16 @@
     </ul>
   </nav>
   <div class="contenedor">
-    <h1>Datos de consulta</h1>
-    <?php echo "<tr><th>type</th><td>" . $str[0] . "</td></tr>"; ?>
-    <input type="button" value="Consultar" onclick="consultar()">
-    <script>
-        function consultar() {
-
-            tablaCOVID = document.getElementById('tablaCOVID');
-            tablaPeriodica = document.getElementById('tablaPeriódica');
-            tablaOtra = document.getElementById('tablaOtra');
-
-            if(<?php $str[0]=="c" ?>){
-                document.getElementById('tablaCOVID').style.display='table';
-                tablaPeriodica.style.display='none';
-                tablaOtra.style.display='none';
-            } else if(<?php $str[0]=="p" ?>){
-                tablaCOVID.style.display='none';
-                tablaPeriodica.style.display='table';
-                tablaOtra.style.display='none';
-            } else if(<?php $str[0]=="o" ?>){
-                tablaCOVID.style.display='none';
-                tablaPeriodica.style.display='none';
-                tablaOtra.style.display='table';
-            }  
-        }
-      </script>  
+    <h1>Datos de consulta</h1> 
     <table id="tablaCOVID" border="1">
       <tbody>
       <?php
+          if($str[0]=="c"){
             echo "<tr><th>DNI</th><td>" . $p['DNI'] ."</td></tr>";
             echo "<tr><th>Nombre</th><td>" . $p['Nombre'] ."</td></tr>";
             echo "<tr><th>Apellidos</th><td>" . $p['Apellidos'] ."</td></tr>";
             echo "<tr><th>Numero de la seguridad social</th><td>" . $p['NumSS'] . "</td></tr>";
             echo "<tr><th>Sexo</th><td>" . $p['Sexo'] . "</td></tr>";
-            echo "<tr><th>type</th><td>" . $str[0] . "</td></tr>";
             echo "<tr><th>Fecha</th><td>" .$v['fecha'] . "</td></tr>";
             echo "<tr><th>Descripción</th><td>" . $v['textoConsulta'] . "</td></tr>";
             echo "<tr><th>Malestar general</th><td>" . ($v['malestar_general'] ? 'Sí' : 'No').'</td></tr>';
@@ -112,48 +88,48 @@
             echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($v['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Fumador</th><td>" . ($v['fumador'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
-            ?>
+          }
+          ?>
         </tbody>
       </table>
       
       
       <table id="tablaPeriodica" border="1">
       <tbody>
-      <?php             
+      <?php   
+          if($str[0]=="p"){          
             echo "<tr><th>DNI</th><td>" . $p['DNI'] ."</td></tr>";
             echo "<tr><th>Nombre</th><td>" . $p['Nombre'] ."</td></tr>";
             echo "<tr><th>Apellidos</th><td>" . $p['Apellidos'] ."</td></tr>";
             echo "<tr><th>Numero de la seguridad social</th><td>" . $p['NumSS'] . "</td></tr>";
             echo "<tr><th>Sexo</th><td>" . $p['Sexo'] . "</td></tr>";
-            echo "<tr><th>type</th><td>" . $str[0] . "</td></tr>";
             echo "<tr><th>Fecha</th><td>" .$v['fecha'] . "</td></tr>";
             echo "<tr><th>Tema</th><td>" . $v['tema'] .'</td></tr>';
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            ?>
+          }?>
         </tbody>
       </table>
 
       <table id="tablaOtra" border="1">
       <tbody>
       <?php
+          if($str[0]=="o"){   
             echo "<tr><th>DNI</th><td>" . $p['DNI'] ."</td></tr>";
             echo "<tr><th>Nombre</th><td>" . $p['Nombre'] ."</td></tr>";
             echo "<tr><th>Apellidos</th><td>" . $p['Apellidos'] ."</td></tr>";
             echo "<tr><th>Numero de la seguridad social</th><td>" . $p['NumSS'] . "</td></tr>";
             echo "<tr><th>Sexo</th><td>" . $p['Sexo'] . "</td></tr>";
-            echo "<tr><th>type</th><td>" . $str[0] . "</td></tr>";
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            ?>
+          }  ?>
         </tbody>
       </table>
 
-    <!--<input type="hidden" name="id" value= <--?php echo $paciente[0]['id']; ?>> -->
-    <form method="POST" action="formularioRespuesta.php">
-      <input type="submit" name="Responder" value="Responder">
-    </form>
-  </div>
-</body>
+      <?php
+        echo "<td><a href ='formularioRespuesta.php?ID=". $p['ID'] ."'><input type=button value=Responder></a></td>";
+      ?>
+    </div>
+  </body>
 
 </html>
