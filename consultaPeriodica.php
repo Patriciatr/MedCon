@@ -52,7 +52,15 @@
       }
       ?> 
       <input type="button" id="Archivos" value="Archivos" onclick="location.href='index.php'">
-      <input type="button" id="Siguiente" value="Siguiente" onclick="location.href='index.php'">
+      <?php
+        $pad = $miPDO->prepare("SELECT * FROM consultaperiodica WHERE  consultaperiodica.consultaPadre = ".substr($v['ID'], 1)."");
+        $pad->execute(array('ID' => $_GET['ID']));
+        $p = $pad->fetch();
+        $bool = $p ? 'false': 'true';
+        if($bool != 'true' ){
+          echo "<td><a href ='consultasPeriodica.php?ID=".$p['ID']."'><input type=button value=Siguiente></a></td>";
+        }
+      ?>
     </form>
   </div>
 </body>

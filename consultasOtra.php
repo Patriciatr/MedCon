@@ -29,7 +29,7 @@
     </ul>
   </nav>
   <div class="contenedor ">
-    <h1>Consulta Periodica</h1>
+    <h1>Consulta </h1>
     <h2>Fecha:</h2>
     <?php
         $pac->execute(array('ID' => $_GET['ID']));
@@ -55,11 +55,12 @@
       $pad = $miPDO->prepare("SELECT * FROM consultaotra WHERE  consultaotra.consultaPadre = ".substr($v['ID'], 1)."");
       $pad->execute(array('ID' => $_GET['ID']));
       $p = $pad->fetch();
-      if($p['consultaPadre']!=NULL){
-        echo "<td><a href ='consultasOtra.php?ID=". $p['ID'][0] ."".$p['consultaPadre']."'><input type=button value=Siguiente></a></td>";
+      $bool = $p ? 'false': 'true';
+      if($bool != 'true' ){
+        echo "<td><a href ='consultasOtra.php?ID=".$p['ID']."'><input type=button value=Siguiente></a></td>";
       }
+      
       ?>
-      <input type="button" id="Siguiente" value="Siguiente" onclick="location.href='index.php'">
     </form>
   </div>
 </body>

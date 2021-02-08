@@ -67,12 +67,20 @@
     </table>
     <form class="gwd-form-xbgc" method="POST">
       <?php
-      if($v['consultaPadre']==NULL){
+      if($v['consultaPadre']!=NULL){
         echo "<td><a href ='consultaPacientCOVID.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."'><input type=button value=Anterior></a></td>";
       }
       ?>
       <input type="button" id="Archivos" value="Archivos" onclick="location.href='index.php'">
-      <input type="button" id="Siguiente" value="Siguiente" onclick="location.href='index.php'">
+      <?php
+        $pad = $miPDO->prepare("SELECT * FROM consultacovid WHERE  consultacovid.consultaPadre = ".substr($v['ID'], 1)."");
+        $pad->execute(array('ID' => $_GET['ID']));
+        $p = $pad->fetch();
+        $bool = $p ? 'false': 'true';
+        if($bool != 'true' ){
+          echo "<td><a href ='consultaPacientCOVID.php?ID=".$p['ID']."'><input type=button value=Siguiente></a></td>";
+        }
+      ?>
     </form>
   </div>
 </body>
