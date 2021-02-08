@@ -128,14 +128,29 @@ nav#menu-superior ul li a:hover {
 
 #tablaCOVID{
   display: table;
+  width: 90%;
+  text-align: left;
+  caption-side: top;
+  background-color: white;
+  border-collapse: collapse;
 }
 
 #tablaPeriódica{
   display: none;
+  width: 90%;
+  text-align: left;
+  caption-side: top;
+  background-color: white;
+  border-collapse: collapse;
 }
 
 #tablaOtra{
   display: none;
+  width: 90%;
+  text-align: left;
+  caption-side: top;
+  background-color: white;
+  border-collapse: collapse;
 }
 
 #contenedor { 
@@ -151,16 +166,12 @@ nav#menu-superior ul li a:hover {
 .contenedor {
   padding: 7em;
 }
+
 .contenedor::after {
   clear: both;
   content: "";
   display: table;
 }
-
-
-
-
-
 
 .Listado_consultas_paciente {
   margin: 20px;
@@ -169,7 +180,6 @@ nav#menu-superior ul li a:hover {
   width: 100%;
   height: 100px;
   position: absolute;
-
 }
 .Listado_consultas_paciente div {
   top: 5em;
@@ -179,6 +189,7 @@ nav#menu-superior ul li a:hover {
   text-decoration: none;
 
 }
+
 .tablaListadoConsultasPaciente {
   width: 90%;
   text-align: left;

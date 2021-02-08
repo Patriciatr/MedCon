@@ -71,6 +71,15 @@ p {
     position: absolute;
   }
 
+  #tablaRol{
+    display: table;
+    width: 90%;
+    text-align: left;
+    caption-side: top;
+    background-color: white;
+    border-collapse: collapse;
+  }
+
   .gwd-p-5vs1 {
     transform-origin: 50% 50% 0px;
     width: 268px;
