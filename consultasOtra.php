@@ -45,9 +45,20 @@
         </body>
     </table>
     <form class="gwd-form-xbgc" method="POST">
-      <input type="button" id="Anterior" value="Anterior" onclick="location.href='index.php'">
-      <input type="button" id="Imagenes" value="Imagenes" onclick="location.href='index.php'">
+    <?php
+      if($v['consultaPadre']!=NULL){
+        echo "<td><a href ='consultasOtra.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."'><input type=button value=Anterior></a></td>";
+      }
+      ?>
       <input type="button" id="Archivos" value="Archivos" onclick="location.href='index.php'">
+      <?php
+      $pad = $miPDO->prepare("SELECT * FROM consultaotra WHERE  consultaotra.consultaPadre = ".substr($v['ID'], 1)."");
+      $pad->execute(array('ID' => $_GET['ID']));
+      $p = $pad->fetch();
+      if($p['consultaPadre']!=NULL){
+        echo "<td><a href ='consultasOtra.php?ID=". $p['ID'][0] ."".$p['consultaPadre']."'><input type=button value=Siguiente></a></td>";
+      }
+      ?>
       <input type="button" id="Siguiente" value="Siguiente" onclick="location.href='index.php'">
     </form>
   </div>
