@@ -19,9 +19,9 @@ require('dbmedcon.php');
   </style>
   <script>
       function ocultarMostrarBorrar(elementoBorrar, elementoAsignar){
-        var x = document.getElementById(elementoBorrar);
+        var x = elementoBorrar;
         tipoDisplay = getComputedStyle(x, null).display;
-        var y =  document.getElementById(elementoAsignar);
+        var y = elementoAsignar;
         tipoDisplayAsignar = getComputedStyle(y, null).display;
 
         if (tipoDisplay == "none") {
@@ -36,9 +36,9 @@ require('dbmedcon.php');
       }
       
       function ocultarMostrarAsignar(elementoAsignar, elementoBorrar){
-        var x = document.getElementById(elementoAsignar);
+        var x = elementoAsignar;
         tipoDisplay = getComputedStyle(x, null).display;
-        var y = document.getElementById(elementoBorrar);
+        var y = elementoBorrar;
         tipoDisplayBorrar = getComputedStyle(y, null).display;
 
         if (tipoDisplay == "none") {
@@ -55,6 +55,9 @@ require('dbmedcon.php');
 </head>
 
 <body class="htmlNoPages">
+
+
+
   <div class="gwd-div-lm07"></div>
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
@@ -66,9 +69,36 @@ require('dbmedcon.php');
 </body>
 <div class = "Listado_medicos_medicoJefe">
 
+<?php 
+
+      // Los formularios de esta página envían a la misma página. Primero, comprobamos si se quiere borrar una asignación o crearla
+
+      //Borrar asignación
+      //16541029Q
+
+      $dniPacBorrar = isset($_POST['pacienteBorrar']) ? $_POST['pacienteBorrar'] : null;
+      $dniPacCrear = isset($_POST['pacienteCrear']) ? $_POST['pacienteCrear'] : null;
+      $idMedico = isset($_POST['medicoID']) ? $_POST['medicoID'] : null;
+      
+      if($dniPacBorrar != null){
+        $consultaBorrar = $miPDO -> prepare('UPDATE paciente SET Medico = -1 WHERE DNI = :dni');
+        $ok = $consultaBorrar -> execute(array('dni' => $dniPacBorrar));
+      }
+      
+      elseif($dniPacCrear != null and $idMedico != null){
+        $consultaCrear = $miPDO -> prepare('UPDATE paciente SET Medico = :idMedico WHERE DNI = :dni');
+        $ok = $consultaCrear -> execute(array('idMedico'=> $idMedico, 'dni' => $dniPacCrear));
+      }
+
+      
+     
+
+
+?>
     <h1>Listado de médicos </h1>
       
     <div>
+      
           <table class = "tablaListadoMedicos">
               <tr>
                 <th> ID</th>
@@ -94,45 +124,76 @@ require('dbmedcon.php');
                         <td>'.$medico['Nombremed'].'</td>
                         <td>'.$medico['Apellidosmed'].'</td>
                         <td> 
-                            <button id = "botonDesplegableBorrar"  type="button" onclick="ocultarMostrarBorrar("filaBorrar'.$cnt.'", "filaAsignar'.$cnt.'")"> Borrar asignación </button>
-                            <button id = "botonDesplegableAsignar"  type="button" onclick="ocultarMostrarAsignar("filaAsignar'.$cnt.'", "filaBorrar'.$cnt.'")"> Crear asignación </button>
+                        <button id = "botonDesplegableBorrar'.$cnt.'"  class = "botonDesplegableBorrar" type="button" onclick="ocultarMostrarBorrar(filaBorrar'.$cnt.', filaAsignar'.$cnt.')"> Borrar asignación </button>
+                        <button id = "botonDesplegableAsignar'.$cnt.'"  class = "botonDesplegableAsignar" type="button" onclick="ocultarMostrarAsignar(filaAsignar'.$cnt.', filaBorrar'.$cnt.')"> Crear asignación </button>
                         </td>
                     </tr>
-                    <tr id = "filaBorrar'.$cnt.'" style.display = "none"> 
-                        <td colspan= 2>
-                            Seleccione el paciente del médico '.$medico['Nombremed'].' '.$medico['Apellidosmed'].' que quiere desasignar:
-                        </td>
-                        <td>
-                            <select name="paciente" >
-                                <option value="Paciente 1">Paciente 1</option>
-                                <option value="Paciente 2">Paciente 2</option>
-                                <option value="Paciente 3">Paciente 3</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="submit" name="enviar" value="Borrar asignación">
-                        </td>
+                    
+                  <form name= "borrarAsignacion'.$cnt.'" action = "listaMedicosMedicoJefe.php" method = "post" enctype = "multipart/form-data">
+                    <tr id = "filaBorrar'.$cnt.'" class = "borrarOcultoInicio">
+                      <td colspan= 2>
+                        Seleccione el paciente del médico '.$medico['Nombremed']." ".$medico['Apellidosmed'].' que quiere desasignar
+                      </td>
+                      <td>
+                        <select name="pacienteBorrar" >';
+
+                          $consultaPacMedico = $miPDO -> prepare('SELECT * FROM paciente WHERE Medico like :ID');
+                          $consultaPacMedico -> execute(array('ID' => $medico['id']));
+                          $pacientesCon = $consultaPacMedico -> fetchAll();
+                          
+                          if(count($pacientesCon) == 0){
+                            echo 'El doctor no tienen ningún paciente asignado';
+                          }
+                          else{
+                            foreach($pacientesCon as $pacienteCon){
+                              echo 
+                              '<option value="'.$pacienteCon['DNI'].'">'.$pacienteCon['DNI']." - ".$pacienteCon['Nombre']." ".$pacienteCon['Apellidos'].'</option>';
+                            }
+
+                          }
+                        echo 
+                        '</select>
+                      </td>
+                      <td>
+                        <input type="submit" name="enviar" value="Borrar asignación">
+                      </td>
                     </tr>
-                    <tr id = "filaAsignar'.$cnt.'" style.display = "none"> 
-                        <td colspan= 2>
-                            Seleccione el paciente que quiere asignar al médico '.$medico['Nombremed'].' '.$medico['Apellidosmed'].':
-                        </td>
-                        <td>
-                            <select name="paciente" >
-                                <option value="Paciente 1">Paciente 1</option>
-                                <option value="Paciente 2">Paciente 2</option>
-                                <option value="Paciente 3">Paciente 3</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="submit" name="enviar" value="Crear asignación">
-                        </td>
-                    </tr>';
+                   </form> 
+                   <form name= "crearAsignacion'.$cnt.'" action = "listaMedicosMedicoJefe.php" method = "post" enctype = "multipart/form-data">
+                    <tr id = "filaAsignar'.$cnt.'" class = "asignarOcultoInicio"> 
+                      <td colspan= 2>
+                        Seleccione el paciente que quiere asignar
+                      </td>
+                      <td>
+                        <select name="pacienteCrear" >';
+
+                        $consultaPacSinMedico = $miPDO -> prepare('SELECT * FROM paciente WHERE Medico like -1');
+                        $consultaPacSinMedico -> execute();
+                        $pacientesSin =  $consultaPacSinMedico -> fetchAll();
+                        $medicoID = $medico['id'];
+                        if(count($pacientesSin) == 0){
+                          echo '<option value="SinPaciente">'."No hay pacientes sin doctor asignado".'</option>';
+                        }
+                        else{
+                          foreach($pacientesSin as $pacienteSin){
+                            echo '<option value="'.$pacienteSin['DNI'].'">'.$pacienteSin['DNI']." - ".$pacienteSin['Nombre']." ".$pacienteSin['Apellidos'].'</option>';
+                          }
+                        }
+                  
+                        echo 
+                        '</select>
+                      </td>
+                      <td>
+                        <input type="hidden" name="medicoID" value="'.$medicoID.'">
+                        <input type="submit" name="enviar" value="Crear asignación">
+                      </td>
+                    </tr>
+                  </form>';
                 }
                 ?>
               
           </table>
-
+        
     </div>
     
   </div>

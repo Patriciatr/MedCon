@@ -15,9 +15,9 @@
   </style>
   <script>
       function ocultarMostrarBorrar(elementoBorrar, elementoAsignar){
-        var x = document.getElementById(elementoBorrar);
+        var x = elementoBorrar;
         tipoDisplay = getComputedStyle(x, null).display;
-        var y =  document.getElementById(elementoAsignar);
+        var y =  elementoAsignar;
         tipoDisplayAsignar = getComputedStyle(y, null).display;
 
         if (tipoDisplay == "none") {
@@ -32,9 +32,9 @@
       }
       
       function ocultarMostrarAsignar(elementoAsignar, elementoBorrar){
-        var x = document.getElementById(elementoAsignar);
+        var x = elementoAsignar;
         tipoDisplay = getComputedStyle(x, null).display;
-        var y = document.getElementById(elementoBorrar);
+        var y = elementoBorrar;
         tipoDisplayBorrar = getComputedStyle(y, null).display;
 
         if (tipoDisplay == "none") {
@@ -77,11 +77,11 @@
                   <td> Nombre </td>
                   <td> Apellidos </td>
                   <td> 
-                      <button id = "botonDesplegableBorrar"  type="button" onclick="ocultarMostrarBorrar(filaBorrar,filaAsignar)"> Borrar asignación </button>
-                      <button id = "botonDesplegableAsignar"  type="button" onclick="ocultarMostrarAsignar(filaAsignar, filaBorrar)"> Crear asignación </button>
+                      <button id = "botonDesplegableBorrar" class = "botonDesplegableBorrar"  type="button" onclick="ocultarMostrarBorrar(filaBorrar, filaAsignar)"> Borrar asignación </button>
+                      <button id = "botonDesplegableAsignar" class = "botonDesplegableAsignar" type="button" onclick="ocultarMostrarAsignar(filaAsignar, filaBorrar)"> Crear asignación </button>
                   </td>
               </tr>
-              <tr id = "filaBorrar" style.display = "none"> 
+              <tr id = "filaBorrar" class = "borrarOcultoInicio" > 
                   <td colspan= 2>
                     Seleccione el paciente del médico Juan Jiménez que quiere desasignar
                   </td>
@@ -96,7 +96,7 @@
                       <input type="submit" name="enviar" value="Borrar asignación">
                     </td>
                 </tr>
-                <tr id = "filaAsignar" style.display = "none"> 
+                <tr id = "filaAsignar" class = "asignarOcultoInicio"> 
                   <td colspan= 2>
                     Seleccione el paciente que quiere asignar
                   </td>
@@ -111,8 +111,48 @@
                       <input type="submit" name="enviar" value="Crear asignación">
                     </td>
                 </tr>
-          </table>
 
+                
+                <tr>
+                  <td> ID 1</td>
+                  <td> Nombre </td>
+                  <td> Apellidos </td>
+                  <td> 
+                      <button id = "botonDesplegableBorrar2"  class = "botonDesplegableBorrar" type="button" onclick="ocultarMostrarBorrar(filaBorrar2, filaAsignar2)"> Borrar asignación </button>
+                      <button id = "botonDesplegableAsignar2"  class = "botonDesplegableAsignar" type="button" onclick="ocultarMostrarAsignar(filaAsignar2, filaBorrar2)"> Crear asignación </button>
+                  </td>
+              </tr>
+              <tr id = "filaBorrar2" class = "borrarOcultoInicio"> 
+                  <td colspan= 2>
+                    Seleccione el paciente del médico Juan Jiménez que quiere desasignar 2
+                  </td>
+                  <td>
+                    <select name="paciente" >
+                        <option value="Paciente 1">Paciente 1</option>
+                        <option value="Paciente 2">Paciente 2</option>
+                        <option value="Paciente 3">Paciente 3</option>
+                    </select>
+                    </td>
+                    <td>
+                      <input type="submit" name="enviar" value="Borrar asignación">
+                    </td>
+                </tr>
+                <tr id = "filaAsignar2" class = "asignarOcultoInicio"> 
+                  <td colspan= 2>
+                    Seleccione el paciente que quiere asignar 2
+                  </td>
+                  <td>
+                    <select name="paciente" >
+                        <option value="Paciente 1">Paciente 1</option>
+                        <option value="Paciente 2">Paciente 2</option>
+                        <option value="Paciente 3">Paciente 3</option>
+                    </select>
+                    </td>
+                    <td>
+                      <input type="submit" name="enviar" value="Crear asignación">
+                    </td>
+                </tr>
+          </table>
     </div>
     
   </div>

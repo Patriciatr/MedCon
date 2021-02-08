@@ -156,29 +156,29 @@ p {
     color: white;
   }
 
-  button#botonDesplegableBorrar{
+  .botonDesplegableBorrar{
     background: #028090;
     color: white;
   }
-  button#botonDesplegableAsignar{
+  .botonDesplegableAsignar{
     background: #028090;
     color: white;
   }
-  button#botonDesplegableBorrar:hover{
+  .botonDesplegableBorrar:hover{
     background: red;
     color: white;
   }
-  button#botonDesplegableAsignar:hover{
+  .botonDesplegableAsignar:hover{
     background: green;
     color: white;
   }
 
-  #filaBorrar{
+  .asignarOcultoInicio{
     display:none;
     background-color:#028090;
     color: white;
   }
-  #filaAsignar{
+  .borrarOcultoInicio{
     display:none;
     background-color:#028090;
     color: white;
