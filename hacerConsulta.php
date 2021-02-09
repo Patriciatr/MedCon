@@ -198,28 +198,43 @@
     <body>
         <div class="gwd-div-lm07"></div>
         <img src="assets/logo.png" class="gwd-img-fa6j">
+        <h4 class = "area" >Área de paciente</h4>
         <nav id="menu-superior">
             <ul>
-                <li><a href="listaConsultasPaciente.php?id=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z" id="listaConsultasPaciente">Consultas</h3></a></li>
-                <li><a href="hacerConsulta.php?IDPaciente=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="hacerConsulta">Hacer consulta</h3></a></li>
-                <li class="gwd-li-2971"><a href="perfilPaciente.php?id=<?php echo $IDPaciente?>"><"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="PerfilPaciente">Datos Personales</h3></a></li>
-                <li class="gwd-li-1xiy"><a href="login.php"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li> 
+                <li class="gwd-p-gv4z"><a href="listaConsultasPaciente.php?id=<?php echo $IDPaciente?>">Consultas</a></li>
+                <li class="gwd-p-gv4z gwd-p-1qhn"><a href="hacerConsulta.php?IDPaciente=<?php echo $IDPaciente?>">Hacer consulta</a></li>
+                <li class="gwd-p-gv4z gwd-p-5vs1"><a href="perfilPaciente.php?id=<?php echo $IDPaciente?>">Datos Personales</a></li>
+                <li class="gwd-p-gv4z salir"><a href="login.php">Salir</a></li> 
             </ul>
         </nav>
 
         <div class="form">
-
-            <select id="tipoForm" onchange="myFunction()">
-                <option value="COVID">COVID</option>
-                <option value="Periódica">Periódica</option>
-                <option value="Otra">Otra</option>
-            </select>
-
+            <div id = "tituloHacerConsulta">
+                <h1> Formulario para hacer una consulta </h1>
+            </div>
+            <div id = "seleccionarConsulta">
+                <table id = "tablaSeleccionarConsulta">
+                    <tr>
+                        <td> Seleccione el tipo de consulta que quiera realizar</td>
+                        <td> 
+                        <select id="tipoForm" class = "selectorTipoForm" onchange="myFunction()">
+                            <option value="COVID">COVID</option>
+                            <option value="Periódica">Periódica</option>
+                            <option value="Otra">Otra</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr id = "filaVacia">
+                        <td colspan= "2"></td>
+                    </tr>
+            </div>
+        
+            <div id = "pintarFormularios">
             <form method="POST" name = "formCOVID">
                 <table id="tablaCOVID">
                     <tr>
                         <td colspan="2">
-                            <pre><b>Formulario para consultas sobre COVID-19   </b></pre>
+                            <pre><b> <h2 class = "tituloForm"> Formulario para consultas sobre COVID-19  <h2> </b></pre>
                         </td>
                     </tr>
                     <tr><td><pre><b>Asunto   </b></pre></td>
@@ -362,8 +377,8 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="enviarCOVID" onclick = "return validaCOVID();">
-                            <input type="reset" name="borrar">
+                            <input type="submit" class = "botonForm" name="enviarCOVID" onclick = "return validaCOVID();">
+                            <input type="reset" class = "botonForm" name="borrar">
                         </td>
                     </tr>
                 </table>
@@ -447,7 +462,7 @@
                 <table id="tablaPeriódica">
                     <tr>
                         <td colspan="2">
-                            <pre><b>Formulario para consultas periódicas   </b></pre>
+                            <pre><b> <h2 class = "tituloForm"> Formulario para consultas periódicas </h2> </b></pre>
                         </td>
                     </tr>
                     <tr><td><pre><b>Asunto   </b></pre></td>
@@ -475,6 +490,7 @@
                                         <option value="nada" selected>...</option>
                                         <?php
                                             foreach($consultasPer as $consulta){
+                                                echo $consulta['ID'];
                                                 ?>
                                                 <option value="<?php echo $consulta['ID']?>">
                                                     <?php echo $consulta['asuntoConsulta'].' día '. $consulta['fecha']?>
@@ -495,8 +511,8 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="enviarPer" onclick = "return validaPeriodica();">
-                            <input type="reset" name="borrar">
+                            <input type="submit" class = "botonForm" name="enviarPer" onclick = "return validaPeriodica();">
+                            <input type="reset" class = "botonForm" name="borrar">
                         </td>
                     </tr>
                 </table>
@@ -512,7 +528,6 @@
                         } else {
                             $consultaPadre = NULL;
                         }
-                        
                         
                         $todasPer= $miPDO->prepare('SELECT * FROM consultaperiodica');
                         $todasPer -> execute();
@@ -545,7 +560,7 @@
                 <table id="tablaOtra">
                     <tr>
                         <td colspan="2">
-                            <pre><b>Formulario para otras consultas   </b></pre>
+                            <pre><b> <h2 class = "tituloForm"> Formulario para otras consultas  </h2> </b></pre>
                         </td>
                     </tr>
                     <tr><td><pre><b>Asunto   </b></pre></td>
@@ -589,8 +604,8 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="enviarOtra" onclick = "return validaOtra();">
-                            <input type="reset" name="borrar">
+                            <input type="submit" class = "botonForm" name="enviarOtra" onclick = "return validaOtra();">
+                            <input type="reset" class = "botonForm" name="borrar">
                         </td>
                     </tr>
                 </table>
@@ -633,7 +648,7 @@
                             endif;              
                     endif ?>
             </form>
-            
+            </div>
         </div>
     </body>
 </html>

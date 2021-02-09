@@ -26,7 +26,7 @@ body {
   padding: 0.5em 3em;
   align-items: center;
   display: flex;
-  height: 110px;
+  height: 120px;
   position: absolute;
   background-image: none;
   background-color: rgb(5, 102, 141);
@@ -44,30 +44,45 @@ body {
   height: 18%;
   width: 113.45px;
   top: -9px;
-  left: 12px;
+  left: 20px;
 }
 .gwd-p-gv4z {
   position: absolute;
-  width: 178px;
-  height: 48px;
+  width: 110px;
+  height: 38px;
   font-family: Oswald;
-  font-size: 25px;
+  font-size: 20px;
   margin: 4px;
-  left: 154px;
-  top: 20px;
+  right:470px;
+  top: 30px;
   text-decoration: none;
 }
-.gwd-p-5vs1 {
-  transform-origin: 50% 50% 0px;
-  width: 268px;
-  left: 620px;
-}
+
 .gwd-p-1qhn {
-  width: 222px;
-  transform-origin: 50% 50% 0px;
-  top: 20px;
-  left: 365px;
+  width: 150px;
+  right: 300px;
 }
+
+.gwd-p-5vs1 {
+  width: 165px;
+  right: 120px;
+}
+.salir{
+  transform-origin: 50% 50% 0px;
+  width: 80px;
+  right: 20px;
+}
+
+.area{
+  position: absolute;
+  height: 20em;
+  width: 30%;
+  top: 0px;
+  left: 140px;
+  color: white;
+  font-size: 25px;
+}
+
 .destacado {
   width: 222px;
   transform-origin: 50% 50% 0px;
@@ -80,13 +95,19 @@ header nav#menu-superior {
   top: 3em;
   margin-right: 2em;
 }
-ul {
-  list-style: none;
-}
+
 nav#menu-superior ul li {
+  display: inline-block;
+  background-color:#02C39A;
+  color:rgb(240, 243, 189);
+}
+
+nav#menu-superior ul li:hover {
   display: inline;
   float: left;
+  background-color:rgb(240, 243, 189);
 }
+
 nav#menu-superior ul li a {
   padding: 1em;
   color: rgb(255, 255, 255);
@@ -100,26 +121,78 @@ nav#menu-superior ul li a:hover {
 }
 
 
-.gwd-li-2971 {
-  left: 104px;
-  top: 16px;
-}
-.gwd-li-1xiy {
-  left: 136px;
-  top: 16px;
+#tituloHacerConsulta{
+  margin: 4px;
+  left: 150px;
+  top: 20px;
+  width: 800px;
+  height: 100px;
+  position: absolute;
+  text-align: left;
+  font-size: 25px;
 }
 
+#seleccionarConsulta{
+  margin: 4px;
+  left: 150px;
+  top: 170px;
+  width: 800px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+}
+
+#pintarFormularios{
+  margin: 4px;
+  left: -5px;
+  top: 120px;
+  width: 800px;
+  height: 100px;
+  position: absolute;
+  text-align: left;
+  
+}
+
+#tablaSeleccionarConsulta{
+  display: table;
+  width: 100%;
+  text-align: center;
+  caption-side: top;
+  background-color: #028090;
+  border-collapse: collapse;
+  color: white;
+  font-size: 20px;
+}
+.selectorTipoForm{
+  background-color: white;
+  color:rgb(5, 102, 141);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#filaVacia{
+  background-color: rgb(240, 243, 189);
+  
+}
+.tituloForm{
+  color:rgb(5, 102, 141);
+  font-weight: bold;
+  font-family: Oswald, "Open Sans", Arial, sans-serif;
+  font-size: 20pt;
+
+}
 .form {
   background-color: rgb(240, 243, 189);
   font-family: Oswald, "Open Sans", Arial, sans-serif;
   font-size: 12pt;
   font-family: Oswald;
   margin: 4px;
-  left: 154px;
+  left: 10px;
   top: 20%;
-  width: 25%;
+  width: 100px;
   height: 100px;
   position: absolute;
+  text-align: left;
 }
 /* 
 #formCOVID{
@@ -139,6 +212,12 @@ nav#menu-superior ul li a:hover {
 #tablaOtra{
   display: none;
   background-color: white;
+}
+.botonForm{
+  background-color: #028090;
+  color: white;
+  font-weight: bold;
+  font-size:15px;
 }
 
 #contenedor { 
@@ -160,11 +239,96 @@ nav#menu-superior ul li a:hover {
   display: table;
 }
 
+
+#tituloPerfilPaciente{
+  margin: 4px;
+  left: 115px;
+  top: 140px;
+  width: 800px;
+  height: 100px;
+  position: absolute;
+  text-align: left;
+  font-size: 20px;
+}
+.divTablaPerfilPac{
+  margin: 4px;
+  left: 115px;
+  top: 240px;
+  width: 1000px;
+  height: 100px;
+  position: absolute;
+  text-align: left;
+  font-size: 25px;
+}
+
+.tablaPerfil td {
+  padding: 10px;
+  border-bottom: transparent;
+  width: 400px;
+  text-decoration: none;
+  text-align: center;
+  background-color: white;
+}
+
+.tablaPerfil th{
+  background-color: #028090;
+  color: white;
+  width: 400px;
+}
+
+.tablaPerfil a{
+  color:black;
+  text-decoration: none;
+}
+
+#tituloPerfilConsultaPac{
+  margin: 4px;
+  left: 115px;
+  top: 150px;
+  width: 800px;
+  height: 100px;
+  position: absolute;
+  text-align: left;
+  font-size: 20px;
+}
+.divTablaPerfilConsulta{
+  margin: 4px;
+  left: 115px;
+  top: 240px;
+  width: 1000px;
+  height: 100px;
+  position: absolute;
+  text-align: left;
+  font-size: 25px;
+}
+
+.perfilConsulta td {
+  padding: 10px;
+  border-bottom: transparent;
+  width: 400px;
+  text-decoration: none;
+  text-align: center;
+  background-color: white;
+}
+
+.perfilConsulta th{
+  background-color: #028090;
+  color: white;
+  width: 400px;
+}
+
+.perfilConsulta a{
+  color:black;
+  text-decoration: none;
+}
+
+
+
 .Listado_consultas_paciente {
   margin: 20px;
-  left: 35px;
+  left: 75px;
   top: 20%;
-  width: 100%;
+  width: 90%;
   height: 100px;
   position: absolute;
 
@@ -172,7 +336,7 @@ nav#menu-superior ul li a:hover {
 .Listado_consultas_paciente div {
   top: 5em;
   width: 100%;
-  height: 100px;
+  height: 10px;
   position: absolute;
   text-decoration: none;
 
@@ -204,40 +368,12 @@ nav#menu-superior ul li a:hover {
   color: white;
 }
 .tablaListadoConsultasPaciente tr:hover{
-  background-color: #02C39A;
-  color: white;
+  color:white;
+  background-color:#02C39A;
   
 }
 .tablaListadoConsultasPaciente a:hover{
   color: white;
   text-decoration: underline;
-}
-
-.perfil caption, td, th {
-  padding: 0.8em;
-
-}
-.perfil th, td {
-  padding: 10px;
-  border-bottom: 10px solid rgb(240, 243, 189);
-  width: 25%;
-  text-decoration: none;
-}
-.perfil a{
-  text-decoration: none;
-  color:black;
-}
-
-.perfil th{
-  background-color: #A5AC20;
-  color: white;
-}
-.perfil tr:hover{
-  background-color: #79DBAC;
-  color: white;
-  
-}
-.perfil a:hover{
-  color: white;
-  text-decoration: underline;
+  background-color:#02C39A;
 }

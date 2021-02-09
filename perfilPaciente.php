@@ -23,18 +23,21 @@
 ?>
   <div class="gwd-div-lm07"></div>
   <img src="assets/logo.png" class="gwd-img-fa6j">
+  <h4 class = "area" >Área de paciente</h4>
   <nav id="menu-superior">
     <ul>
-      <li><a href="listaConsultasPaciente.php?id=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z" id="listaConsultasPaciente">Consultas</h3></a></li>
-      <li><a href="hacerConsulta.php?IDPaciente=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="hacerConsulta">Hacer consulta</h3></a></li>
-      <li class="gwd-li-2971"><a href="perfilPaciente.php?id=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="PerfilPaciente">Datos Personales</h3></a></li>
-      <li class="gwd-li-1xiy"><a href="login.php"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li> 
+      <li class="gwd-p-gv4z"><a href="listaConsultasPaciente.php?id=<?php echo $IDPaciente?>">Consultas</a></li>
+      <li class="gwd-p-gv4z gwd-p-1qhn"><a href="hacerConsulta.php?IDPaciente=<?php echo $IDPaciente?>">Hacer consulta</a></li>
+      <li class="gwd-p-gv4z gwd-p-5vs1"><a href="perfilPaciente.php?id=<?php echo $IDPaciente?>">Datos Personales</a></li>
+      <li class="gwd-p-gv4z salir"><a href="login.php">Salir</a></li> 
     </ul>
   </nav>
   <div class="contenedor gwd-div-yyjb">
-    <h1>Datos personales de los pacientes</h1>
-    <div>
-    <table class="perfil">
+    <div id="tituloPerfilPaciente">
+      <h1>Datos personales del paciente</h1>
+    </div>
+    <div class = "divTablaPerfilPac">
+    <table class="tablaPerfil">
         <tbody>
         <?php
                 $pac->execute(array('id' => $_GET['id']));

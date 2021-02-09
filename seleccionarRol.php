@@ -25,28 +25,32 @@
 </head>
 
 <body class="htmlNoPages">
-  <div class="gwd-div-lm07"></div>
+<div class="gwd-div-lm07"></div>
   <img src="assets/logo.png" class="gwd-img-fa6j">
+  <h4 class = "area" >Área de médico administrador</h4>
   <nav id="menu-superior">
     <ul>
-      <li><a href='seleccionarRol.php?idMed=<?php echo $idMed?>'><h3 class="gwd-p-gv4z" id="seleccionarRol">Seleccionar Rol</h3></a></li>
-      <li><a href="login.php"><h3 class="gwd-p-gv4z gwd-p-1qhn " id="salir">Salir</h3></a></li>
+      <li class="gwd-p-gv4z"><a href='seleccionarRol.php?idMed=<?php echo $idMed?>'>Seleccionar Rol</a></li>
+      <li class="gwd-p-gv4z gwd-p-1qhn "><a href="login.php">Salir</a></li>
     </ul>
   </nav>
+  <div id = 'tituloSeccionRol'>
+    <h1> Rol del usuario </h1>
+  </div>
   <div class="form">
     <form name="formulario" method="POST">
       <table id="tablaRol">
         <tbody>
           <tr>
-            <td><pre><b>Rol   </b></pre></td>
-            <td>
+            <td><pre><b>Seleccione el rol que quiere usar:   </b></pre></td>
+            <td colspan>
               <input type="radio" name="rol" value="Medico">Médico
               <input type="radio" name="rol" value="MedicoJefe">Médico Jefe
             </td>
           </tr>
           <tr>
-            <td colspan="2">
-              <input type="button" name="enviar" value="Seleccionar" onclick="return rolSeleccionado();">
+            <td id = 'filaBoton' colspan="2">
+              <input type="button" id = "botonRol" name="enviar" value="Seleccionar" onclick="return rolSeleccionado();">
               <!-- meter login para volver -->
             </td>
           </tr>

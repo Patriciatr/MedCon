@@ -57,14 +57,13 @@ $idMed=$_GET['idMed'];
 
 <body class="htmlNoPages">
 
-
-
   <div class="gwd-div-lm07"></div>
   <img src="assets/logo.png" class="gwd-img-fa6j">
+  <h4 class = "area" >Área de médico administrador</h4>
   <nav id="menu-superior">
     <ul>
-      <li><a href='seleccionarRol.php?idMed=<?php echo $idMed?>'><h3 class="gwd-p-gv4z" id="seleccionarRol">Seleccionar Rol</h3></a></li>
-      <li class="gwd-li-13d3"><a href="login.php"><h3 class="gwd-p-gv4z gwd-p-1qhn " id="salir">Salir</h3></a></li>
+      <li class="gwd-p-gv4z"><a href='seleccionarRol.php?idMed=<?php echo $idMed?>'>Seleccionar Rol</a></li>
+      <li class="gwd-p-gv4z gwd-p-1qhn "><a href="login.php">Salir</a></li>
     </ul>
   </nav>
 </body>
@@ -136,7 +135,7 @@ $idMed=$_GET['idMed'];
                         Seleccione el paciente del médico '.$medico['Nombremed']." ".$medico['Apellidosmed'].' que quiere desasignar
                       </td>
                       <td>
-                        <select name="pacienteBorrar" >';
+                        <select name="pacienteBorrar" class = "selectorPacientes">';
 
                           $consultaPacMedico = $miPDO -> prepare('SELECT * FROM paciente WHERE Medico like :ID');
                           $consultaPacMedico -> execute(array('ID' => $medico['id']));
@@ -156,7 +155,7 @@ $idMed=$_GET['idMed'];
                         '</select>
                       </td>
                       <td>
-                        <input type="submit" name="enviar" value="Borrar asignación">
+                        <input type="submit" class = "botonEnviar" name="enviar" value="Enviar">
                       </td>
                     </tr>
                    </form> 
@@ -166,7 +165,7 @@ $idMed=$_GET['idMed'];
                         Seleccione el paciente que quiere asignar
                       </td>
                       <td>
-                        <select name="pacienteCrear" >';
+                        <select name="pacienteCrear" class = "selectorPacientes">';
 
                         $consultaPacSinMedico = $miPDO -> prepare('SELECT * FROM paciente WHERE Medico like -1');
                         $consultaPacSinMedico -> execute();
@@ -186,7 +185,7 @@ $idMed=$_GET['idMed'];
                       </td>
                       <td>
                         <input type="hidden" name="medicoID" value="'.$medicoID.'">
-                        <input type="submit" name="enviar" value="Crear asignación">
+                        <input type="submit" class = "botonEnviar" name="enviar" value="Enviar">
                       </td>
                     </tr>
                   </form>';
