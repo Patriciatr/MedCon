@@ -36,6 +36,11 @@
                     </tr>
                     <tr>
                         <td colspan="2">
+                            <input type="checkbox" name="respondida">La consulta ha sido respondida por completo.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
                             <input type="checkbox" name="datos">Acepto que esta información se le muestre al paciente.
                         </td>
                     </tr>
@@ -48,19 +53,38 @@
                 </table>
                 <?php
             if(isset($_REQUEST['enviar'])):
-                $target_dir = "uploads/";
-                $archSubir = $target_dir . "arch-Consulta". $IDconsulta . "-" .  basename($_FILES["archivo"]["name"]);
-                $uploadOk = 1;
+                $archSubir = NULL;
+                if (!empty($_FILES["archivo"]["name"])){
+                    $target_dir = "uploads/";
+                    $archSubir = $target_dir . "arch-Consulta". $IDconsulta . "-" .  basename($_FILES["archivo"]["name"]);
+                    $uploadOk = 1;
 
-                // Check if $uploadOk is set to 0 by an error
-                if ($uploadOk == 0) {
-                    echo "Sorry, your file was not uploaded.";
+                    // Check if $uploadOk is set to 0 by an error
+                    if ($uploadOk == 0) {
+                        echo "Sorry, your file was not uploaded.";
 
-                // if everything is ok, try to upload file
-                } else {
-                    move_uploaded_file($_FILES["archivo"]["tmp_name"], $archSubir);
+                    // if everything is ok, try to upload file
+                    } else {
+                        move_uploaded_file($_FILES["archivo"]["tmp_name"], $archSubir);
+                    }
                 }
-                
+
+                // $consultaBorrar = $miPDO -> prepare('UPDATE paciente SET Medico = -1 WHERE DNI = :dni');
+                // $ok = $consultaBorrar -> execute(array('dni' => $dniPacBorrar));
+
+                if(isset($_POST['respondida'])){
+                    if($IDconsulta[0]=="c"){
+                        $actualizar = $miPDO -> prepare('UPDATE `consultacovid` SET `respondida`=1 WHERE `ID` LIKE :IDconsulta');
+                        $ok = $actualizar -> execute(array('IDconsulta' => $IDconsulta)); 
+                    } else if($IDconsulta[0]=="o"){
+                        $actualizar = $miPDO -> prepare('UPDATE `consultaotra` SET `respondida`=1 WHERE `ID` LIKE :IDconsulta');
+                        $ok = $actualizar -> execute(array('IDconsulta' => $IDconsulta));
+                    } else if($IDconsulta[0]=="p"){
+                        $actualizar = $miPDO -> prepare('UPDATE `consultaperiodica` SET `respondida`=1 WHERE `ID` LIKE :IDconsulta');
+                        $ok = $actualizar -> execute(array('IDconsulta' => $IDconsulta)); 
+                    }
+                }
+
                 $texto= isset($_POST['textoRespuesta']) ? $_POST['textoRespuesta'] : null;
                 $archivo= $archSubir;
                 $fecha = date('Y-m-d');
@@ -76,8 +100,7 @@
                     ));
                     $miPDO -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
                     
-                    if($ok) echo 'Insertado correctamente';
-                                          
+                    if($ok) echo 'Insertado correctamente';                                          
             endif ?>
             </form>
         </div>
