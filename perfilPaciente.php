@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Paciente</title>
+  <title>Datos personales</title>
+  <link rel="icon" href="assets/logo.ico" type="image/ico">
   <link href="styles/estiloPacientes.css" rel="stylesheet">
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
   <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
@@ -23,14 +24,14 @@
     <ul>
       <li><a href="listaConsultasPaciente.php"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas</h3></a></li>
       <li><a href="formulariosPacientes.php"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="haceronsultas">Hacer consulta</h3></a></li>
-      <li class="gwd-li-2971"><a href="perfilPaciente.php"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
-      <li class="gwd-li-1xiy"><a href="desconectar.php"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
+      <li><a href="perfilPaciente.php"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
+      <li ><a href="desconectar.php"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
     </ul>
   </nav>
   <div class="contenedor gwd-div-yyjb">
     <h1>Datos personales de los pacientes</h1>
     <div>
-    <table border="1">
+    <table class="perfil">
         <tbody>
         <?php
                 $pac->execute(array('id' => $_GET['id']));
@@ -44,7 +45,7 @@
                 echo "<tr><th>Sexo</th><td>" . $v['Sexo'] . "</td></tr>";
             ?>
         </body>
-    <table border="1">
+    <table class="perfil">
         <tbody>
         <?php
                 $med = $miPDO->prepare("SELECT * FROM medico, paciente WHERE medico.id = paciente.Medico");

@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Paciente</title>
-  <link href="styles/estiloPacientes.css" rel="stylesheet">
+  <title>Perfil del paciente</title>
+  <link rel="icon" href="assets/logo.ico" type="image/ico">
+  <link href="styles/estiloMedicos.css" rel="stylesheet">
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
   <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
   <style type="text/css"></style>
@@ -22,14 +23,14 @@
   <nav id="menu-superior">
     <ul>
     <li><a href="listaConsultasMedico.php"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
-      <li><a href="listaPacientesMedico"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
+      <li ><a href="listaPacientesMedico.php"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
       <li><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
     </ul>
   </nav>
   <div class="contenedor gwd-div-yyjb">
     <h1>Datos personales de los pacientes</h1>
     <div>
-    <table border="1">
+    <table class="perfil">
         <tbody>
         <?php
                 $pac->execute(array('id' => $_GET['id']));

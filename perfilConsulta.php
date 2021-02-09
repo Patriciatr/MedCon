@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Medico</title>
+  <title>Perfil de la consulta</title>
+  <link rel="icon" href="assets/logo.ico" type="image/ico">
   <link href="styles/estiloMedicos.css" rel="stylesheet">
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
   <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css">
@@ -23,26 +24,20 @@
         $covid = $miPDO->prepare("SELECT * FROM consultacovid WHERE consultacovid.ID = :ID");
         $covid->execute(array('ID' => $_GET['ID']));
         $v = $covid->fetch();
-        $pacient = $miPDO->prepare("SELECT * FROM consultacovid, paciente WHERE paciente.dni = consultacovid.DNIpaciente");
-        $pacient->execute(array('ID' => $_GET['ID']));
-        $p = $pacient->fetch();
+
     }
 	
     else if($str[0]=="p"){
         $periodico = $miPDO->prepare("SELECT * FROM consultaperiodica WHERE consultaperiodica.ID = :ID");
         $periodico->execute(array('ID' => $_GET['ID']));
         $v = $periodico->fetch();
-        $pacient = $miPDO->prepare("SELECT * FROM consultaperiodica, paciente WHERE paciente.dni = consultaperiodica.DNIpaciente");
-        $pacient->execute(array('ID' => $_GET['ID']));
-        $p = $pacient->fetch();
+
       }
     else if($str[0]=="o"){
         $otra = $miPDO->prepare("SELECT * FROM consultaotra WHERE consultaotra.ID = :ID");
         $otra->execute(array('ID' => $_GET['ID']));
         $v = $otra->fetch();
-        $pacient = $miPDO->prepare("SELECT * FROM consultaotra, paciente WHERE paciente.dni = consultaotra.DNIpaciente");
-        $pacient->execute(array('ID' => $_GET['ID']));
-        $p = $pacient->fetch();
+
       }
     
 
@@ -52,19 +47,25 @@
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
     <ul>
-      <li><a href="listConsultas.html"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
-      <li class="gwd-li-yj6f"><a href="ListPacientes.html"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
+    <li><a href="listaConsultasMedico.php"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
+      <li ><a href="listaPacientesMedico.php"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
       <li><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
     </ul>
   </nav>
   <div class="contenedor">
     <h1>Datos de consulta</h1> 
-    <table id="tablaCOVID" border="1">
+
+<!-- ***************************************  COVID ********************************************************************-->
+
+    <table class="perfil">
       <tbody>
       <?php
           print_r($str);
 
           if($str[0]=="c"){
+          $pacient = $miPDO->prepare("SELECT * FROM consultacovid, paciente WHERE paciente.id = consultacovid.IDpaciente AND consultacovid.ID = :ID");
+          $pacient->execute(array('ID' => $_GET['ID']));
+          $p = $pacient->fetch();
             echo "<tr><th>DNI</th><td>" . $p['DNI'] ."</td></tr>";
             echo "<tr><th>Nombre</th><td>" . $p['Nombre'] ."</td></tr>";
             echo "<tr><th>Apellidos</th><td>" . $p['Apellidos'] ."</td></tr>";
@@ -91,6 +92,7 @@
             echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($v['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Fumador</th><td>" . ($v['fumador'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
+            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }
 
           
@@ -98,11 +100,15 @@
         </tbody>
       </table>
       
+<!-- ***************************************  PERIODICA ********************************************************************-->
       
-      <table id="tablaPeriodica" border="1">
+      <table class="perfil">
       <tbody>
       <?php   
-          if($str[0]=="p"){          
+          if($str[0]=="p"){      
+            $pacient = $miPDO->prepare("SELECT * FROM consultaperiodica, paciente WHERE paciente.id = consultaperiodica.IDpaciente AND consultaperiodica.ID = :ID");
+            $pacient->execute(array('ID' => $_GET['ID']));
+            $p = $pacient->fetch();    
             echo "<tr><th>DNI</th><td>" . $p['DNI'] ."</td></tr>";
             echo "<tr><th>Nombre</th><td>" . $p['Nombre'] ."</td></tr>";
             echo "<tr><th>Apellidos</th><td>" . $p['Apellidos'] ."</td></tr>";
@@ -112,14 +118,20 @@
             echo "<tr><th>Tema</th><td>" . $v['tema'] .'</td></tr>';
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
+            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }?>
         </tbody>
       </table>
 
-      <table id="tablaOtra" border="1">
+<!-- ***************************************  OTRA ********************************************************************-->
+
+      <table class="perfil">
       <tbody>
       <?php
           if($str[0]=="o"){   
+            $pacient = $miPDO->prepare("SELECT * FROM consultaotra, paciente WHERE paciente.id = consultaotra.IDpaciente AND consultaotra.ID = :ID");
+            $pacient->execute(array('ID' => $_GET['ID']));
+            $p = $pacient->fetch();
             echo "<tr><th>DNI</th><td>" . $p['DNI'] ."</td></tr>";
             echo "<tr><th>Nombre</th><td>" . $p['Nombre'] ."</td></tr>";
             echo "<tr><th>Apellidos</th><td>" . $p['Apellidos'] ."</td></tr>";
@@ -127,13 +139,11 @@
             echo "<tr><th>Sexo</th><td>" . $p['Sexo'] . "</td></tr>";
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
+            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }  ?>
         </tbody>
       </table>
 
-      <?php
-        echo "<td><a href ='formularioRespuesta.php?ID=". $p['ID'] ."'><input type=button value=Responder></a></td>";
-      ?>
     </div>
   </body>
 
