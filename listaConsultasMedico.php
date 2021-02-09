@@ -62,7 +62,7 @@
                     <td>'.$consulta['fecha'].'</td>
                     <td>'.$consulta['asuntoConsulta'].'</td>
                     <td>'.$consulta['Nombre'].' '.$consulta['Apellidos'].'</td>
-                    <td><a href = "perfilConsulta.php?ID='.$consulta['ID'].'&idMed='.$idMedico.'"> Detalles </a></td>
+                    <td><a href = "perfilConsultaMedico.php?ID='.$consulta['ID'].'&idMed='.$idMedico.'"> Detalles </a></td>
                 </tr>';
               }
             ?>
