@@ -37,7 +37,7 @@
                         <td><textarea id="textoRespuesta" name="textoRespuesta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escribe tu respuesta"></textarea></td>
                     </tr>
                     <tr><td><pre><b>Imagen o Archivo   </b></pre></td>
-                        <td><input class = "botonEscribirRespuesta" type="file" name="archivo" id="archivo"></td>
+                        <td><input class = "botonEscribirRespuesta" type="file" name="archivo"></td>
                     </tr>
                     <tr>
                         <td colspan="2">

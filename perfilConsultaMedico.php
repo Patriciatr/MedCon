@@ -131,7 +131,7 @@
                         echo "<tr><th> Contestación</th><td>" . $cnt .'</td></tr>';
                         echo "<tr><th> Texto </th><td>" . $con['texto'] ."</td></tr>";
                         if($con['archivos'] != NULL){
-                          echo "<td><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td>";
+                          echo "<tr><td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td></tr>";
                         }
                         echo "<br></br>";
                     }  
@@ -193,7 +193,7 @@
                         echo "<tr><th> Contestación</th><td>" . $cnt .'</td></tr>';
                         echo "<tr><th> Texto </th><td>" . $con['texto'] ."</td></tr>";
                         if($con['archivos'] != NULL){
-                          echo "<td><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td>";
+                          echo "<tr><td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td></tr>";
                         }
                         echo "<br></br>";
                     }  
@@ -224,8 +224,8 @@
             $p = $pad->fetch();
             $bool = $p ? 'false': 'true';
             if($bool != 'true' ){
-                echo "<tr><th>Consulta siguiente</th><td><a href ='perfilConsultaMedico.php?ID=".$p['ID']."&idPac=".$IDPaciente."'><input type=button class = 'botonForm' value=Siguiente></a></td></tr>";
-              }  
+                echo "<tr><td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td></tr>";
+            }  
               echo "<tr><td id='archivo' colspan='2'><a href ='escribirRespuesta.php?ID=". $v['ID'] ."&Medico=". $idMedico ."'><input type=button class = 'botonForm' value=Responder></a></td></tr>";
             
           }?>
@@ -250,7 +250,7 @@
                         echo "<tr><th> Contestación</th><td>" . $cnt .'</td></tr>';
                         echo "<tr><th> Texto </th><td>" . $con['texto'] ."</td></tr>";
                         if($con['archivos'] != NULL){
-                          echo "<td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td>";
+                          echo "<tr><td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td></tr>";
                         }
                     }  
                   }
