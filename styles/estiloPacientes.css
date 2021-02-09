@@ -128,14 +128,17 @@ nav#menu-superior ul li a:hover {
 
 #tablaCOVID{
   display: table;
+  background-color: white;
 }
 
 #tablaPeriódica{
   display: none;
+  background-color: white;
 }
 
 #tablaOtra{
   display: none;
+  background-color: white;
 }
 
 #contenedor { 
@@ -156,11 +159,6 @@ nav#menu-superior ul li a:hover {
   content: "";
   display: table;
 }
-
-
-
-
-
 
 .Listado_consultas_paciente {
   margin: 20px;
