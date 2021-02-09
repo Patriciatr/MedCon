@@ -53,9 +53,9 @@ p {
     font-family: Oswald;
     font-size: 25px;
     margin: 4px;
-    left: 154px;
+    right: 254px;
     top: 20px;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   .form {
@@ -89,7 +89,7 @@ p {
     width: 222px;
     transform-origin: 50% 50% 0px;
     top: 20px;
-    left: 365px;
+    right: 15px;
   }
   header nav#menu-superior {
     position: absolute;
@@ -104,10 +104,21 @@ p {
     display: inline;
     float: left;
   }
+  nav#menu-superior ul li:hover {
+    display: inline;
+    float: left;
+  }
+
   nav#menu-superior ul li a {
     padding: 1em;
     color: rgb(255, 255, 255);
     text-decoration: none;
+  }
+  nav#menu-superior ul li a:hover {
+    padding: 1em;
+    color:#02C39A;
+    text-decoration: underline;
+    background-color: #F0F3BD;
   }
   .gwd-li-2971 {
     left: 104px;

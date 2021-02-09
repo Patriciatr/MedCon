@@ -55,7 +55,7 @@ p {
     margin: 4px;
     left: 154px;
     top: 20px;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   .form {
@@ -69,15 +69,6 @@ p {
     width: 25%;
     height: 100px;
     position: absolute;
-  }
-
-  #tablaRespuesta{
-    display: table;
-    width: 90%;
-    text-align: left;
-    caption-side: top;
-    background-color: white;
-    border-collapse: collapse;
   }
 
   .gwd-p-5vs1 {

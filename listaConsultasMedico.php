@@ -38,17 +38,18 @@ require('dbmedcon.php');
               <?php
               
 
-              $dniMed = isset($_GET['dniMed']) ?$_GET['dniMed']: null; 
-              $consultaCovid = $miPDO -> prepare('SELECT consultacovid.ID, consultacovid.fecha, consultacovid.asuntoConsulta, paciente.Nombre, paciente.Apellidos, paciente.DNI FROM `consultacovid`, `paciente` WHERE paciente.Medico LIKE :dniMed AND consultacovid.DNIpaciente LIKE paciente.DNI AND consultacovid.respondida LIKE 0');
-              $consultaCovid -> execute(array('dniMed' => $dniMed));
+              $idMedico = isset($_GET['idMed']) ?$_GET['idMed']: null; 
+              $consultaCovid = $miPDO -> prepare('SELECT consultacovid.ID, consultacovid.fecha, consultacovid.asuntoConsulta, paciente.Nombre, paciente.Apellidos, paciente.id FROM `consultacovid`, `paciente` WHERE paciente.Medico LIKE :idMed AND consultacovid.IDpaciente LIKE paciente.id AND consultacovid.respondida LIKE 0');
+              $consultaCovid -> execute(array('idMed' => $idMedico));
               $consultasCovid = $consultaCovid -> fetchAll();
+              
 
-              $consultaOtra = $miPDO -> prepare('SELECT consultaotra.ID, consultaotra.fecha, consultaotra.asuntoConsulta, paciente.Nombre, paciente.Apellidos, paciente.DNI FROM `consultaotra`, `paciente` WHERE paciente.Medico LIKE :dniMed AND consultaotra.DNIpaciente LIKE paciente.DNI AND consultaotra.respondida LIKE 0');
-              $consultaOtra -> execute(array('dniMed' => $dniMed));
+              $consultaOtra = $miPDO -> prepare('SELECT consultaotra.ID, consultaotra.fecha, consultaotra.asuntoConsulta, paciente.Nombre, paciente.Apellidos, paciente.id FROM `consultaotra`, `paciente` WHERE paciente.Medico LIKE :idMed AND consultaotra.IDpaciente LIKE paciente.id AND consultaotra.respondida LIKE 0');
+              $consultaOtra -> execute(array('idMed' => $idMedico));
               $consultasOtra = $consultaOtra -> fetchAll();
 
-              $consultaPeriodica = $miPDO -> prepare('SELECT consultaperiodica.ID, consultaperiodica.fecha, consultaperiodica.asuntoConsulta, paciente.Nombre, paciente.Apellidos, paciente.DNI FROM `consultaperiodica`, `paciente` WHERE paciente.Medico LIKE :dniMed AND consultaperiodica.DNIpaciente LIKE paciente.DNI AND consultaperiodica.respondida LIKE 0');
-              $consultaPeriodica -> execute(array('dniMed' => $dniMed));
+              $consultaPeriodica = $miPDO -> prepare('SELECT consultaperiodica.ID, consultaperiodica.fecha, consultaperiodica.asuntoConsulta, paciente.Nombre, paciente.Apellidos, paciente.id FROM `consultaperiodica`, `paciente` WHERE paciente.Medico LIKE :idMed AND consultaperiodica.IDpaciente LIKE paciente.id AND consultaperiodica.respondida LIKE 0');
+              $consultaPeriodica -> execute(array('idMed' => $idMedico));
               $consultasPeriodica = $consultaPeriodica -> fetchAll();
 
               $consultasTodas = array_merge($consultasCovid, $consultasOtra, $consultasPeriodica);
@@ -59,7 +60,7 @@ require('dbmedcon.php');
                     <td>'.$consulta['fecha'].'</td>
                     <td>'.$consulta['asuntoConsulta'].'</td>
                     <td>'.$consulta['Nombre'].' '.$consulta['Apellidos'].'</td>
-                    <td><a href = "perfilConsulta.php?id='.$consulta['ID'].'"> Detalles </a></td>
+                    <td><a href = "perfilConsulta.php?ID='.$consulta['ID'].'"> Detalles </a></td>
                 </tr>';
               }
             ?>

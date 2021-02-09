@@ -39,9 +39,9 @@ require('dbmedcon.php');
               <?php
               
 
-              $dniMed = isset($_GET['dniMed']) ?$_GET['dniMed']: null; 
-              $consulta = $miPDO -> prepare('SELECT * FROM paciente WHERE Medico like :dniMed');
-              $consulta -> execute(array('dniMed' => $dniMed));
+              $idMed = isset($_GET['idMed']) ?$_GET['idMed']: null; 
+              $consulta = $miPDO -> prepare('SELECT * FROM paciente WHERE Medico like :idMed');
+              $consulta -> execute(array('idMed' => $idMed));
               $pacientes = $consulta -> fetchAll();
 
               foreach($pacientes as $paciente){
@@ -50,7 +50,7 @@ require('dbmedcon.php');
                         <td>'.$paciente['DNI'].'</td>
                         <td>'.$paciente['Nombre'].'</td>
                         <td>'.$paciente['Apellidos'].'</td>
-                        <td><a href = "perfilPaciente.php?dni='.$paciente['DNI'].'"> Detalles </a></td>
+                        <td><a href = "perfilPacMedico.php?id='.$paciente['id'].'"> Detalles </a></td>
                     </tr>';
               }
 

@@ -44,6 +44,7 @@
         $pacient->execute(array('ID' => $_GET['ID']));
         $p = $pacient->fetch();
       }
+    
 
 }
   ?>
@@ -61,6 +62,8 @@
     <table id="tablaCOVID" border="1">
       <tbody>
       <?php
+          print_r($str);
+
           if($str[0]=="c"){
             echo "<tr><th>DNI</th><td>" . $p['DNI'] ."</td></tr>";
             echo "<tr><th>Nombre</th><td>" . $p['Nombre'] ."</td></tr>";
@@ -89,6 +92,8 @@
             echo "<tr><th>Fumador</th><td>" . ($v['fumador'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
           }
+
+          
           ?>
         </tbody>
       </table>

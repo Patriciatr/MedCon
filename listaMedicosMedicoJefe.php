@@ -6,7 +6,7 @@ require('dbmedcon.php');
 <html>
 
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <title>Medico</title>
   <link href="styles/estiloMedicoJefe.css" rel="stylesheet">
   <meta name="generator" content="Google Web Designer 10.0.2.0105">

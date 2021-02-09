@@ -42,19 +42,19 @@ require('dbmedcon.php');
 
               <?php
               
-            // Comprobar que el DNI del paciente se pasa como DNI y SIN comillas
-              $dniPac = isset($_GET['DNI']) ?$_GET['DNI']: null; 
+            // Comprobar que el id del paciente se pasa como id y SIN comillas
+              $idPac = isset($_GET['id']) ?$_GET['id']: null; 
 
-              $consultaCovid = $miPDO -> prepare('SELECT ID, fecha, respondida, asuntoConsulta FROM consultacovid WHERE DNIpaciente LIKE :dniPac');
-              $consultaCovid -> execute(array('dniPac' => $dniPac));
+              $consultaCovid = $miPDO -> prepare('SELECT ID, fecha, respondida, asuntoConsulta FROM consultacovid WHERE IDpaciente LIKE :idPac');
+              $consultaCovid -> execute(array('idPac' => $idPac));
               $consultasCovid = $consultaCovid -> fetchAll();
 
-              $consultaOtra = $miPDO -> prepare('SELECT ID, fecha, respondida, asuntoConsulta FROM `consultaotra` WHERE DNIpaciente LIKE :dniPac');
-              $consultaOtra -> execute(array('dniPac' => $dniPac));
+              $consultaOtra = $miPDO -> prepare('SELECT ID, fecha, respondida, asuntoConsulta FROM `consultaotra` WHERE IDpaciente LIKE :idPac');
+              $consultaOtra -> execute(array('idPac' => $idPac));
               $consultasOtra = $consultaOtra -> fetchAll();
 
-              $consultaPeriodica = $miPDO -> prepare('SELECT ID, fecha, respondida, asuntoConsulta FROM `consultaperiodica` WHERE DNIpaciente LIKE :dniPac');
-              $consultaPeriodica -> execute(array('dniPac' => $dniPac));
+              $consultaPeriodica = $miPDO -> prepare('SELECT ID, fecha, respondida, asuntoConsulta FROM `consultaperiodica` WHERE IDpaciente LIKE :idPac');
+              $consultaPeriodica -> execute(array('idPac' => $idPac));
               $consultasPeriodica = $consultaPeriodica -> fetchAll();
 
               $consultasTodas = array_merge($consultasCovid, $consultasOtra, $consultasPeriodica);
@@ -73,7 +73,7 @@ require('dbmedcon.php');
                   <td>'.$consulta['fecha'].'</td>
                   <td>'.$consulta['asuntoConsulta'].'</td>
                   <td>'.$respondida.'</td>
-                  <td><a href = "perfilConsulta.php?id='.$consulta['ID'].'"> Detalles </a></td>
+                  <td><a href = "perfilConsulta.php?ID='.$consulta['ID'].'"> Detalles </a></td>
               </tr>';
               }
               ?>
