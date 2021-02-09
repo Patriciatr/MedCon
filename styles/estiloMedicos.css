@@ -160,7 +160,6 @@ p {
 
 
 
-
 .Listado_consultas_medico {
   margin: 20px;
   left: 35px;
@@ -233,13 +232,7 @@ a{
   text-decoration: underline;
 }
 
-table {
-  width: 90%;
-  text-align: left;
-  caption-side: top;
-  background-color: white;
-  border-collapse: collapse;
-}
+
 .perfil caption, td, th {
   padding: 0.8em;
 
@@ -270,7 +263,7 @@ table {
 }
 
 .form2 {
-  background-color: rgb(240, 243, 189);
+  
   font-family: Oswald, "Open Sans", Arial, sans-serif;
   font-size: 12pt;
   font-family: Oswald;
@@ -282,8 +275,8 @@ table {
   position: absolute;
 }
 .botonEscribirRespuesta{
-  background-color:rgb(5, 102, 141);
-  color: white;
+  color:white;
+  background-color: #05668D;
   border-color:transparent;
   font-size:15px;
 }
@@ -335,4 +328,10 @@ table {
 #filaBotonesRespuesta{
   background-color: #F0F3BD;
   text-align: center;
+}
+.botonForm{
+  background-color: #028090;
+  color: white;
+  font-weight: bold;
+  font-size:15px;
 }
