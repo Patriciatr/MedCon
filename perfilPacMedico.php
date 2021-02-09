@@ -44,9 +44,57 @@
                 echo "<tr><th>Dirección</th><td>" . $v['Direccion'] . "</td></tr>";
                 echo "<tr><th>Numero de la seguridad social</th><td>" . $v['NumSS'] . "</td></tr>";
                 echo "<tr><th>Sexo</th><td>" . $v['Sexo'] . "</td></tr>";
+                
+                    
             ?>
         </body>
         </table>
+        <h1>Listado de las consultas realizadas</h1>
+      
+    <div>
+          <table class = "tablaListadoConsultasPaciente">
+              <tr>
+                  <th>Fecha</th>
+                  <th>Asunto</th>
+                  <th> Estado</th>
+                  <th> Detalles</th>
+              </tr>
+
+              <?php
+
+              $cov = $miPDO->prepare("SELECT * FROM consultacovid, medico, paciente WHERE medico.id = paciente.Medico AND consultacovid.IDpaciente = :id AND paciente.id = :id  ");
+              $peri = $miPDO->prepare("SELECT * FROM consultaperiodica, medico, paciente WHERE medico.id = paciente.Medico AND consultaperiodica.IDpaciente = :id AND paciente.id = :id ");
+              $ot = $miPDO->prepare("SELECT * FROM consultaotra, medico, paciente WHERE medico.id = paciente.Medico AND consultaotra.IDpaciente = :id AND paciente.id = :id ");
+
+              $cov->execute(array('id' => $_GET['id']));
+              $peri->execute(array('id' => $_GET['id']));
+              $ot->execute(array('id' => $_GET['id']));
+
+              $c = $cov->fetchAll();
+              $p = $peri->fetchAll();
+              $o = $ot->fetchAll(); 
+
+              $consultasTodas = array_merge($c, $p, $o);
+
+
+              foreach($consultasTodas as $consulta){
+                if($consulta['respondida'] == 0 ){
+                    $respondida = "Sin responder";
+                }
+                else{
+                    $respondida = "Respondida";
+                }
+
+                echo '
+              <tr>
+                  <td>'.$consulta['fecha'].'</td>
+                  <td>'.$consulta['asuntoConsulta'].'</td>
+                  <td>'.$respondida.'</td>
+                  <td><a href = "perfilConsulta.php?ID='.$consulta['ID'].'&idMed='.$idMed.'"> Detalles </a></td>
+              </tr>';
+              }
+              ?>
+          </table>
     </div>
   </div>
 </body>

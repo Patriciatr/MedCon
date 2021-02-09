@@ -85,23 +85,11 @@
                 echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($v['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
                 echo "<tr><th>Fumador</th><td>" . ($v['fumador'] ? 'Sí' : 'No'). "</td></tr>";
                 echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
-
-                  $res = $miPDO->prepare("SELECT * FROM respuesta, consultacovid  WHERE  respuesta.IDconsulta = consultacovid.id AND consultacovid.ID = :ID ");
-                  $res->execute(array('ID' => $_GET['ID']));
-                  $r = $res->fetch();
-                  $boolRes = $r ? 'false': 'true';
-              if($boolRes != 'true' ){
-                  echo "<tr><th>Contestación</th><td>" . $r['texto']."</td></tr>";
-                  if($r['archivos'] != NULL){
-                    echo "<td><a href ='".$r['archivos']."'><input type=button value=Archivos></a></td>";
-                  }
-
-              }
               
               if($v['consultaPadre']!=NULL){
-                  echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."&idPac=".$idPaciente."'><input type=button value=Anterior></a></td>";
+                  echo "<td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$idPaciente."'><input type=button value=Anterior></a></td>";
                 }
-                $pad = $miPDO->prepare("SELECT * FROM consultacovid WHERE  consultacovid.consultaPadre = ".substr($v['ID'], 1)."");
+                $pad = $miPDO->prepare("SELECT * FROM consultacovid WHERE  consultacovid.consultaPadre = :ID");
                 $pad->execute(array('ID' => $_GET['ID']));
                 $p = $pad->fetch();
                 $bool = $p ? 'false': 'true';
@@ -111,6 +99,34 @@
         }?>
         </tbody>
       </table>
+
+      <table>
+        <tbody>
+        <?php
+                if($str[0]=="c"){ 
+                  $res = $miPDO->prepare("SELECT * FROM respuesta WHERE respuesta.IDconsulta = :ID  ");
+                  $res->execute(array('ID' => $_GET['ID']));
+                  $r = $res->fetchAll();
+                  $boolRes = $r ? 'false': 'true';
+                  if($boolRes != 'true' ){
+                    $cnt = 0;
+                    foreach($r as $con){
+                        $cnt = $cnt +1;
+                        echo "<h2> Respuesta  " . $cnt ."</h2>";
+                        echo "<b>" . $con['fecha'] ."</b>";
+                        echo "<h2> Contestación  " . $cnt ."</h2>";
+                        echo "<p>" . $con['texto'] ."</p>";
+                        if($con['archivos'] != NULL){
+                          echo "<td><a href =/uploads/".$con['archivos']."><input type=button value=Archivos></a></td>";
+                        }
+                    }  
+                  }
+              } 
+
+        ?>
+      </tbody>  
+      </table>
+
       
 <!-- ***************************************  PERIODICA ********************************************************************-->
 
@@ -122,20 +138,10 @@
             echo "<tr><th>Tema</th><td>" . $v['tema'] .'</td></tr>';
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            $res = $miPDO->prepare("SELECT * FROM respuesta, consultaperiodica  WHERE  respuesta.IDconsulta = consultaperiodica.id AND consultaperiodica.ID = :ID ");
-            $res->execute(array('ID' => $_GET['ID']));
-            $r = $res->fetch();
-            $boolRes = $r ? 'false': 'true';
-            if($boolRes != 'true' ){
-              echo "<tr><th>Contestación</th><td>" . $r['texto']."</td></tr>";
-              if($r['archivos'] != NULL){
-                echo "<td><a href ='".$r['archivos']."'><input type=button value=Archivos></a></td>";
-              }
-            }
             if($v['consultaPadre']!=NULL){
-              echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td>";
+              echo "<td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td>";
             }
-            $pad = $miPDO->prepare("SELECT * FROM consultaperiodica WHERE  consultaperiodica.consultaPadre = ".substr($v['ID'], 1)."");
+            $pad = $miPDO->prepare("SELECT * FROM consultaperiodica WHERE  consultaperiodica.consultaPadre = :ID");
             $pad->execute(array('ID' => $_GET['ID']));
             $p = $pad->fetch();
             $bool = $p ? 'false': 'true';
@@ -144,6 +150,32 @@
             } 
           }?>
         </tbody>
+      </table>
+
+      <table>
+        <tbody>
+        <?php 
+                if($str[0]=="p"){
+                  $res = $miPDO->prepare("SELECT * FROM respuesta WHERE respuesta.IDconsulta = :ID  ");
+                  $res->execute(array('ID' => $_GET['ID']));
+                  $r = $res->fetchAll();
+                  $boolRes = $r ? 'false': 'true';
+                  if($boolRes != 'true' ){
+                    $cnt = 0;
+                    foreach($r as $con){
+                        $cnt = $cnt +1;
+                        echo "<h2> Respuesta  " . $cnt ."</h2>";
+                        echo "<b>" . $con['fecha'] ."</b>";
+                        echo "<h2> Contestación  " . $cnt ."</h2>";
+                        echo "<p>" . $con['texto'] ."</p>";
+                        if($con['archivos'] != NULL){
+                          echo "<td><a href ='".$r['archivos']."'><input type=button value=Archivos></a></td>";
+                        }
+                    }  
+                  }
+              }          
+        ?>
+      </tbody>  
       </table>
 
 <!-- ***************************************  OTRA ********************************************************************-->
@@ -155,20 +187,10 @@
             echo "<p>" . $v['fecha'] ."</p>";
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            $res = $miPDO->prepare("SELECT * FROM respuesta, consultaotra  WHERE  respuesta.IDconsulta = consultaotra.id AND consultaotra.ID = :ID ");
-            $res->execute(array('ID' => $_GET['ID']));
-            $r = $res->fetch();
-            $boolRes = $r ? 'false': 'true';
-            if($boolRes != 'true' ){
-               echo "<tr><th>Contestación</th><td>" . $r['texto']."</td></tr>";
-               if($r['archivos'] != NULL){
-                echo "<td><a href ='".$r['archivos']."'><input type=button value=Archivos></a></td>";
-              }
-            }
             if($v['consultaPadre']!=NULL){
-                echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td>";
+                echo "<td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td>";
               }
-            $pad = $miPDO->prepare("SELECT * FROM consultaotra WHERE  consultaotra.consultaPadre = ".substr($v['ID'], 1)."");
+            $pad = $miPDO->prepare("SELECT * FROM consultaotra WHERE  consultaotra.consultaPadre =  :ID");
             $pad->execute(array('ID' => $_GET['ID']));
             $p = $pad->fetch();
             $bool = $p ? 'false': 'true';
@@ -178,6 +200,32 @@
           }?>
           </tbody>
         </table>
+
+        <table>
+        <tbody>
+        <?php 
+                if($str[0]=="o"){
+                  $res = $miPDO->prepare("SELECT * FROM respuesta WHERE respuesta.IDconsulta = :ID  ");
+                  $res->execute(array('ID' => $_GET['ID']));
+                  $r = $res->fetchAll();
+                  $boolRes = $r ? 'false': 'true';
+                  if($boolRes != 'true' ){
+                    $cnt = 0;
+                    foreach($r as $con){
+                        $cnt = $cnt +1;
+                        echo "<h2> Respuesta  " . $cnt ."</h2>";
+                        echo "<b>" . $con['fecha'] ."</b>";
+                        echo "<h2> Contestación  " . $cnt ."</h2>";
+                        echo "<p>" . $con['texto'] ."</p>";
+                        if($con['archivos'] != NULL){
+                          echo "<td><a href ='".$r['archivos']."'><input type=button value=Archivos></a></td>";
+                        }
+                    }  
+                  }
+              }          
+        ?>
+      </tbody>  
+      </table>
     </div>
   </body>
 
