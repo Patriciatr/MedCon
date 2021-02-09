@@ -224,3 +224,39 @@ a{
   color: white;
   text-decoration: underline;
 }
+
+table {
+  width: 90%;
+  text-align: left;
+  caption-side: top;
+  background-color: white;
+  border-collapse: collapse;
+}
+.perfil caption, td, th {
+  padding: 0.8em;
+
+}
+.perfil th, td {
+  padding: 10px;
+  border-bottom: 10px solid rgb(240, 243, 189);
+  width: 25%;
+  text-decoration: none;
+}
+.perfil a{
+  text-decoration: none;
+  color:black;
+}
+
+.perfil th{
+  background-color: #A5AC20;
+  color: white;
+}
+.perfil tr:hover{
+  background-color: #79DBAC;
+  color: white;
+  
+}
+.perfil a:hover{
+  color: white;
+  text-decoration: underline;
+}
