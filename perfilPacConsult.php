@@ -92,20 +92,20 @@
                 echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
               
               if($v['consultaPadre']!=NULL){
-                  echo "<tr><th>Consulta anterior </th><td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$idPaciente."'><input type=button value=Anterior></a></td></tr>";
+                  echo "<tr><th>Consulta anterior </th><td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$idPaciente."'><input type=button class = 'botonForm' value=Anterior></a></td></tr>";
                 }
                 $pad = $miPDO->prepare("SELECT * FROM consultacovid WHERE  consultacovid.consultaPadre = :ID");
                 $pad->execute(array('ID' => $_GET['ID']));
                 $p = $pad->fetch();
                 $bool = $p ? 'false': 'true';
               if($bool != 'true' ){
-                  echo "<tr><th>Consulta siguiente</th><td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$idPaciente."'><input type=button value=Siguiente></a></td></tr>";
+                  echo "<tr><th>Consulta siguiente</th><td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$idPaciente."'><input type=button class = 'botonForm' value=Siguiente></a></td></tr>";
                 } 
         }?>
         </tbody>
       </table>
 
-      <table>
+      <table class="perfilConsulta">
         <tbody>
         <?php
                 if($str[0]=="c"){ 
@@ -115,15 +115,20 @@
                   $boolRes = $r ? 'false': 'true';
                   if($boolRes != 'true' ){
                     $cnt = 0;
+                //     echo "<tr><th>Fecha de la consulta</th><td>" . ($v['fecha']).'</td></tr>';
+                // echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
+                // echo "<tr><th>Texto de la consulta</th><td>" . ($v['textoConsulta']).'</td></tr>';
                     foreach($r as $con){
                         $cnt = $cnt +1;
-                        echo "<h2> Respuesta  " . $cnt ."</h2>";
-                        echo "<b>" . $con['fecha'] ."</b>";
-                        echo "<h2> Contestación  " . $cnt ."</h2>";
-                        echo "<p>" . $con['texto'] ."</p>";
+                        echo "<br></br>";
+                        echo "<tr><td colspan ='2' id='respuesta'> Respuesta  " . $cnt ."</td></tr>";
+                        echo "<tr><th>Fecha de la respuesta</th><td>" . $con['fecha'] .'</td></tr>';
+                        echo "<tr><th> Contestación</th><td>" . $cnt .'</td></tr>';
+                        echo "<tr><th> Texto </th><td>" . $con['texto'] ."</td></tr>";
                         if($con['archivos'] != NULL){
-                          echo "<td><a href =".$con['archivos']."><input type=button value=Archivos></a></td>";
+                          echo "<td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td>";
                         }
+                        echo "<br></br>";
                     }  
                   }
               } 
@@ -145,20 +150,20 @@
             echo "<tr><th>Tema</th><td>" . $v['tema'] .'</td></tr>';
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
             if($v['consultaPadre']!=NULL){
-              echo "<tr><th>Consulta anterior</th><td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td></tr>";
+              echo "<tr><th>Consulta anterior</th><td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button class = 'botonForm' value=Anterior></a></td></tr>";
             }
             $pad = $miPDO->prepare("SELECT * FROM consultaperiodica WHERE  consultaperiodica.consultaPadre = :ID");
             $pad->execute(array('ID' => $_GET['ID']));
             $p = $pad->fetch();
             $bool = $p ? 'false': 'true';
             if($bool != 'true' ){
-              echo "<tr><th>Consulta siguiente</th><td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$IDPaciente."'><input type=button value=Siguiente></a></td></tr>";
+              echo "<tr><th>Consulta siguiente</th><td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$IDPaciente."'><input type=button class = 'botonForm' value=Siguiente></a></td></tr>";
             } 
           }?>
         </tbody>
       </table>
 
-      <table>
+      <table class="perfilConsulta">
         <tbody>
         <?php 
                 if($str[0]=="p"){
@@ -170,13 +175,15 @@
                     $cnt = 0;
                     foreach($r as $con){
                         $cnt = $cnt +1;
-                        echo "<h2> Respuesta  " . $cnt ."</h2>";
-                        echo "<b>" . $con['fecha'] ."</b>";
-                        echo "<h2> Contestación  " . $cnt ."</h2>";
-                        echo "<p>" . $con['texto'] ."</p>";
+                        echo "<br></br>";
+                        echo "<tr><td colspan ='2' id='respuesta'> Respuesta  " . $cnt ."</td></tr>";
+                        echo "<tr><th>Fecha de la respuesta</th><td>" . $con['fecha'] .'</td></tr>';
+                        echo "<tr><th> Contestación</th><td>" . $cnt .'</td></tr>';
+                        echo "<tr><th> Texto </th><td>" . $con['texto'] ."</td></tr>";
                         if($con['archivos'] != NULL){
-                          echo "<td><a href =".$con['archivos']."><input type=button value=Archivos></a></td>";
+                          echo "<td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td>";
                         }
+                        echo "<br></br>";
                     }  
                   }
               }          
@@ -194,20 +201,20 @@
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
             if($v['consultaPadre']!=NULL){
-                echo "<tr><th>Consulta anterior</th><td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td></tr>";
+                echo "<tr><th>Consulta anterior</th><td><a href ='perfilPacConsult.php?ID=" .$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button class = 'botonForm' value=Anterior></a></td></tr>";
               }
             $pad = $miPDO->prepare("SELECT * FROM consultaotra WHERE  consultaotra.consultaPadre =  :ID");
             $pad->execute(array('ID' => $_GET['ID']));
             $p = $pad->fetch();
             $bool = $p ? 'false': 'true';
             if($bool != 'true' ){
-                echo "<tr><th>Consulta siguiente</th><td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$IDPaciente."'><input type=button value=Siguiente></a></td></tr>";
+                echo "<tr><th>Consulta siguiente</th><td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$IDPaciente."'><input type=button class = 'botonForm' value=Siguiente></a></td></tr>";
               }  
           }?>
           </tbody>
         </table>
 
-        <table>
+        <table class="perfilConsulta">
         <tbody>
         <?php 
                 if($str[0]=="o"){
@@ -219,12 +226,13 @@
                     $cnt = 0;
                     foreach($r as $con){
                         $cnt = $cnt +1;
-                        echo "<h2> Respuesta  " . $cnt ."</h2>";
-                        echo "<b>" . $con['fecha'] ."</b>";
-                        echo "<h2> Contestación  " . $cnt ."</h2>";
-                        echo "<p>" . $con['texto'] ."</p>";
+                        echo "<br></br>";
+                        echo "<tr><td colspan ='2' id='respuesta'> Respuesta  " . $cnt ."</td></tr>";
+                        echo "<tr><th>Fecha de la respuesta</th><td>" . $con['fecha'] .'</td></tr>';
+                        echo "<tr><th> Contestación</th><td>" . $cnt .'</td></tr>';
+                        echo "<tr><th> Texto </th><td>" . $con['texto'] ."</td></tr>";
                         if($con['archivos'] != NULL){
-                          echo "<td><a href =".$con['archivos']."><input type=button value=Archivos></a></td>";
+                          echo "<td id='archivo' colspan='2'><a href =".$con['archivos']."><input type=button class = 'botonForm' value=Archivos></a></td>";
                         }
                     }  
                   }

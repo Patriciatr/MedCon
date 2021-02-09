@@ -122,7 +122,13 @@ nav#menu-superior ul li a:hover {
   text-decoration: underline;
 
 }
-
+#respuesta{
+  background-color: #028090;
+  color: white;
+}
+#archivo{
+  background-color: rgb(240, 243, 189);
+}
 
 #tituloHacerConsulta{
   margin: 4px;
