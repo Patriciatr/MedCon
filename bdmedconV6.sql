@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2021 a las 16:40:58
+-- Tiempo de generación: 09-02-2021 a las 22:19:05
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -69,7 +69,7 @@ INSERT INTO `consultacovid` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `tex
 ('c16', '2015-04-18', 1, 'Posible COVID', 'Creo que tengo COVID porque llevo muchos dias enfermo', '29', NULL, 0, 40.14, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1),
 ('c17', '2018-07-29', 0, 'Posible COVID', '', '31', NULL, 0, 41.51, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0),
 ('c18', '2017-10-11', 0, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '32', NULL, 1, 38.69, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0),
-('c2', '2013-09-24', 0, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '5', NULL, 0, 41.34, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+('c2', '2013-09-24', 1, 'Posible COVID', 'No creo que tenga COVID, creo que es un resfriado, pero por si acaso te consulto', '5', NULL, 0, 41.34, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 ('c3', '2011-03-24', 0, 'Posible COVID', '', '6', NULL, 0, 41.65, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0),
 ('c4', '2016-01-28', 1, 'Posible COVID', '', '9', NULL, 1, 36.35, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1),
 ('c5', '2014-05-01', 0, 'Posible COVID', 'Creo que tengo COVID', '10', NULL, 1, 37.2, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0),
@@ -113,6 +113,9 @@ INSERT INTO `consultaotra` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `text
 ('o111', '2010-11-30', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '31', NULL),
 ('o112', '2012-03-03', 1, 'Analisis sanguineo', 'Hola, ya no me hace falta la analítica', '18', 'o99'),
 ('o113', '2014-10-25', 0, 'Dosis pastillas', 'me he acordado. ¿Eran dos veces, verdad?', '14', 'o95'),
+('o114', '2021-02-09', 1, 'Dolor en barriga', 'Buenas, me lleva doliendo el abdomen una semana y noto como un bulto', '8', NULL),
+('o115', '2021-02-09', 1, 'Esguince Tibia', 'Buenas, me hice un esguince en la tibia hace unas semanas y querría ver mi radiografía.', '15', NULL),
+('o116', '2021-02-09', 1, 'Esguince Muñeca', 'Necesito las radiografías de mi esguince de muñeca', '21', NULL),
 ('o84', '2018-05-19', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '1', NULL),
 ('o85', '2019-03-18', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '4', NULL),
 ('o86', '2013-03-10', 0, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '4', NULL),
@@ -124,7 +127,7 @@ INSERT INTO `consultaotra` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `text
 ('o93', '2011-09-11', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '12', NULL),
 ('o94', '2014-04-09', 1, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '14', NULL),
 ('o95', '2014-10-25', 0, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '14', NULL),
-('o96', '2011-03-20', 0, 'Analisis sanguineo', 'Buenas, hace 10 dias me hice una analitica y querria conocer los resultados.', '15', NULL),
+('o96', '2011-03-20', 1, 'Analisis sanguineo', 'Buenas, hace 10 dias me hice una analitica y querria conocer los resultados.', '15', NULL),
 ('o97', '2016-12-05', 1, 'Duda medicamentos', 'Hola, me recetaste un antibiotico y tras acabar el tratamiento sigo con sintomas. ¿Vuelvo a pedir cita?', '16', NULL),
 ('o98', '2015-06-21', 0, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '18', NULL),
 ('o99', '2012-02-29', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '18', NULL);
@@ -291,7 +294,7 @@ CREATE TABLE `respuesta` (
 --
 
 INSERT INTO `respuesta` (`ID`, `fecha`, `texto`, `archivos`, `IDmedico`, `IDconsulta`) VALUES
-(1, '2011-01-12', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', 'arch-Consulta-A3.pdf', 2, 'c1'),
+(1, '2011-01-12', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, 2, 'c1'),
 (4, '2016-01-29', 'Sus síntomas parecen indicar que no tiene covid. Aún así, haga cuarentena la próxima semana y si tiene fiebre, vuelva a escribir una consulta.', NULL, 2, 'c4'),
 (7, '2017-03-19', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, 3, 'c7'),
 (8, '2014-05-01', 'Sus síntomas parecen indicar que no tiene covid. Aún así, haga cuarentena la próxima semana y si tiene fiebre, vuelva a escribir una consulta.', NULL, 4, 'c8'),
@@ -301,7 +304,7 @@ INSERT INTO `respuesta` (`ID`, `fecha`, `texto`, `archivos`, `IDmedico`, `IDcons
 (12, '2016-05-12', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, 1, 'c12'),
 (16, '2015-04-19', 'Presenta síntomas relacionados con el covid. Por favor, aíslese en un cuarto e intente interaccionar lo menos posible con el resto de personas de su entorno. Hoy o mañana recibirá una llamada para ind', NULL, 4, 'c16'),
 (19, '2018-05-20', 'Hola, le doy cita para hacer la analítica de sangre para el 2018-05-25 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, 2, 'o84'),
-(20, '2018-05-27', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, 2, 'o84'),
+(20, '2018-05-27', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', 'uploads/arch-Consultao84-analisisSang2.png', 2, 'o84'),
 (21, '2019-03-22', 'Buenas, he visto su historia clínica y le receté 3 veces al día durante seis días.', NULL, 3, 'o85'),
 (22, '2010-09-13', 'Hola, le doy cita para hacer la prueba de alergía para el 2010-09-15 a las 11:00 en su ambulatorio asignado', NULL, 4, 'o87'),
 (23, '2018-06-27', 'Hola, le doy cita para hacer la analítica de sangre para el 2018-06-30 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, 4, 'o88'),
@@ -310,14 +313,13 @@ INSERT INTO `respuesta` (`ID`, `fecha`, `texto`, `archivos`, `IDmedico`, `IDcons
 (26, '2011-09-12', 'Hola, le doy cita para hacer la analítica de sangre para el 2011-09-16 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, 3, 'o93'),
 (27, '2014-04-09', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, 1, 'o94'),
 (28, '2014-04-10', 'Hola, es cierto que el medicamento no está disponible en farmacias. Le he recetado una pomada similar llamada Levitán. Ya está introducida en su tarjeta. Tiene que aplicarse poca cantidad dos veces al', NULL, 1, 'o94'),
-(29, '2011-03-22', 'Hola, le doy cita para hacer la analítica de sangre para el 2011-03-25 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, 3, 'o96'),
 (30, '2016-12-06', 'Sí, te doy cita para el día 2016-12-07 a las 12:30', NULL, 2, 'o97'),
 (31, '2012-02-29', 'Hola, le doy cita para hacer la analítica de sangre para el 2012-03-03 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, 1, 'o99'),
 (32, '2018-05-27', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, 1, 'o99'),
 (33, '2015-09-19', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, 3, 'o100'),
 (34, '2017-05-09', 'Sí, te doy cita para el día 2017-05-10 a las 12:30', NULL, 3, 'o101'),
 (35, '2019-04-25', 'Hola, le doy cita para hacer la analítica de sangre para el 2019-04-29 a las 8:45 en su ambulatorio asignado. Le enviaré los resultados de su analítica en una semana', NULL, 1, 'o102'),
-(36, '2019-04-30', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', NULL, 1, 'o102'),
+(36, '2019-04-30', 'Hola, le adjunto los resultados de su analítica. Todo está en orden.', 'uploads/arch-Consultao102-analisisSang3.png', 1, 'o102'),
 (37, '2018-04-03', 'Buenas, he visto su historia clínica y le receté 3 veces al día durante seis días.', NULL, 2, 'o103'),
 (38, '2017-05-18', 'Hola, voy a comprobar esa información y buscar otro medicamento adecuado', NULL, 3, 'o104'),
 (39, '2017-05-19', 'Hola, es cierto que el medicamento no está disponible en farmacias. Le he recetado una pomada similar llamada Levitán. Ya está introducida en su tarjeta. Tiene que aplicarse poca cantidad dos veces al', NULL, 3, 'o104'),
@@ -347,7 +349,13 @@ INSERT INTO `respuesta` (`ID`, `fecha`, `texto`, `archivos`, `IDmedico`, `IDcons
 (63, '2019-04-01', 'Buenas, he renovado la receta de su tratamiento.', NULL, 3, 'p28'),
 (64, '2011-01-22', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2011-01-24 a las 12:15.', NULL, 3, 'p29'),
 (65, '2011-09-26', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2011-09-28 a las 12:15.', NULL, 4, 'p36'),
-(66, '2010-12-12', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2010-12-15 a las 12:15.', NULL, 2, 'p37');
+(66, '2010-12-12', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2010-12-15 a las 12:15.', NULL, 2, 'p37'),
+(78, '2021-02-09', 'Vale, te doy una cita para radiografía', NULL, 1, 'o114'),
+(88, '2021-02-09', 'Aquí tienes tu radiografía. La comentaremos en persona', 'uploads/arch-Consultao114-radio1.png', 1, 'o114'),
+(89, '2021-02-09', 'Hola, te adjunto tu radiografía. Mejórate.', 'uploads/arch-Consultao115-esguinceTibia.png', 3, 'o115'),
+(90, '2021-02-09', 'Buenas, aquí tienes tu radiografía. Parece que ha mejorado bastante.', 'uploads/arch-Consultao116-esguinceMuñeca.png', 1, 'o116'),
+(91, '2011-03-30', 'Hola, perdona por el retraso, te mandamos la analítica', 'uploads/arch-Consultao96-analisisSang1.png', 3, 'o96'),
+(93, '2021-02-09', 'Hola, por favor aíslate y espera a que te llamemos', NULL, 3, 'c2');
 
 --
 -- Índices para tablas volcadas
@@ -409,7 +417,7 @@ ALTER TABLE `paciente`
 -- AUTO_INCREMENT de la tabla `respuesta`
 --
 ALTER TABLE `respuesta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
