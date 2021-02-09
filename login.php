@@ -11,9 +11,6 @@ require('dbmedcon.php');
   <title>Login</title>
   <link href="styles/estiloLogin.css" rel="stylesheet">
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
-  <style type="text/css">
-    
-  </style>
 </head>
 
 <body class="htmlNoPages">

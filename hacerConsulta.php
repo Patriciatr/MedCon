@@ -1,8 +1,7 @@
 <?php
     session_start();
     require('dbmedcon.php');
-    // $IDPaciente = isset($_GET['IDPaciente']) ? $_GET['IDPaciente'] : null;
-    $IDPaciente = "3";
+    $IDPaciente = isset($_GET['IDPaciente']) ? $_GET['IDPaciente'] : null;
 ?>
 <!DOCTYPE html>
 <html>
@@ -201,10 +200,10 @@
         <img src="assets/logo.png" class="gwd-img-fa6j">
         <nav id="menu-superior">
             <ul>
-                <li><a href="listConsultas.html"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas</h3></a></li>
-                <li><a href="haceronsultas.html"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="haceronsultas">Hacer consulta</h3></a></li>
-                <li class="gwd-li-2971"><a href="fichaPaciente.html"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
-                <li class="gwd-li-1xiy"><a href="desconectar.html"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
+                <li><a href="listaConsultasPaciente.php?id=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z" id="listaConsultasPaciente">Consultas</h3></a></li>
+                <li><a href="hacerConsulta.php?IDPaciente=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="hacerConsulta">Hacer consulta</h3></a></li>
+                <li class="gwd-li-2971"><a href="perfilPaciente.php?id=<?php echo $IDPaciente?>"><"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="PerfilPaciente">Datos Personales</h3></a></li>
+                <li class="gwd-li-1xiy"><a href="login.php"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li> 
             </ul>
         </nav>
 
@@ -215,8 +214,6 @@
                 <option value="Periódica">Periódica</option>
                 <option value="Otra">Otra</option>
             </select>
-
-            <p id="demo"></p>
 
             <form method="POST" name = "formCOVID">
                 <table id="tablaCOVID">
@@ -231,6 +228,34 @@
                     <tr><td><pre><b>Consulta   </b></pre></td>
                         <td><textarea id="textoRespuesta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escriba su consulta"></textarea></td>
                     </tr>
+                    <?php
+                        $consultacovid = $miPDO->prepare('SELECT `ID`, `fecha`, `asuntoConsulta` 
+                        FROM `consultacovid` WHERE `IDpaciente` LIKE :IDPaciente');
+                        $consultacovid -> execute(array('IDPaciente' => $IDPaciente));
+                        $consultas = $consultacovid -> fetchAll();
+
+                        if(count($consultas) != 0){
+                            ?>
+                            <tr><td><pre><b>Si está relacionada con una consulta anterior, selecciónela   </b></pre></td>
+                                <td>
+                                    <select name="consultaPadre">
+                                        <option value="nada" selected>...</option>
+                                        <?php
+                                            foreach($consultas as $consulta){
+                                                echo $consulta['ID'];
+                                                ?>
+                                                <option value="<?php echo $consulta['ID']?>">
+                                                    <?php echo $consulta['asuntoConsulta'].' día '. $consulta['fecha']?>
+                                                </option>
+                                            <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </td>
+                            </tr>
+                    <?php 
+                        } 
+                    ?>
                     <tr><td><pre><b>¿Siente malestar general?   </b></pre></td>
                         <td>
                             <input type="radio" name="malestar_general" value="1">Sí
@@ -365,38 +390,35 @@
                         $fumador = isset($_POST['fumador']) ? $_POST['fumador'] : null;
                         $zona_riesgo = isset($_POST['zona_riesgo']) ? $_POST['zona_riesgo'] : null;
                         //obtener los datos de un formulario
-                        // echo $fecha;
-                        // echo $asunto;
-                        // echo $malestar_general;
-                        // echo $temperatura;
-                        // echo $mucosidad;
-                        // echo $dolor_tragar;
-                        // echo $cambio_voz;
-                        // echo $tos;
-                        // echo $falta_aire;
-                        // echo $perdida_olf_gust;
-                        // echo $dolor_muscular;
-                        // echo $enfermedad_cron;
-                        // echo $contacto_positivo;
-                        // echo $embarazo;
-                        // echo $sanitario_FFAA_SSEE;
-                        // echo $hab_residencia;
-                        // echo $fumador;
-                        // echo $zona_riesgo;
+
+                        if($_POST['consultaPadre'] != "nada") {
+                            $consultaPadre = $_POST['consultaPadre'];
+                        } else {
+                            $consultaPadre = NULL;
+                        }
+                        
+                        $todas= $miPDO->prepare('SELECT * FROM consultacovid');
+                        $todas -> execute();
+                        $IDtodas = $todas -> fetchAll();
+
+                        $numConsultas = count($IDtodas) + 1;
+                        $ID = 'c'.strval($numConsultas);
+                        
                         $insertar = $miPDO->prepare('INSERT INTO `consultacovid`(`ID`, `fecha`, `respondida`, `asuntoConsulta`, 
-                        `textoConsulta`, `DNIpaciente`, `malestar_general`, `temperatura`, `mucosidad`, `dolor_tragar`,
+                        `textoConsulta`, `IDpaciente`, `consultaPadre`, `malestar_general`, `temperatura`, `mucosidad`, `dolor_tragar`,
                         `cambio_voz`, `tos`, `falta_aire`, `perdida_olf_gust`, `dolor_muscular`, `diarrea`, `enfermedad_cron`, `contacto_positivo`, 
                         `embarazo`, `sanitario_FFAA_SSEE`, `hab_residencia`, `fumador`, `zona_riesgo`) -- meter consultapadre
-                        VALUES( :ID, :fecha, :respondida, :asuntoConsulta, :textoConsulta, :DNIpaciente, :malestar_general, :temperatura, :mucosidad,
+                        VALUES( :ID, :fecha, :respondida, :asuntoConsulta, :textoConsulta, :IDpaciente, :consultaPadre, :malestar_general, :temperatura, :mucosidad,
                          :dolor_tragar, :cambio_voz, :tos, :falta_aire, :perdida_olf_gust, :dolor_muscular, :diarrea, :enfermedad_cron, :contacto_positivo, 
                         :embarazo, :sanitario_FFAA_SSEE, :hab_residencia, :fumador, :zona_riesgo)');
                             $ok = $insertar -> execute(array(
-                                'ID' => "pruebaCO",
+                                'ID' => $ID,
                                 'fecha'=>$fecha,
                                 'respondida'=>"0",
                                 'asuntoConsulta'=>$asunto,
                                 'textoConsulta'=>$texto,
-                                'DNIpaciente'=>$IDPaciente,
+                                'IDpaciente'=>$IDPaciente,
+                                'consultaPadre'=>$consultaPadre,
                                 'malestar_general'=>$malestar_general,
                                 'temperatura'=>$temperatura,
                                 'mucosidad'=>$mucosidad,
@@ -435,8 +457,38 @@
                         <td><input type="text" name="temaConsulta"></td>
                     </tr>
                     <tr><td><pre><b>Consulta   </b></pre></td>
-                        <td><textarea id="textoRespuesta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escriba su consulta"></textarea></td>
+                        <td>
+                            <textarea id="textoConsulta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escriba su consulta"></textarea>
+                        </td>
                     </tr>
+                    <?php
+                        $consultaPer = $miPDO->prepare('SELECT `ID`, `fecha`, `asuntoConsulta` 
+                        FROM `consultaperiodica` WHERE `IDpaciente` LIKE :IDPaciente');
+                        $consultaPer -> execute(array('IDPaciente' => $IDPaciente));
+                        $consultasPer = $consultaPer -> fetchAll();
+
+                        if(count($consultasPer) != 0){
+                            ?>
+                            <tr><td><pre><b>Si está relacionada con una consulta anterior, selecciónela   </b></pre></td>
+                                <td>
+                                    <select name="consultaPadre">
+                                        <option value="nada" selected>...</option>
+                                        <?php
+                                            foreach($consultasPer as $consulta){
+                                                echo $consulta['ID'];
+                                                ?>
+                                                <option value="<?php echo $consulta['ID']?>">
+                                                    <?php echo $consulta['asuntoConsulta'].' día '. $consulta['fecha']?>
+                                                </option>
+                                            <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </td>
+                            </tr>
+                    <?php 
+                        } 
+                    ?>
                     <tr>
                         <td colspan="2">
                             <input type="checkbox" name="datos">Acepto que estos datos sean usados por el personal médico.
@@ -455,18 +507,33 @@
                         $asunto = isset($_POST['asuntoConsulta']) ? $_POST['asuntoConsulta'] : null;
                         $tema = isset($_POST['temaConsulta']) ? $_POST['temaConsulta'] : null;
                         $fecha = date('Y-m-d');
+
+                        if($_POST['consultaPadre'] != "nada") {
+                            $consultaPadre = $_POST['consultaPadre'];
+                        } else {
+                            $consultaPadre = NULL;
+                        }
+                        
+                        $todasPer= $miPDO->prepare('SELECT * FROM consultaperiodica');
+                        $todasPer -> execute();
+                        $IDPer = $todasPer -> fetchAll();
+
+                        $numConsultas = count($IDPer) + 2;
+                        $ID = 'p'.strval($numConsultas);
+
                         //obtener los datos de un formulario
                         $insertar = $miPDO->prepare('INSERT INTO `consultaperiodica`(`ID`, `fecha`, `respondida`, `tema`, 
-                        `asuntoConsulta`, `textoConsulta`, `DNIpaciente`) -- meter consultapadre
-                        VALUES( :ID, :fecha, :respondida, :temaConsulta, :asuntoConsulta, :textoConsulta, :DNIpaciente)');
+                        `asuntoConsulta`, `textoConsulta`, `IDpaciente`, `consultaPadre`) -- meter consultapadre
+                        VALUES( :ID, :fecha, :respondida, :temaConsulta, :asuntoConsulta, :textoConsulta, :IDpaciente, :consultaPadre)');
                             $ok = $insertar -> execute(array(
-                                'ID' => "pruebaPr",
+                                'ID' => $ID,
                                 'fecha'=>$fecha,
                                 'respondida'=>"0",
                                 'temaConsulta' => $tema,
                                 'asuntoConsulta'=>$asunto,
                                 'textoConsulta'=>$texto,
-                                'DNIpaciente'=>$IDPaciente,
+                                'IDpaciente'=>$IDPaciente,
+                                'consultaPadre' => $consultaPadre,
                             ));
                             $miPDO -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
                             if($ok): ?> <script>alert( 'Insertado correctamente');</script> 
@@ -487,6 +554,34 @@
                     <tr><td><pre><b>Consulta   </b></pre></td>
                         <td><textarea id="textoConsulta" name="textoConsulta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escriba su consulta"></textarea></td>
                     </tr>
+                    <?php
+                        $consultaOtra = $miPDO->prepare('SELECT `ID`, `fecha`, `asuntoConsulta` 
+                        FROM `consultaotra` WHERE `IDpaciente` LIKE :IDPaciente');
+                        $consultaOtra -> execute(array('IDPaciente' => $IDPaciente));
+                        $consultas = $consultaOtra -> fetchAll();
+
+                        if(count($consultas) != 0){
+                            ?>
+                            <tr><td><pre><b>Si está relacionada con una consulta anterior, selecciónela   </b></pre></td>
+                                <td>
+                                    <select name="consultaPadre">
+                                        <option value="nada" selected>...</option>
+                                        <?php
+                                            foreach($consultas as $consulta){
+                                                echo $consulta['ID'];
+                                                ?>
+                                                <option value="<?php echo $consulta['ID']?>">
+                                                    <?php echo $consulta['asuntoConsulta'].' día '. $consulta['fecha']?>
+                                                </option>
+                                            <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </td>
+                            </tr>
+                    <?php 
+                        } 
+                    ?>
                     <tr>
                         <td colspan="2">
                             <input type="checkbox" name="datos">Acepto que estos datos sean usados por el personal médico.
@@ -505,17 +600,32 @@
                         $texto = isset($_POST['textoConsulta']) ? $_POST['textoConsulta'] : null;
                         $asunto = isset($_POST['asuntoConsulta']) ? $_POST['asuntoConsulta'] : null;
                         $fecha = date('Y-m-d');
+
+                        if($_POST['consultaPadre'] != "nada") {
+                            $consultaPadre = $_POST['consultaPadre'];
+                        } else {
+                            $consultaPadre = NULL;
+                        }
+                        
+                        $todas= $miPDO->prepare('SELECT * FROM consultaotra');
+                        $todas -> execute();
+                        $IDtodas = $todas -> fetchAll();
+
+                        $numConsultas = count($IDtodas) + 85;
+                        $ID = 'o'.strval($numConsultas);
+
                         //obtener los datos de un formulario
                         $insertar = $miPDO->prepare('INSERT INTO `consultaotra`(`ID`, `fecha`, `respondida`, 
-                        `asuntoConsulta`, `textoConsulta`, `DNIpaciente`) -- meter consultapadre
-                        VALUES( :ID, :fecha, :respondida, :asuntoConsulta, :textoConsulta, :DNIpaciente)');
+                        `asuntoConsulta`, `textoConsulta`, `IDpaciente`, `consultaPadre`) -- meter consultapadre
+                        VALUES( :ID, :fecha, :respondida, :asuntoConsulta, :textoConsulta, :IDpaciente, :consultaPadre)');
                             $ok = $insertar -> execute(array(
-                                'ID' => "pruebaOt", //cmambiar a la siguiente clave
+                                'ID' => $ID, 
                                 'fecha'=>$fecha,
                                 'respondida'=>"0",
                                 'asuntoConsulta'=>$asunto,
                                 'textoConsulta'=>$texto,
-                                'DNIpaciente'=>$IDPaciente,
+                                'IDpaciente'=>$IDPaciente,
+                                'consultaPadre' => $consultaPadre,
                             ));
                             $miPDO -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
                             if($ok): ?> <script>alert( 'Insertado correctamente');</script> 

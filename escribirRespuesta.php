@@ -1,11 +1,9 @@
 <?php
     session_start();
     require('dbmedcon.php');
-    // $IDconsulta = isset($_GET['IDconsulta']) ? $_GET['IDconsulta'] : null;
-    // $DNImedico = isset($_GET['DNImed']) ? $_GET['DNImed'] : null;
-    $IDconsulta = "c1";
-    $DNImedico = "2";
-?>
+    $IDconsulta = isset($_GET['ID']) ? $_GET['ID'] : null;
+    $idMed = isset($_GET['Medico']) ? $_GET['Medico'] : null;
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +12,7 @@
         <title>Formulario de Respuesta</title> 
         <meta name="generator" content="Google Web Designer 10.0.2.0105">
         <link href="styles/estiloMedicos.css" rel="stylesheet">
+        <link rel="icon" href="assets/logo.ico" type="image/ico">
         <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700" rel="stylesheet" type="text/css"> 
     </head>
     <body>
@@ -21,14 +20,14 @@
         <img src="assets/logo.png" class="gwd-img-fa6j">
         <nav id="menu-superior">
             <ul>
-            <li><a href="listConsultas.html"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
-            <li class="gwd-li-yj6f"><a href="ListPacientes.html"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
-            <li><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
+                <li><a href="listaConsultasMedico.php?idMed=<?php echo $idMed?>"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
+                <li class="gwd-li-yj6f"><a href="listaPacientesMedico.php?idMed=<?php echo $idMed?>"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
+                <li><a href="login.php"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
             </ul>
         </nav>
         <div class="form">
             <form name="formulario" method="POST" enctype="multipart/form-data">
-                <table>
+                <table id="tablaRespuesta">
                     <tr><td><pre><b>Texto   </b></pre></td>
                         <td><textarea id="textoRespuesta" name="textoRespuesta" rows="4" cols="50" autocapitalize="sentences" placeholder="Escribe tu respuesta"></textarea></td>
                     </tr>
@@ -59,11 +58,7 @@
 
                 // if everything is ok, try to upload file
                 } else {
-                    if (move_uploaded_file($_FILES["archivo"]["tmp_name"], $archSubir)) {
-                        echo "The file ". htmlspecialchars( basename( $_FILES["archivo"]["name"])). " has been uploaded.";
-                    } else {
-                        echo "Sorry, there was an error uploading your file.";
-                    }
+                    move_uploaded_file($_FILES["archivo"]["tmp_name"], $archSubir);
                 }
                 
                 $texto= isset($_POST['textoRespuesta']) ? $_POST['textoRespuesta'] : null;
@@ -71,19 +66,18 @@
                 $fecha = date('Y-m-d');
                 //obtener los datos de un formulario
                 $insertar = $miPDO->prepare('INSERT INTO `respuesta`(`fecha`, `texto`,
-                    `archivos`, `DNImedico`, `IDconsulta`) VALUES(:fecha, :texto, :archivo, :DNImedico, :IDconsulta)');
+                    `archivos`, `IDMedico`, `IDconsulta`) VALUES(:fecha, :texto, :archivo, :IDMedico, :IDconsulta)');
                     $ok = $insertar -> execute(array(
                         'fecha'=>$fecha,
                         'texto'=>$texto,
                         'archivo'=>$archivo,
-                        'DNImedico'=>$DNImedico,
+                        'IDMedico'=>$idMed,
                         'IDconsulta'=>$IDconsulta,
                     ));
                     $miPDO -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
                     
                     if($ok) echo 'Insertado correctamente';
-                    else print_r($insertar -> errorInfo());
-                                                
+                                          
             endif ?>
             </form>
         </div>
