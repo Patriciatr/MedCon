@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="author" content="ClaraJV">
         <title>Formulario</title>
+        
     </head>
     <body>
         <form method="POST">

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require('dbmedcon.php');
+    
     $IDPaciente = isset($_GET['IDPaciente']) ? $_GET['IDPaciente'] : null;
 ?>
 <!DOCTYPE html>
@@ -190,6 +191,7 @@
     </script>
     <head>
         <meta charset="utf-8">
+        <meta name="author" content="ClaraJV">
         <title>Formulario Consulta</title>
         <meta name="generator" content="Google Web Designer 10.0.2.0105">
         <link href="styles/estiloPacientes.css" rel="stylesheet">

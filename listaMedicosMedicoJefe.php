@@ -8,6 +8,7 @@ $idMed=$_GET['idMed'];
 
 <head>
 <meta charset="utf-8">
+<meta name="author" content="LuciaVM">
   <title>Medico</title>
   <link href="styles/estiloMedicoJefe.css" rel="stylesheet">
   <meta name="generator" content="Google Web Designer 10.0.2.0105">

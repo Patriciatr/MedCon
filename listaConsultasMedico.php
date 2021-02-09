@@ -8,6 +8,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="author" content="LuciaVM">
   <title>Medico</title>
   <meta name="generator" content="Google Web Designer 10.0.2.0105">
   <link href="styles/estiloMedicos.css" rel="stylesheet">

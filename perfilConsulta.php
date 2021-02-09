@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="author" content="PatriciaTR">
   <title>Perfil de la consulta</title>
   <link rel="icon" href="assets/logo.ico" type="image/ico">
   <link href="styles/estiloMedicos.css" rel="stylesheet">
