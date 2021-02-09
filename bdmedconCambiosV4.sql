@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-02-2021 a las 20:58:00
+-- Tiempo de generación: 09-02-2021 a las 11:19:53
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -34,7 +34,7 @@ CREATE TABLE `consultacovid` (
   `asuntoConsulta` varchar(40) NOT NULL,
   `textoConsulta` varchar(100) NOT NULL,
   `IDpaciente` varchar(9) NOT NULL,
-  `consultaPadre` int(11) DEFAULT NULL,
+  `consultaPadre` varchar(11) DEFAULT NULL,
   `malestar_general` tinyint(1) NOT NULL,
   `temperatura` float NOT NULL,
   `mucosidad` tinyint(1) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `consultaotra` (
   `asuntoConsulta` varchar(40) NOT NULL,
   `textoConsulta` varchar(200) NOT NULL,
   `IDpaciente` varchar(9) NOT NULL,
-  `consultaPadre` int(11) DEFAULT NULL
+  `consultaPadre` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -105,14 +105,14 @@ INSERT INTO `consultaotra` (`ID`, `fecha`, `respondida`, `asuntoConsulta`, `text
 ('o103', '2018-04-03', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '22', NULL),
 ('o104', '2017-05-18', 1, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '23', NULL),
 ('o105', '2011-01-03', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '24', NULL),
-('o106', '2017-10-22', 0, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16690928H', NULL),
+('o106', '2017-10-22', 0, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '16', NULL),
 ('o107', '2013-06-25', 1, 'Esguince', 'Hola, me pusieron un vendaje de esguince hace cuatro dias y se me esta despegando. ¿Que hago?', '27', NULL),
 ('o108', '2011-01-29', 0, 'Prueba alergia', 'Hola, ha llegado la primavera y no paro de estornudar. Nunca he tenido alergia pero creo que ahora puede que tenga. ¿Tengo que pedir cita para hacerme las pruebas?', '29', NULL),
 ('o109', '2017-11-08', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '30', NULL),
 ('o110', '2013-07-07', 1, 'Problema con pastillas', 'Buenas, me mando unas pastillas en la ultima cita, pero en las farmacias me han dicho que esas en concreto estan en produccion y van a tardar. ¿Me las podria cambiar?', '30', NULL),
 ('o111', '2010-11-30', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '31', NULL),
-('o112', '2012-03-03', 1, 'Analisis sanguineo', 'Hola, ya no me hace falta la analítica', '18', 99),
-('o113', '2014-10-25', 0, 'Dosis pastillas', 'me he acordado. ¿Eran dos veces, verdad?', '14', 95),
+('o112', '2012-03-03', 1, 'Analisis sanguineo', 'Hola, ya no me hace falta la analítica', '18', '99'),
+('o113', '2014-10-25', 0, 'Dosis pastillas', 'me he acordado. ¿Eran dos veces, verdad?', '14', '95'),
 ('o84', '2018-05-19', 1, 'Analisis sanguineo', 'Me gustaria hacerme una analitica. ¿Tengo que pedir cita para que me la mandes?', '1', NULL),
 ('o85', '2019-03-18', 1, 'Dosis pastillas', 'Hola, no recuerdo si el ibuprofeno que me recetaste tiene que ser dos o tres veces al dia.', '4', NULL),
 ('o86', '2013-03-10', 0, 'Alergia a crema', 'Me mando una crema moratones y me escuece al echarla. ¿Dejo de usarla?', '4', NULL),
@@ -143,7 +143,7 @@ CREATE TABLE `consultaperiodica` (
   `asuntoConsulta` varchar(40) NOT NULL,
   `textoConsulta` varchar(100) NOT NULL,
   `IDpaciente` varchar(9) NOT NULL,
-  `consultaPadre` int(11) DEFAULT NULL
+  `consultaPadre` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -175,7 +175,7 @@ INSERT INTO `consultaperiodica` (`ID`, `fecha`, `respondida`, `tema`, `asuntoCon
 ('p3', '2012-06-16', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ibuprofeno 600', '2', NULL),
 ('p30', '2015-08-18', 0, 'Renovacion Adiro', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Adiro', '24', NULL),
 ('p31', '2016-06-09', 0, 'Renovacion Omeprazol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Omeprazol?', '24', NULL),
-('p32', '2018-09-01', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16690928H', NULL),
+('p32', '2018-09-01', 0, 'Renovacion Ventolin', 'Renovacion prescripcion', 'Me gustaria que me renovara mi receta de Ventolin', '16', NULL),
 ('p33', '2016-12-21', 0, 'Renovacion Sintrom', 'Renovacion prescripcion', '¿Podria renovar mi receta de Sintrom?', '26', NULL),
 ('p34', '2018-03-24', 0, 'Renovacion Omeprazol', 'Renovacion prescripcion', '¿Podria renovar mi receta de Omeprazol?', '27', NULL),
 ('p35', '2012-11-02', 0, 'Renovacion Ibuprofeno', 'Renovacion prescripcion', '¿Podria renovar mi receta de Ibuprofeno?', '29', NULL),
@@ -347,8 +347,7 @@ INSERT INTO `respuesta` (`ID`, `fecha`, `texto`, `archivos`, `IDmedico`, `IDcons
 (63, '2019-04-01', 'Buenas, he renovado la receta de su tratamiento.', NULL, 3, 'p28'),
 (64, '2011-01-22', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2011-01-24 a las 12:15.', NULL, 3, 'p29'),
 (65, '2011-09-26', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2011-09-28 a las 12:15.', NULL, 4, 'p36'),
-(66, '2010-12-12', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2010-12-15 a las 12:15.', NULL, 2, 'p37'),
-(67, '2021-02-08', 'curate', 'uploads/arch-Consultac1-mochila 2.png', 2, 'c1');
+(66, '2010-12-12', 'Buenas, considero oportuno darle cita para ver si es necesario renovar su tratamiento. La cita será el día 2010-12-15 a las 12:15.', NULL, 2, 'p37');
 
 --
 -- Índices para tablas volcadas
@@ -410,7 +409,7 @@ ALTER TABLE `paciente`
 -- AUTO_INCREMENT de la tabla `respuesta`
 --
 ALTER TABLE `respuesta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

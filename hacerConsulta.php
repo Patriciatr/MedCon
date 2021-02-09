@@ -475,7 +475,6 @@
                                         <option value="nada" selected>...</option>
                                         <?php
                                             foreach($consultasPer as $consulta){
-                                                echo $consulta['ID'];
                                                 ?>
                                                 <option value="<?php echo $consulta['ID']?>">
                                                     <?php echo $consulta['asuntoConsulta'].' día '. $consulta['fecha']?>
@@ -513,6 +512,7 @@
                         } else {
                             $consultaPadre = NULL;
                         }
+                        
                         
                         $todasPer= $miPDO->prepare('SELECT * FROM consultaperiodica');
                         $todasPer -> execute();
