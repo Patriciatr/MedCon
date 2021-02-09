@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -40,7 +39,6 @@
         $v = $otra->fetch();
 
       }
-    
 
 }
   ?>
@@ -61,8 +59,6 @@
     <table class="perfil">
       <tbody>
       <?php
-          print_r($str);
-
           if($str[0]=="c"){
           $pacient = $miPDO->prepare("SELECT * FROM consultacovid, paciente WHERE paciente.id = consultacovid.IDpaciente AND consultacovid.ID = :ID");
           $pacient->execute(array('ID' => $_GET['ID']));
@@ -93,10 +89,8 @@
             echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($v['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Fumador</th><td>" . ($v['fumador'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
-            echo "<td><a href ='escribirRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
+            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }
-
-          
           ?>
         </tbody>
       </table>
@@ -119,7 +113,7 @@
             echo "<tr><th>Tema</th><td>" . $v['tema'] .'</td></tr>';
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            echo "<td><a href ='escribirRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
+            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }?>
         </tbody>
       </table>
@@ -140,7 +134,7 @@
             echo "<tr><th>Sexo</th><td>" . $p['Sexo'] . "</td></tr>";
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            echo "<td><a href ='escribirRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
+            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }  ?>
         </tbody>
       </table>
