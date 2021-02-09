@@ -169,7 +169,7 @@
                         echo "<h2> Contestación  " . $cnt ."</h2>";
                         echo "<p>" . $con['texto'] ."</p>";
                         if($con['archivos'] != NULL){
-                          echo "<td><a href ='".$con['archivos']."'><input type=button value=Archivos></a></td>";
+                          echo "<td><a href =/uploads/".$con['archivos']."><input type=button value=Archivos></a></td>";
                         }
                     }  
                   }
@@ -218,7 +218,7 @@
                         echo "<h2> Contestación  " . $cnt ."</h2>";
                         echo "<p>" . $con['texto'] ."</p>";
                         if($con['archivos'] != NULL){
-                          echo "<td><a href ='".$con['archivos']."'><input type=button value=Archivos></a></td>";
+                          echo "<td><a href =/uploads/".$con['archivos']."><input type=button value=Archivos></a></td>";
                         }
                     }  
                   }
