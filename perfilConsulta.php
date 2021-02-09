@@ -14,6 +14,8 @@
 <body class="htmlNoPages">
   <?php
   require("dbmedcon.php");
+  $idMed = isset($_GET['idMed']) ? $_GET['idMed'] : null;
+
   $miPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   if(isset($_GET)){
 
@@ -46,9 +48,9 @@
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
     <ul>
-    <li><a href="listaConsultasMedico.php"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
-      <li ><a href="listaPacientesMedico.php"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
-      <li><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
+    <li><a href="listaConsultasMedico.php?idMed=<?php echo $idMed?>"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
+      <li ><a href="listaPacientesMedico.php?idMed=<?php echo $idMed?>"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
+      <li><a href="login.php"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
     </ul>
   </nav>
   <div class="contenedor">
@@ -89,7 +91,7 @@
             echo "<tr><th>Número de habitaciones que tiene la residencia</th><td>" . ($v['hab_residencia'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Fumador</th><td>" . ($v['fumador'] ? 'Sí' : 'No'). "</td></tr>";
             echo "<tr><th>Ha viajado a un país o zona de riesgo</th><td>" . ($v['zona_riesgo'] ? 'Sí' : 'No'). "</td></tr>";
-            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
+            echo "<td><a href ='escribirRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }
           ?>
         </tbody>
@@ -113,7 +115,7 @@
             echo "<tr><th>Tema</th><td>" . $v['tema'] .'</td></tr>';
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
+            echo "<td><a href ='escribirRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }?>
         </tbody>
       </table>
@@ -134,7 +136,7 @@
             echo "<tr><th>Sexo</th><td>" . $p['Sexo'] . "</td></tr>";
             echo "<tr><th>Asunto Consulta</th><td>" . $v['asuntoConsulta'] ."</td></tr>";
             echo "<tr><th>Descripción Consulta</th><td>" . $v['textoConsulta']."</td></tr>";
-            echo "<td><a href ='formularioRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
+            echo "<td><a href ='escribirRespuesta.php?ID=". $v['ID'] ."&Medico=". $p['Medico'] ."'><input type=button value=Responder></a></td>";
           }  ?>
         </tbody>
       </table>

@@ -14,6 +14,8 @@
 <body class="htmlNoPages">
 <?php
     require("dbmedcon.php");
+    $idMed = isset($_GET['idMed']) ? $_GET['idMed'] : null;
+
     $miPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pac = $miPDO->prepare("SELECT * FROM paciente WHERE paciente.id = :id");
 
@@ -22,9 +24,9 @@
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
     <ul>
-    <li><a href="listaConsultasMedico.php"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
-      <li ><a href="listaPacientesMedico.php"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
-      <li><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
+    <li><a href="listaConsultasMedico.php?idMed=<?php echo $idMed?>"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas Activas</h3></a></li>
+      <li ><a href="listaPacientesMedico.php?idMed=<?php echo $idMed?>"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="fichaPaciente">Pacientes</h3></a></li>
+      <li><a href="login.php"><h3 class="gwd-p-gv4z gwd-p-5vs1 " id="salir">Salir</h3></a></li>
     </ul>
   </nav>
   <div class="contenedor gwd-div-yyjb">

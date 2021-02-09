@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 require('dbmedcon.php');
+$idMed=$_GET['idMed'];
 ?>
 
 <html>
@@ -62,8 +63,8 @@ require('dbmedcon.php');
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
     <ul>
-      <li><a href="seleccionarRol.php"><h3 class="gwd-p-gv4z" id="seleccionarRol">Seleccionar Rol</h3></a></li>
-      <li class="gwd-li-13d3"><a href="desconectar.html"><h3 class="gwd-p-gv4z gwd-p-1qhn " id="salir">Salir</h3></a></li>
+      <li><a href='seleccionarRol.php?idMed=<?php echo $idMed?>'><h3 class="gwd-p-gv4z" id="seleccionarRol">Seleccionar Rol</h3></a></li>
+      <li class="gwd-li-13d3"><a href="login.php"><h3 class="gwd-p-gv4z gwd-p-1qhn " id="salir">Salir</h3></a></li>
     </ul>
   </nav>
 </body>

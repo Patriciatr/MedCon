@@ -16,7 +16,7 @@
     function rolSeleccionado(){
       rol = document.formulario.rol.value;
       if (rol == "MedicoJefe"){
-        window.location.href='listaMedicosMedicoJefe.php';
+        window.location.href='listaMedicosMedicoJefe.php?idMed=<?php echo $idMed?>';
       } else if (rol == "Medico"){
         window.location.href='listaConsultasMedico.php?idMed=<?php echo $idMed?>';
       }
@@ -29,7 +29,7 @@
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
     <ul>
-      <li><a href="seleccionarRol.php"><h3 class="gwd-p-gv4z" id="seleccionarRol">Seleccionar Rol</h3></a></li>
+      <li><a href='seleccionarRol.php?idMed=<?php echo $idMed?>'><h3 class="gwd-p-gv4z" id="seleccionarRol">Seleccionar Rol</h3></a></li>
       <li><a href="login.php"><h3 class="gwd-p-gv4z gwd-p-1qhn " id="salir">Salir</h3></a></li>
     </ul>
   </nav>

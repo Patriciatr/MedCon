@@ -51,7 +51,7 @@
                         <td>'.$paciente['DNI'].'</td>
                         <td>'.$paciente['Nombre'].'</td>
                         <td>'.$paciente['Apellidos'].'</td>
-                        <td><a href = "perfilPacMedico.php?id='.$paciente['id'].'"> Detalles </a></td>
+                        <td><a href = "perfilPacMedico.php?id='.$paciente['id'].'&idMed='.$idMed.'"> Detalles </a></td>
                     </tr>';
               }
 

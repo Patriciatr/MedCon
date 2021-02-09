@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+  $IDPaciente = $_GET['idPac'];
+?>
 <html>
 
 <head>
@@ -46,10 +49,10 @@
   <img src="assets/logo.png" class="gwd-img-fa6j">
   <nav id="menu-superior">
   <ul>
-      <li><a href="listaConsultasPaciente.php"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas</h3></a></li>
-      <li><a href="formulariosPacientes.php"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="haceronsultas">Hacer consulta</h3></a></li>
-      <li><a href="perfilPaciente.php"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
-      <li ><a href="desconectar.html"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
+      <li><a href="listaConsultasPaciente.php?id=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z" id="listConsultas">Consultas</h3></a></li>
+      <li><a href="hacerConsulta.php?IDPaciente=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z gwd-p-1qhn" id="haceronsultas">Hacer consulta</h3></a></li>
+      <li><a href="perfilPaciente.php?id=<?php echo $IDPaciente?>"><h3 class="gwd-p-gv4z gwd-p-5vs1" id="fichaPaciente">Datos Personales</h3></a></li>
+      <li ><a href="login.php"><h3 class="gwd-p-gv4z destacado" id="salir">Salir</h3></a></li>
     </ul>
   </nav>
   <div class="contenedor">
@@ -96,14 +99,14 @@
               }
               
               if($v['consultaPadre']!=NULL){
-                  echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."'><input type=button value=Anterior></a></td>";
+                  echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."&idPac=".$idPaciente."'><input type=button value=Anterior></a></td>";
                 }
                 $pad = $miPDO->prepare("SELECT * FROM consultacovid WHERE  consultacovid.consultaPadre = ".substr($v['ID'], 1)."");
                 $pad->execute(array('ID' => $_GET['ID']));
                 $p = $pad->fetch();
                 $bool = $p ? 'false': 'true';
               if($bool != 'true' ){
-                  echo "<td><a href ='perfilPacConsult.php?ID=".$p['ID']."'><input type=button value=Siguiente></a></td>";
+                  echo "<td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$idPaciente."'><input type=button value=Siguiente></a></td>";
                 }   
         }?>
         </tbody>
@@ -130,14 +133,14 @@
               }
             }
             if($v['consultaPadre']!=NULL){
-              echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."'><input type=button value=Anterior></a></td>";
+              echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td>";
             }
             $pad = $miPDO->prepare("SELECT * FROM consultaperiodica WHERE  consultaperiodica.consultaPadre = ".substr($v['ID'], 1)."");
             $pad->execute(array('ID' => $_GET['ID']));
             $p = $pad->fetch();
             $bool = $p ? 'false': 'true';
             if($bool != 'true' ){
-              echo "<td><a href ='perfilPacConsult.php?ID=".$p['ID']."'><input type=button value=Siguiente></a></td>";
+              echo "<td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$IDPaciente."'><input type=button value=Siguiente></a></td>";
             } 
           }?>
         </tbody>
@@ -163,14 +166,14 @@
               }
             }
             if($v['consultaPadre']!=NULL){
-                echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."'><input type=button value=Anterior></a></td>";
+                echo "<td><a href ='perfilPacConsult.php?ID=". $v['ID'][0] ."".$v['consultaPadre']."&idPac=".$IDPaciente."'><input type=button value=Anterior></a></td>";
               }
             $pad = $miPDO->prepare("SELECT * FROM consultaotra WHERE  consultaotra.consultaPadre = ".substr($v['ID'], 1)."");
             $pad->execute(array('ID' => $_GET['ID']));
             $p = $pad->fetch();
             $bool = $p ? 'false': 'true';
             if($bool != 'true' ){
-                echo "<td><a href ='perfilPacConsult.php?ID=".$p['ID']."'><input type=button value=Siguiente></a></td>";
+                echo "<td><a href ='perfilPacConsult.php?ID=".$p['ID']."&idPac=".$IDPaciente."'><input type=button value=Siguiente></a></td>";
               }  
           }?>
           </tbody>
